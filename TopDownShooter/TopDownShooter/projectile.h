@@ -14,6 +14,10 @@ public:
 	void Init(int x, int y, int destX, int destY);
 	void Update();
 	bool OutOfBounds();
+	void LateUpdate(Square *worldArr);
+
+private:
+	bool hitWall = false;
 };
 
 

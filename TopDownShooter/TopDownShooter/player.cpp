@@ -15,7 +15,7 @@
 
 void Player::Init(int x, int y, RGB col)
 {
-	Square::Init(x, y, col);
+	Square::Init(SquareType::PLAYER, x, y, col);
 
 	rect.w = Player::PLAYER_WIDTH;
 	rect.h = Player::PLAYER_HEIGHT;
@@ -152,22 +152,36 @@ void Player::Move()
 	}
 }
 
-void Player::LateUpdate()
+void Player::LateUpdate(Square *worldArr)
 {
-	bool outsideMap = (newRect.x < 0 || newRect.y < 0) || 
-		              (newRect.x + rect.w > GameWorld::WINDOW_WIDTH) || 
-			          (newRect.y + rect.h > GameWorld::WINDOW_HEIGHT);
+	// Makes sure that the player is always within the screen boundaries
+	newRect.x = (int)(fmin(GameWorld::WINDOW_WIDTH  - PLAYER_WIDTH,  fmax(0, newRect.x)));
+	newRect.y = (int)(fmin(GameWorld::WINDOW_HEIGHT - PLAYER_HEIGHT, fmax(0, newRect.y)));
+	newRect.w = rect.w;
+	newRect.h = rect.h;
 
-	if (outsideMap)
-	{
-		rect.x = (int)(fmin(GameWorld::WINDOW_WIDTH  -  PLAYER_WIDTH, fmax(0, rect.x)));
-		rect.y = (int)(fmin(GameWorld::WINDOW_HEIGHT - PLAYER_HEIGHT, fmax(0, rect.y)));
-	}
-	else
+	if (!CollideWithWall(worldArr))
 	{
 		rect.x = newRect.x;
 		rect.y = newRect.y;
 	}
+
+	for (int i = 0; i < projectiles.size(); i++)
+	{
+		projectiles[i].LateUpdate(worldArr);
+	}
+}
+
+bool Player::CollideWithWall(Square *worldArr)
+{
+	for (int i = 0; i < GameWorld::LEVEL_SIZE; i++)
+	{
+		if ((worldArr + i)->squareType == SquareType::WALL && Collide(newRect, (worldArr + i)->rect))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 void Player::Render(SDL_Renderer *renderer)

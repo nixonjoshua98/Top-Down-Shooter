@@ -1,4 +1,5 @@
-﻿  player.cpp
-c:\users\joshua\onedrive - university of lincoln\games computing\year two\games programming (c++, sdl)\assessments\prototypes\topdownshooter\topdownshooter\player.cpp(97): warning C4018: '<': signed/unsigned mismatch
+﻿  projectile.cpp
+c:\users\joshua\onedrive - university of lincoln\games computing\year two\games programming (c++, sdl)\assessments\prototypes\topdownshooter\topdownshooter\projectile.cpp(28): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\joshua\onedrive - university of lincoln\games computing\year two\games programming (c++, sdl)\assessments\prototypes\topdownshooter\topdownshooter\projectile.cpp(29): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
   TopDownShooter.vcxproj -> C:\Users\Joshua\OneDrive - University of Lincoln\Games Computing\Year Two\Games Programming (C++, SDL)\Assessments\Prototypes\TopDownShooter\Debug\TopDownShooter.exe
   TopDownShooter.vcxproj -> C:\Users\Joshua\OneDrive - University of Lincoln\Games Computing\Year Two\Games Programming (C++, SDL)\Assessments\Prototypes\TopDownShooter\Debug\TopDownShooter.pdb (Partial PDB)

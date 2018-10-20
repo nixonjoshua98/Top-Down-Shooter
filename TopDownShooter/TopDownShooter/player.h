@@ -10,10 +10,11 @@
 class Player : public Square
 {
 public:
-	void Init(int x, int y, RGB col) override;
+	void Init(int x, int y, RGB col);
 	void Input(SDL_Event e);
 	void Update();
-	void LateUpdate();
+	void LateUpdate(Square *worldArr);
+	bool CollideWithWall(Square *worldArr);
 	void Render(SDL_Renderer *renderer) override;
 
 private:
@@ -21,8 +22,8 @@ private:
 	static const int MOVE_AMOUNT    =   3;
 	static const int MOVEMENT_DELAY =  10;	// Otherwise it will depend on FPS
 	static const int SHOOT_DELAY    =  50;
-	static const int PLAYER_WIDTH   =  10;
-	static const int PLAYER_HEIGHT  =  10;
+	static const int PLAYER_WIDTH   =  15;
+	static const int PLAYER_HEIGHT  =  15;
 
 	// All possible actions
 	enum class ControlEnum {LEFT, RIGHT, UP, DOWN, NONE, SHOOT};

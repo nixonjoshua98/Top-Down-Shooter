@@ -13,11 +13,17 @@ struct RGB
 class Square
 {
 public:
+	enum class SquareType {WALL, FLOOR, PLAYER, PROJECTILE};
+
 	RGB col;
+	SquareType squareType;
 	SDL_Rect rect;
 
-	void virtual Init(int x, int y, RGB _col);
+	void virtual Init(SquareType type, int x, int y, RGB _col);
 	void virtual Render(SDL_Renderer *renderer);
+
+protected:
+	bool Collide(SDL_Rect a, SDL_Rect b);
 };
 
 

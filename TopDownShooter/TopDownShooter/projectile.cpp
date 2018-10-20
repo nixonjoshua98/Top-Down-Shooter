@@ -11,13 +11,13 @@
 
 void Projectile::Init(int x, int y, int destX, int destY)
 {
-	Square::Init(x, y, RGB{ 255, 0, 0 });
+	Square::Init(SquareType::PROJECTILE, x, y, RGB{ rand() % 256, rand() % 256, rand() % 256 });
 
 	sourceRect.x = x;
 	sourceRect.y = y;
 
-	rect.w = 3;
-	rect.h = 3;
+	rect.w = 5;
+	rect.h = 5;
 
 	targetRect.x = destX;
 	targetRect.y = destY;
@@ -31,6 +31,17 @@ void Projectile::Update()
 
 bool Projectile::OutOfBounds()
 {
-	return (rect.x < 0 || rect.y < 0) || (rect.x + rect.w > GameWorld::WINDOW_WIDTH || rect.y + rect.h > GameWorld::WINDOW_HEIGHT);
+	return (rect.x <= 0 || rect.y <= 0) || (rect.x + rect.w > GameWorld::WINDOW_WIDTH || rect.y + rect.h > GameWorld::WINDOW_HEIGHT) || (hitWall);
 }
 
+void Projectile::LateUpdate(Square *worldArr)
+{
+	for (int i = 0; i < GameWorld::LEVEL_SIZE; i++)
+	{
+		if ((worldArr + i)->squareType == SquareType::WALL && Collide(rect, (worldArr + i)->rect))
+		{
+			hitWall = true;
+			break;
+		}
+	}
+}

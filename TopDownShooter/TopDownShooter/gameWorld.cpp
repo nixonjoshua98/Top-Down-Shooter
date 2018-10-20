@@ -2,6 +2,8 @@
 #include "gameWorld.h"
 
 #include <iostream>
+#include <fstream>
+#include <string>
 
 /* Header File Includes:
 	"square.h"
@@ -12,19 +14,8 @@
 GameWorld::GameWorld()
 {
 	player.Init(0, 0, RGB{ 0, 255, 0 });
-
-	Square s;
-
-	for (int i = 0; i < LEVEL_HEIGHT; i++)
-	{
-		for (int j = 0; j < LEVEL_WIDTH; j++)
-		{
-			s = Square();
-
-			s.Init(j * (WINDOW_WIDTH / LEVEL_WIDTH), i * (WINDOW_HEIGHT / LEVEL_HEIGHT), RGB{ 0, 0,0 });
-			worldArr[(i * LEVEL_WIDTH) + j] = s;
-		}
-	}
+	LoadWorldFile();
+	BuildWorld();
 }
 
 GameWorld::~GameWorld()
@@ -113,15 +104,52 @@ void GameWorld::Render()
 void GameWorld::Update()
 {
 	player.Update();
-
-	// This doesn't work - WTF
-	/*for (Projectile p : player.projectiles)
-	{
-		p.Update();
-	}*/
 }
 
 void GameWorld::LateUpdate()
 {
-	player.LateUpdate();
+	player.LateUpdate(worldArrArrPtr);
+}
+
+void GameWorld::LoadWorldFile()
+{
+	std::ifstream file("Data/World.txt");
+
+	if (file.bad())
+		return;
+
+	std::string line;
+
+	int i = 0;
+	while (std::getline(file, line))
+	{
+		for (char cell : line)
+		{
+			charWorldArray[i++] = cell;
+		}
+	}
+}
+
+void GameWorld::BuildWorld()
+{
+	Square s;
+
+	for (int i = 0; i < LEVEL_HEIGHT; i++)
+	{
+		for (int j = 0; j < LEVEL_WIDTH; j++)
+		{
+			s = Square();
+
+			switch (charWorldArray[(i * LEVEL_WIDTH) + j])
+			{
+			case 'S':
+				s.Init(Square::SquareType::FLOOR, j * CELL_WIDTH, i * CELL_HEIGHT, RGB{ 0, 155, 0 });
+				break;
+			default:
+				s.Init(Square::SquareType::WALL, j * CELL_WIDTH, i * CELL_HEIGHT, RGB{ 155, 0, 0 });
+				break;
+			}
+			worldArr[(i * LEVEL_WIDTH) + j] = s;
+		}
+	}
 }
