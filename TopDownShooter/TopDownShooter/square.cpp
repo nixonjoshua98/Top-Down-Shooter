@@ -1,8 +1,13 @@
+
 #include "stdafx.h"
 #include "square.h"
 #include "gameWorld.h"
 
 #include <iostream>
+
+/* Header File Includes
+	"sdl.h"
+*/
 
 void Square::Init(SquareType type, int x, int y, RGB _col)
 {
@@ -12,18 +17,24 @@ void Square::Init(SquareType type, int x, int y, RGB _col)
 	col    = _col;
 	rect.x = x;
 	rect.y = y;
-	rect.w = GameWorld::WINDOW_WIDTH  / GameWorld::LEVEL_WIDTH;
-	rect.h = GameWorld::WINDOW_HEIGHT / GameWorld::LEVEL_HEIGHT;
+	rect.w = GameWorld::CELL_WIDTH;
+	rect.h = GameWorld::CELL_HEIGHT;
 }
 
 void Square::Render(SDL_Renderer *renderer)
 {
 	SDL_SetRenderDrawColor(renderer, col.R, col.G, col.B, 255);
-	SDL_RenderFillRect(renderer, &rect);
+	//SDL_RenderFillRect(renderer, &rect);
+	SDL_RenderDrawRect(renderer, &rect);
 }
 
 bool Square::Collide(SDL_Rect a, SDL_Rect b)
 {
+	/*
+	Surely this could be improved upon?
+	TODO: Reduce the lines of code
+	*/
+
 	int leftA = a.x;
 	int rightA = a.x + a.w;
 	int topA = a.y;
@@ -39,4 +50,9 @@ bool Square::Collide(SDL_Rect a, SDL_Rect b)
 	if (rightA <= leftB) { return false; }
 	if (leftA >= rightB) { return false; }
 	return true;
+}
+
+float Square::DistanceBetween(SDL_Rect a, SDL_Rect b)
+{
+	return (float)sqrt(pow(a.x - b.x, 2) + (pow(a.y - b.y, 2)));
 }

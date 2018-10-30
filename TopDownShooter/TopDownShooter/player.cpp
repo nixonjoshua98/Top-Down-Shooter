@@ -1,3 +1,4 @@
+
 #include "stdafx.h"
 #include "gameWorld.h"
 #include "player.h"
@@ -8,21 +9,24 @@
 /* Header File Includes:
 	"square.h"
 	"SDL.h"
-	"projectile.h"
+	"projectileController.h"
 	<map>
-	<vector>
 */
 
 void Player::Init(int x, int y, RGB col)
 {
+	// Calls the base class constructor
 	Square::Init(SquareType::PLAYER, x, y, col);
 
-	rect.w = Player::PLAYER_WIDTH;
-	rect.h = Player::PLAYER_HEIGHT;
+	rect.w	  = Player::PLAYER_WIDTH;
+	rect.h	  = Player::PLAYER_HEIGHT;
+	newRect.w = rect.w;
+	newRect.h = rect.h;
 }
 
 void Player::Input(SDL_Event e)
 {
+	// Keyboard key has been released or presses
 	if (e.type == SDL_KEYUP || e.type == SDL_KEYDOWN)
 	{
 		// Valid keyboard control
@@ -31,8 +35,10 @@ void Player::Input(SDL_Event e)
 			KeyboardInputHandler(e);
 		}
 	}
+	// Mouse button has been clicked or released
 	else if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP)
 	{
+		// Mouse button is a valid control
 		if (mouseControls.find(e.button.button) != mouseControls.end())
 		{
 			MouseInputHandler(e);
@@ -53,7 +59,7 @@ void Player::KeyboardInputHandler(SDL_Event e)
 	}
 
 	// A valid input has been detected which has already been added to the vector
-	// the key most likely has been releasedso i remove it from the vector
+	// the key most likely has been released so i remove it from the vector
 	else if (e.type == SDL_KEYUP && controlIter != keyboardPresses.end())
 	{
 		keyboardPresses.erase(controlIter);
@@ -62,6 +68,7 @@ void Player::KeyboardInputHandler(SDL_Event e)
 
 void Player::MouseInputHandler(SDL_Event e)
 {
+	// Checks if the mouse button is mapped to a control
 	switch (mouseControls[e.button.button])
 	{
 	case ControlEnum::SHOOT:
@@ -72,81 +79,65 @@ void Player::MouseInputHandler(SDL_Event e)
 
 void Player::Shoot()
 {
+	// If the shoot cooldown has passed then this will be set to true
+	readyToShoot = (SDL_GetTicks() - lastShootTime > SHOOT_DELAY);
+
 	if (!readyToShoot || !triggerDown)
 		return;
 
-	int x, y;
+	int x, y;	// Get the mouse position
 	SDL_GetMouseState(&x, &y);
 
-	Projectile p = Projectile();
-	p.Init(rect.x + (rect.w / 2), rect.y + (rect.h / 2), x, y);
-	projectiles.push_back(p);
+	// Setup the target rect
+	SDL_Rect target = SDL_Rect();
+	target.x = x;
+	target.y = y;
 
-	readyToShoot  = false;
-	lastShootTime = SDL_GetTicks();
+	if (projectileController.Shoot(rect, target))
+	{
+		readyToShoot = false;
+		lastShootTime = SDL_GetTicks();
+	}
 }
 
 void Player::Update()
 {
-	int now = SDL_GetTicks();
-
-	// Update projectiles - WTF BOII
-	//for (Projectile p : projectiles)
-		//p.Update();
-
-	for (int i = 0; i < projectiles.size(); i++)
-	{
-		if (projectiles[i].OutOfBounds())
-		{
-			projectiles.erase(projectiles.begin() + i);
-			continue;
-		}
-
-		projectiles[i].Update();
-	}
-
-	// Move timer
-	if (now - lastMovementTime > MOVEMENT_DELAY)
-	{
-		lastMovementTime = now;
-		Move();
-	}
-
-	// Shoot timer
-	if ((now - lastShootTime > SHOOT_DELAY) && !readyToShoot)
-	{
-		readyToShoot = true;
-	}
-
+	projectileController.Update();
+	Move();
 	Shoot();
 }
 
 void Player::Move()
 {
+	int now = SDL_GetTicks();
+
+	if (!now - lastMovementTime > MOVEMENT_DELAY) { return; }
+
+	lastMovementTime = now;
+
 	newRect.x = rect.x;
 	newRect.y = rect.y;
+
+	float movementMultiplier = (buffs[SquareType::MOVEMENT_DEBUFF] ? 0.5f : 1.0f);
 
 	for (ControlEnum key : keyboardPresses)
 	{
 		switch (key)
 		{
 		case ControlEnum::LEFT:
-			newRect.x -= Player::MOVE_AMOUNT;
+			newRect.x -= (int)(Player::MOVEMENT_SPEED * movementMultiplier);
 			break;
 
 		case ControlEnum::RIGHT:
-			newRect.x += Player::MOVE_AMOUNT;
+			newRect.x += (int)(Player::MOVEMENT_SPEED * movementMultiplier);
 			break;
 
 		case ControlEnum::UP:
-			newRect.y -= Player::MOVE_AMOUNT;
+			newRect.y -= (int)(Player::MOVEMENT_SPEED * movementMultiplier);
 			break;
 
 		case ControlEnum::DOWN:
-			newRect.y += Player::MOVE_AMOUNT;
-			break;
-
-		default:
+			newRect.y += (int)(Player::MOVEMENT_SPEED * movementMultiplier);
 			break;
 		}
 	}
@@ -154,41 +145,68 @@ void Player::Move()
 
 void Player::LateUpdate(Square *worldArr)
 {
-	// Makes sure that the player is always within the screen boundaries
-	newRect.x = (int)(fmin(GameWorld::WINDOW_WIDTH  - PLAYER_WIDTH,  fmax(0, newRect.x)));
-	newRect.y = (int)(fmin(GameWorld::WINDOW_HEIGHT - PLAYER_HEIGHT, fmax(0, newRect.y)));
-	newRect.w = rect.w;
-	newRect.h = rect.h;
+	ConfirmPlayerMovement();
+	ColliderManager(worldArr);
+	projectileController.LateUpdate();
+}
 
-	if (!CollideWithWall(worldArr))
-	{
-		rect.x = newRect.x;
-		rect.y = newRect.y;
-	}
+void Player::ColliderManager(Square *worldArr)
+{
+	// Transform the set to a vector which is easier to iterate over
+	std::set<SquareType> colliders = GetColliders(worldArr);
+	std::vector<SquareType> collidersV = {};
+	collidersV.assign(colliders.begin(), colliders.end());
+	// TODO: The above code should be changed but it works well and i dont want to have to debug the new errors
 
-	for (int i = 0; i < projectiles.size(); i++)
+	ResetBuffs();
+
+	// Current colliders
+	for (int i = 0; i < collidersV.size(); i++)
 	{
-		projectiles[i].LateUpdate(worldArr);
+		switch (collidersV[i])
+		{
+		case SquareType::MOVEMENT_DEBUFF:
+			buffs[SquareType::MOVEMENT_DEBUFF] = true;
+			break;
+		}
 	}
 }
 
-bool Player::CollideWithWall(Square *worldArr)
+void Player::ResetBuffs()
 {
+	// Sets all buffs to false;
+	for (const auto & kv : buffs)
+	{
+		buffs[kv.first] = false;
+	}
+}
+
+void Player::ConfirmPlayerMovement()
+{
+	// Makes sure that the player is always within the screen boundaries
+	newRect.x = (int)(fmin(GameWorld::WINDOW_WIDTH  - PLAYER_WIDTH, fmax(0, newRect.x)));
+	newRect.y = (int)(fmin(GameWorld::WINDOW_HEIGHT - PLAYER_HEIGHT, fmax(0, newRect.y)));
+
+	rect.x = newRect.x;
+	rect.y = newRect.y;
+}
+
+// TIL - Returning a set pointer is evil and i should never attempt it again
+std::set<Square::SquareType> Player::GetColliders(Square *worldArr)
+{
+	std::set<SquareType> colliders = {};	// We only care about each type, not quantity
+
 	for (int i = 0; i < GameWorld::LEVEL_SIZE; i++)
 	{
-		if ((worldArr + i)->squareType == SquareType::WALL && Collide(newRect, (worldArr + i)->rect))
-		{
-			return true;
-		}
+		// Spent about an hour trying to fix this, I had + 1 instead of + i
+		if (Collide(rect, (worldArr + i)->rect))
+			colliders.insert((worldArr + i)->squareType);
 	}
-	return false;
+	return colliders;
 }
 
 void Player::Render(SDL_Renderer *renderer)
 {
-	// Render projectiles
-	for (Projectile p : projectiles)
-		p.Render(renderer);
-
+	projectileController.Render(renderer);
 	Square::Render(renderer);
 }

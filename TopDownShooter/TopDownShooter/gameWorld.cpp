@@ -13,7 +13,7 @@
 
 GameWorld::GameWorld()
 {
-	player.Init(0, 0, RGB{ 0, 255, 0 });
+	player.Init(0, 0, RGB{ 200, 200, 200 });
 	LoadWorldFile();
 	BuildWorld();
 }
@@ -142,11 +142,12 @@ void GameWorld::BuildWorld()
 
 			switch (charWorldArray[(i * LEVEL_WIDTH) + j])
 			{
-			case 'S':
-				s.Init(Square::SquareType::FLOOR, j * CELL_WIDTH, i * CELL_HEIGHT, RGB{ 0, 155, 0 });
+			case Square::EMPTY_SQUARE_CHAR:
+				s.Init(Square::SquareType::EMPTY, j * CELL_WIDTH, i * CELL_HEIGHT, RGB{ 0, 255, 0 });
 				break;
-			default:
-				s.Init(Square::SquareType::WALL, j * CELL_WIDTH, i * CELL_HEIGHT, RGB{ 155, 0, 0 });
+
+			case Square::MOVEMENT_DEBUFF_SQUARE_CHAR:
+				s.Init(Square::SquareType::MOVEMENT_DEBUFF, j * CELL_WIDTH, i * CELL_HEIGHT, RGB{ 0, 0, 155 });
 				break;
 			}
 			worldArr[(i * LEVEL_WIDTH) + j] = s;

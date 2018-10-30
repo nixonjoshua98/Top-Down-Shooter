@@ -13,7 +13,10 @@ struct RGB
 class Square
 {
 public:
-	enum class SquareType {WALL, FLOOR, PLAYER, PROJECTILE};
+	static const char EMPTY_SQUARE_CHAR           = '0';
+	static const char MOVEMENT_DEBUFF_SQUARE_CHAR = '1';
+
+	enum class SquareType {MOVEMENT_DEBUFF, EMPTY, PLAYER, PROJECTILE};
 
 	RGB col;
 	SquareType squareType;
@@ -21,9 +24,8 @@ public:
 
 	void virtual Init(SquareType type, int x, int y, RGB _col);
 	void virtual Render(SDL_Renderer *renderer);
-
-protected:
 	bool Collide(SDL_Rect a, SDL_Rect b);
+	float DistanceBetween(SDL_Rect a, SDL_Rect b);
 };
 
 

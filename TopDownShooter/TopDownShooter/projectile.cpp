@@ -1,47 +1,69 @@
+
 #include "stdafx.h"
 #include "projectile.h"
 #include "gameWorld.h"
 
+
 /* Header File Includes
 	"square.h"
+	vector2.h
 	"sdl.h"
 */
 
 #include <iostream>
 
-void Projectile::Init(int x, int y, int destX, int destY)
+void Projectile::Init(RGB _col)
 {
-	Square::Init(SquareType::PROJECTILE, x, y, RGB{ rand() % 256, rand() % 256, rand() % 256 });
+	Square::Init(SquareType::PROJECTILE, 0, 0, _col);
 
-	sourceRect.x = x;
-	sourceRect.y = y;
+	rect.w = PROJECTILE_WIDTH;
+	rect.h = PROJECTILE_HEIGHT;
+}
 
-	rect.w = 5;
-	rect.h = 5;
+void Projectile::SetTarget(SDL_Rect _sourceRect, SDL_Rect _targetRect)
+{
+	visible = true;
 
-	targetRect.x = destX;
-	targetRect.y = destY;
+	vector2 = Vector2((float)_targetRect.x, (float)_targetRect.y);
+
+	x = y = 0;
+	sourceRect.x = rect.x = _sourceRect.x;
+	sourceRect.y = rect.y = _sourceRect.y;
 }
 
 void Projectile::Update()
 {
-	rect.x += (targetRect.x - sourceRect.x) * 0.015;
-	rect.y += (targetRect.y - sourceRect.y) * 0.015;
+	if (!visible) { return; }
+
+	Vector2 v = vector2.Normalise();
+
+	x += v.x;
+	y += v.y;
+
+	rect.x = (int)(x * 3);
+	rect.y = (int)(y * 3);
 }
 
 bool Projectile::OutOfBounds()
 {
-	return (rect.x <= 0 || rect.y <= 0) || (rect.x + rect.w > GameWorld::WINDOW_WIDTH || rect.y + rect.h > GameWorld::WINDOW_HEIGHT) || (hitWall);
+	// Projectile out of screen
+	return (rect.x < 0 || rect.y < 0) || (rect.x + rect.w > GameWorld::WINDOW_WIDTH || rect.y + rect.h > GameWorld::WINDOW_HEIGHT);
 }
 
-void Projectile::LateUpdate(Square *worldArr)
+void Projectile::LateUpdate()
 {
-	for (int i = 0; i < GameWorld::LEVEL_SIZE; i++)
+	if (!visible) { return; }
+
+	if (OutOfBounds())
 	{
-		if ((worldArr + i)->squareType == SquareType::WALL && Collide(rect, (worldArr + i)->rect))
-		{
-			hitWall = true;
-			break;
-		}
+		visible = false;
 	}
+}
+
+void Projectile::Render(SDL_Renderer *renderer)
+{
+	if (visible)
+	{
+		Square::Render(renderer);
+	}	
 }

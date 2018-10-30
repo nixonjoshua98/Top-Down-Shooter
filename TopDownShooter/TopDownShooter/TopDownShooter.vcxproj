@@ -153,17 +153,21 @@
     <ClInclude Include="gameWorld.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="projectile.h" />
+    <ClInclude Include="projectileController.h" />
     <ClInclude Include="square.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gameWorld.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="projectile.cpp" />
+    <ClCompile Include="projectileController.cpp" />
     <ClCompile Include="square.cpp" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="TopDownShooter.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
