@@ -7,6 +7,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <math.h>
 
 JN_Player::~JN_Player()
 {
@@ -16,15 +17,17 @@ JN_Player::~JN_Player()
 void JN_Player::Init(SDL_Renderer *renderer)
 {
 	// Calls the base class constructor
-	JN_Sprite::Init(SpriteType::PLAYER, renderer, rect);
+	JN_Sprite::Init(SpriteType::PLAYER, renderer, rect, 3);
 
 	rect.w = JN_Player::PLAYER_WIDTH;
 	rect.h = JN_Player::PLAYER_HEIGHT;
 	rect.x = 0;
 	rect.y = JN_GameWorld::BANNER_HEIGHT;
+
 	newRect.w = rect.w;
 	newRect.h = rect.h;
 
+	projectileController.CreateInitialProjectiles(renderer);
 }
 
 void JN_Player::Input(SDL_Event e)
@@ -78,8 +81,10 @@ void JN_Player::MouseInputHandler(SDL_Event e)
 
 void JN_Player::Shoot()
 {
+	float now = (float)SDL_GetTicks();
+
 	// If the shoot cooldown has passed then this will be set to true
-	readyToShoot = (SDL_GetTicks() - lastShootTime > SHOOT_DELAY);
+	readyToShoot = (now - lastShootTime > SHOOT_DELAY);
 
 	if (!readyToShoot || !triggerDown)
 		return;
@@ -89,8 +94,8 @@ void JN_Player::Shoot()
 
 	// Setup the target rect (Take the player coords into account)
 	SDL_Rect target = SDL_Rect();
-	target.x = x - rect.x;
-	target.y = y - rect.y;
+	target.x = (x - 2) - rect.x;
+	target.y = (y - 2) - rect.y;
 
 	SDL_Rect sourceRect = SDL_Rect();
 	sourceRect.x = rect.x + (rect.w / 2);
@@ -98,8 +103,8 @@ void JN_Player::Shoot()
 
 	if (projectileController.Shoot(sourceRect, target))
 	{
-		readyToShoot = false;
-		lastShootTime = SDL_GetTicks();
+		readyToShoot  = false;
+		lastShootTime = now;
 	}
 }
 
@@ -112,7 +117,7 @@ void JN_Player::Update()
 
 void JN_Player::Move()
 {
-	int now = SDL_GetTicks();
+	float now = (float)SDL_GetTicks();
 
 	if (!now - lastMovementTime > MOVEMENT_DELAY) { return; }
 
@@ -122,6 +127,7 @@ void JN_Player::Move()
 	newRect.y = rect.y;
 
 	float movementMultiplier = (buffs[SpriteType::MOVEMENT_DEBUFF] ? 0.25f : 1.0f);
+
 
 	for (ControlEnum key : keyboardPresses)
 	{
@@ -144,6 +150,22 @@ void JN_Player::Move()
 			break;
 		}
 	}
+
+	if (now - lastSpriteChange > spriteChangeDelay)
+	{
+		if (keyboardPresses.size() > 0)
+		{
+			lastSpriteChange = now;
+			spriteIndex = spriteIndex == 1 ? 2 : 1;
+		}
+
+		else if (keyboardPresses.size() == 0)
+			spriteIndex = 0;
+	}
+
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+	rotationAngle = atan2((y - 2) - newRect.y, (x - 2)- newRect.x) * 180.0f / 3.14159;
 }
 
 void JN_Player::LateUpdate(std::vector<JN_Sprite*> tiles)
@@ -216,8 +238,8 @@ std::set<JN_Player::SpriteType> JN_Player::GetColliders(std::vector<JN_Sprite*> 
 
 void JN_Player::Render(SDL_Renderer *renderer)
 {
-	projectileController.Render(renderer);
 	JN_Sprite::Render(renderer);
+	projectileController.Render(renderer);
 }
 
 // Used for logging inputs

@@ -4,10 +4,10 @@
 #include "SDL.h"
 
 #include "JN_Vector2.h"
-#include "JN_Square.h"
+#include "JN_Sprite.h"
 
 
-class JN_Projectile : public JN_Square
+class JN_Projectile : public JN_Sprite
 {
 public:
 	SDL_Rect sourceRect = SDL_Rect();
@@ -16,7 +16,7 @@ public:
 	bool visible = false;
 	JN_Vector2 vector2;
 
-	void Init(JN_RGB _col);
+	void Init(SDL_Renderer *renderer);
 	void Update();
 	bool OutOfBounds();
 	void Render(SDL_Renderer *renderer) override;

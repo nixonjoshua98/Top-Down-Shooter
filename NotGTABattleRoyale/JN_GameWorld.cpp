@@ -32,14 +32,14 @@ bool JN_GameWorld::Init()
 	bool success = SDL_Init(SDL_INIT_EVERYTHING) == 0;
 
 	if (success) {
-		window = SDL_CreateWindow("Not Grand Theft Auto Battle Royale", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+		window = SDL_CreateWindow("Joshua Nixon, Games Computing, 16632283 | Not GTA Battle Royale", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 
 		if (window == NULL)
 			success =  false;
 		else
 		{
-			renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED);
-
+			renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
+			
 			player.Init(renderer);
 			BuildWorld();
 		}
@@ -101,7 +101,7 @@ void JN_GameWorld::Render()
 
 	player.Render(renderer);
 
-	SDL_SetRenderDrawColor(renderer, 128, 128, 128, 0);	// Set background color
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);	// Set background color
 	SDL_RenderPresent(renderer);						// Flip the render
 }
 
@@ -166,12 +166,12 @@ void JN_GameWorld::BuildWorld()
 			switch (charWorldArray[(i * LEVEL_WIDTH) + j])
 			{
 			case JN_Sprite::EMPTY_TILE_CHAR:
-				s->Init(JN_Sprite::SpriteType::EMPTY, renderer, r);
+				s->Init(JN_Sprite::SpriteType::EMPTY, renderer, r, 1);
 				emptyTiles.push_back(s);
 				break;
 
 			case JN_Sprite::MOVEMENT_DEBUFF_TILE_CHAR:
-				s->Init(JN_Sprite::SpriteType::MOVEMENT_DEBUFF, renderer, r);
+				s->Init(JN_Sprite::SpriteType::MOVEMENT_DEBUFF, renderer, r, 1);
 				collisionTiles.push_back(s);
 				break;
 			}

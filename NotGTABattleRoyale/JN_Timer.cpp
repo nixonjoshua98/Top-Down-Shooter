@@ -20,7 +20,5 @@ void JN_Timer::Wait()
 	int nowTicks = SDL_GetTicks();
 
 	if ((1000 / this->FPS) > (nowTicks - startTicks))
-	{
 		SDL_Delay((1000 / this->FPS) - (nowTicks - startTicks));
-	}
 }

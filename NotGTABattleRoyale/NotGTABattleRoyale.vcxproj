@@ -154,7 +154,6 @@
     <ClInclude Include="JN_GameWorld.h" />
     <ClInclude Include="JN_Logging.h" />
     <ClInclude Include="JN_Sprite.h" />
-    <ClInclude Include="JN_Square.h" />
     <ClInclude Include="JN_Timer.h" />
     <ClInclude Include="JN_Projectile.h" />
     <ClInclude Include="JN_Player.h" />
@@ -168,7 +167,6 @@
     <ClCompile Include="JN_Logging.cpp" />
     <ClCompile Include="JN_Main.cpp" />
     <ClCompile Include="JN_Sprite.cpp" />
-    <ClCompile Include="JN_Square.cpp" />
     <ClCompile Include="JN_Timer.cpp" />
     <ClCompile Include="JN_Player.cpp" />
     <ClCompile Include="JN_Projectile.cpp" />

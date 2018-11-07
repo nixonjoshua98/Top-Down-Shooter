@@ -2,12 +2,13 @@
 
 #include "JN_ProjectileController.h"
 
+#include <iostream>
+
 
 JN_ProjectileController::JN_ProjectileController(int _maxProjectiles)
 {
 	maxProjectiles = _maxProjectiles;
 	projectiles    = new JN_Projectile[maxProjectiles];
-	CreateInitialProjectiles();
 }
 
 JN_ProjectileController::~JN_ProjectileController()
@@ -17,15 +18,16 @@ JN_ProjectileController::~JN_ProjectileController()
 	projectiles = NULL;
 }
 
-void JN_ProjectileController::CreateInitialProjectiles()
+void JN_ProjectileController::CreateInitialProjectiles(SDL_Renderer *renderer)
 {
 	JN_Projectile p;
 
 	for (int i = 0; i < maxProjectiles; i++)
 	{
-		// TIL - Make all constants static otherwise EVERYTHING breaks
 		p = JN_Projectile();
-		p.Init(JN_RGB{ 255, 0, 0 });
+
+		// TIL - Make all constants static otherwise EVERYTHING breaks
+		p.Init(renderer);
 		projectiles[i] = p;
 	}
 }

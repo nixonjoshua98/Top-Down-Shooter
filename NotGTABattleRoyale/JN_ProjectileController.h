@@ -15,11 +15,12 @@ public:
 	void LateUpdate();
 	void Render(SDL_Renderer *renderer);
 
+	void CreateInitialProjectiles(SDL_Renderer *renderer);
+
 private:
 	int maxProjectiles;
 	JN_Projectile *projectiles = NULL;
 
-	void CreateInitialProjectiles();
 	bool ProjectileAvailable();
 	int GetAvailableProjectileIndex();
 };

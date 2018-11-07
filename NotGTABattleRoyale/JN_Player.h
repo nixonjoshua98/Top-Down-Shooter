@@ -64,8 +64,8 @@ private:
 	SDL_Rect newRect = SDL_Rect();
 
 	// Used in delays
-	int lastMovementTime = 0;
-	int lastShootTime    = 0;
+	float lastMovementTime = 0;
+	float lastShootTime    = 0;
 
 	// Methods
 	void Move();

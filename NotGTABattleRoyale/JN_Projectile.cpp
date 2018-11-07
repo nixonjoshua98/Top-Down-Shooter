@@ -5,9 +5,9 @@
 
 #include <iostream>
 
-void JN_Projectile::Init(JN_RGB _col)
+void JN_Projectile::Init(SDL_Renderer *renderer)
 {
-	JN_Square::Init(SquareType::PROJECTILE, 0, 0, _col);
+	JN_Sprite::Init(SpriteType::PROJECTILE, renderer, SDL_Rect(), 1);
 
 	rect.w = PROJECTILE_WIDTH;
 	rect.h = PROJECTILE_HEIGHT;
@@ -55,5 +55,5 @@ void JN_Projectile::LateUpdate()
 void JN_Projectile::Render(SDL_Renderer *renderer)
 {
 	if (visible)
-		JN_Square::Render(renderer);
+		JN_Sprite::Render(renderer);
 }
