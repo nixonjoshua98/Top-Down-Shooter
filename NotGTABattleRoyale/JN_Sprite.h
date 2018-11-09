@@ -22,6 +22,10 @@ struct SpriteAsset
 	SDL_Texture *texture = NULL;
 };
 
+
+
+
+
 class JN_Sprite
 {
 public:

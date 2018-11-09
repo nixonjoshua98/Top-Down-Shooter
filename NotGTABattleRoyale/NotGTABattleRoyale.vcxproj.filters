@@ -16,11 +16,14 @@
     <Filter Include="Header Files\DefaultHeaders">
       <UniqueIdentifier>{2d00023d-32b6-4256-a896-d0f2ba37a78f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\OpenSourceHeaders">
-      <UniqueIdentifier>{43de5b5a-ff52-4544-8398-7fc2a5ae4b32}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\DefaultSources">
       <UniqueIdentifier>{21720a23-4bf0-4c37-b379-421c92524677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player">
+      <UniqueIdentifier>{66019e06-22e1-4ac2-ac79-9446711bfa82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player">
+      <UniqueIdentifier>{d5b2c342-47f5-495d-9fbd-f255e96ddefc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -48,17 +51,17 @@
     <ClInclude Include="JN_Vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="date.h">
-      <Filter>Header Files\OpenSourceHeaders</Filter>
-    </ClInclude>
-    <ClInclude Include="JN_Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="JN_ProjectileController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="JN_Sprite.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_Player.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_PlayerControls.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -72,9 +75,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JN_GameWorld.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JN_Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JN_Projectile.cpp">
@@ -91,6 +91,12 @@
     </ClCompile>
     <ClCompile Include="JN_Sprite.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_Player.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_PlayerControls.cpp">
+      <Filter>Source Files\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

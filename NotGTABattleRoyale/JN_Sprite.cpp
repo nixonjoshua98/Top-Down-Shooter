@@ -70,9 +70,7 @@ void JN_Sprite::Render(SDL_Renderer *renderer)
 		SDL_RenderCopyEx(renderer, this->texture, &r, &this->rect, this->rotationAngle, NULL, SDL_FLIP_NONE);
 	}
 	else
-	{
 		SDL_RenderCopyEx(renderer, this->texture, NULL, &this->rect, this->rotationAngle, NULL, SDL_FLIP_NONE);
-	}
 }
 
 bool JN_Sprite::Collide(SDL_Rect a, SDL_Rect b)

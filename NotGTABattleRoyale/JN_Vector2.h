@@ -4,10 +4,11 @@
 class JN_Vector2
 {
 public:
-	JN_Vector2(float x, float y);
 	JN_Vector2();
+	JN_Vector2(float x, float y);
 
-	float x, y;
+	float x;
+	float y;
 
 	float Magnitude();
 	JN_Vector2 Normalise();

@@ -150,9 +150,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="date.h" />
     <ClInclude Include="JN_GameWorld.h" />
     <ClInclude Include="JN_Logging.h" />
+    <ClInclude Include="JN_PlayerControls.h" />
     <ClInclude Include="JN_Sprite.h" />
     <ClInclude Include="JN_Timer.h" />
     <ClInclude Include="JN_Projectile.h" />
@@ -166,6 +166,7 @@
     <ClCompile Include="JN_GameWorld.cpp" />
     <ClCompile Include="JN_Logging.cpp" />
     <ClCompile Include="JN_Main.cpp" />
+    <ClCompile Include="JN_PlayerControls.cpp" />
     <ClCompile Include="JN_Sprite.cpp" />
     <ClCompile Include="JN_Timer.cpp" />
     <ClCompile Include="JN_Player.cpp" />

@@ -27,8 +27,6 @@ JN_GameWorld::~JN_GameWorld()
 
 bool JN_GameWorld::Init()
 {
-	JN_Log("GameWorld", "Init", false);
-
 	bool success = SDL_Init(SDL_INIT_EVERYTHING) == 0;
 
 	if (success) {
@@ -50,8 +48,6 @@ bool JN_GameWorld::Init()
 
 void JN_GameWorld::Run()
 {
-	JN_Log("GameWorld", "Game loop started", false);
-
 	while (running)
 	{
 		timer.Tick();
@@ -67,8 +63,6 @@ void JN_GameWorld::Run()
 
 void JN_GameWorld::Input()
 {
-	JN_Log("GameWorld", "Input", false);
-
 	SDL_Event e;
 
 	while (SDL_PollEvent(&e) != 0)
@@ -88,8 +82,6 @@ void JN_GameWorld::Input()
 
 void JN_GameWorld::Render()
 {
-	JN_Log("GameWorld", "Render", false);
-
 	SDL_RenderClear(renderer);	// Clear render
 
 	for (int i = 0; i < (int)collisionTiles.size(); i++)
@@ -107,15 +99,11 @@ void JN_GameWorld::Render()
 
 void JN_GameWorld::Update()
 {
-	JN_Log("GameWorld", "Update", false);
-
 	player.Update();
 }
 
 void JN_GameWorld::LateUpdate()
 {
-	JN_Log("GameWorld", "LateUpdate", false);
-
 	player.LateUpdate(collisionTiles);
 }
 
