@@ -1,15 +1,3 @@
-﻿  JN_Vector2.cpp
-c:\users\joshua\onedrive - university of lincoln\games computing\year two\games programming (c++, sdl)\assignment\#repo\top-down-shooter\notgtabattleroyale\jn_vector2.cpp(22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  stdafx.cpp
-  JN_ProjectileController.cpp
-  JN_Projectile.cpp
-  JN_Player.cpp
-  JN_Timer.cpp
-  JN_Sprite.cpp
-  JN_PlayerControls.cpp
-  JN_Main.cpp
-  JN_Logging.cpp
-  JN_GameWorld.cpp
-  Generating Code...
-  NotGTABattleRoyale.vcxproj -> C:\Users\Joshua\OneDrive - University of Lincoln\Games Computing\Year Two\Games Programming (C++, SDL)\Assignment\#Repo\Top-Down-Shooter\NotGTABattleRoyale\Debug\NotGTABattleRoyale.exe
-  NotGTABattleRoyale.vcxproj -> C:\Users\Joshua\OneDrive - University of Lincoln\Games Computing\Year Two\Games Programming (C++, SDL)\Assignment\#Repo\Top-Down-Shooter\NotGTABattleRoyale\Debug\NotGTABattleRoyale.pdb (Partial PDB)
+﻿  JN_Player.cpp
+  NotGTABattleRoyale.vcxproj -> C:\Users\Joshua\OneDrive - University of Lincoln\Games Computing\Year Two\Games Programming (C++, SDL)\Assignment\NotGTABattleRoyale\Debug\NotGTABattleRoyale.exe
+  NotGTABattleRoyale.vcxproj -> C:\Users\Joshua\OneDrive - University of Lincoln\Games Computing\Year Two\Games Programming (C++, SDL)\Assignment\NotGTABattleRoyale\Debug\NotGTABattleRoyale.pdb (Partial PDB)

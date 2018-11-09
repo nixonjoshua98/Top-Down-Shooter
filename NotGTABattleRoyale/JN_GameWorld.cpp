@@ -93,8 +93,8 @@ void JN_GameWorld::Render()
 
 	player.Render(renderer);
 
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);	// Set background color
-	SDL_RenderPresent(renderer);						// Flip the render
+	SDL_SetRenderDrawColor(renderer, 155, 155, 155, 0);		// Set background color
+	SDL_RenderPresent(renderer);							// Flip the render
 }
 
 void JN_GameWorld::Update()
@@ -160,6 +160,11 @@ void JN_GameWorld::BuildWorld()
 
 			case JN_Sprite::MOVEMENT_DEBUFF_TILE_CHAR:
 				s->Init(JN_Sprite::SpriteType::MOVEMENT_DEBUFF, renderer, r, 1);
+				collisionTiles.push_back(s);
+				break;
+
+			case JN_Sprite::FIRE_DAMAGE_TILE_CHAR:
+				s->Init(JN_Sprite::SpriteType::FIRE_DAMAGE, renderer, r, 1);
 				collisionTiles.push_back(s);
 				break;
 			}

@@ -6,10 +6,11 @@
 #include <iostream>
 
 std::map<JN_Sprite::SpriteType, SpriteAsset*> JN_Sprite::assetsMap = {
-	{ SpriteType::EMPTY,           new SpriteAsset("Assets/EmptyTile.BMP") },
+	{ SpriteType::EMPTY,           new SpriteAsset("Assets/FloorTile.BMP") },
 	{ SpriteType::MOVEMENT_DEBUFF, new SpriteAsset("Assets/MovementDebuffTile.BMP") },
 	{ SpriteType::PLAYER,          new SpriteAsset("Assets/PlayerSpritesheet.BMP") },
 	{ SpriteType::PROJECTILE,      new SpriteAsset("Assets/Projectile.BMP") },
+	{ SpriteType::FIRE_DAMAGE,     new SpriteAsset("Assets/FireDamageTile.BMP") },
 };
 
 JN_Sprite::JN_Sprite()

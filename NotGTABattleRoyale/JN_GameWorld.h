@@ -21,9 +21,9 @@ public:
 
 	static const int WINDOW_WIDTH  = 640;								// Width of the entire window in px
 	static const int WINDOW_HEIGHT = 480;								// Height of the entire window in px
-	static const int BANNER_HEIGHT = 30;								// Height of the banner at the top of the screen
+	static const int BANNER_HEIGHT = 32;								// Height of the banner at the top of the screen
 	static const int FPS           = 20;								// Frames per second aim
-	static const int LEVEL_HEIGHT  = 15;								// Cells high the game world is	
+	static const int LEVEL_HEIGHT  = 20;								// Cells high the game world is	
 	static const int LEVEL_WIDTH   = 20;								// Width of the world in cells
 	static const int WORLD_WIDTH   = WINDOW_WIDTH;						// Width of the world in px
 	static const int WORLD_HEIGHT  = WINDOW_HEIGHT -  BANNER_HEIGHT;	// Height of the window minus the height of the banner

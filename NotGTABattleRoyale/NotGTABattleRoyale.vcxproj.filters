@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Player">
       <UniqueIdentifier>{d5b2c342-47f5-495d-9fbd-f255e96ddefc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Projectile">
+      <UniqueIdentifier>{5faaec20-aae5-49c4-a784-430d89a01ad5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Projectile">
+      <UniqueIdentifier>{5503b54c-c488-49fd-aa4f-cba71be6518d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -39,9 +45,6 @@
     <ClInclude Include="JN_GameWorld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="JN_Projectile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files\DefaultHeaders</Filter>
     </ClInclude>
@@ -49,9 +52,6 @@
       <Filter>Header Files\DefaultHeaders</Filter>
     </ClInclude>
     <ClInclude Include="JN_Vector2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JN_ProjectileController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="JN_Sprite.h">
@@ -62,6 +62,15 @@
     </ClInclude>
     <ClInclude Include="JN_PlayerControls.h">
       <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_Projectile.h">
+      <Filter>Header Files\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_ProjectileController.h">
+      <Filter>Header Files\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_HealthController.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -75,12 +84,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JN_GameWorld.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JN_Projectile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JN_ProjectileController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
@@ -97,6 +100,15 @@
     </ClCompile>
     <ClCompile Include="JN_PlayerControls.cpp">
       <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_Projectile.cpp">
+      <Filter>Source Files\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_ProjectileController.cpp">
+      <Filter>Source Files\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_HealthController.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

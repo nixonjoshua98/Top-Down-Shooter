@@ -31,8 +31,12 @@ class JN_Sprite
 public:
 	static const char EMPTY_TILE_CHAR           = '0';
 	static const char MOVEMENT_DEBUFF_TILE_CHAR = '1';
+	static const char FIRE_DAMAGE_TILE_CHAR     = '2';
 
-	enum class SpriteType {MOVEMENT_DEBUFF, EMPTY, PLAYER, PROJECTILE};
+	static const int FIRE_DAMAGE			  = 1;	// 1 Damage every frame the user touches the collider
+	static const int MOVEMENT_DEBUFF_AMOUNT   = 2;	// Movement will be halved
+
+	enum class SpriteType {MOVEMENT_DEBUFF, EMPTY, PLAYER, PROJECTILE, FIRE_DAMAGE};
 
 	JN_Sprite();
 	~JN_Sprite();
@@ -52,10 +56,11 @@ protected:
 	SDL_Texture *texture = NULL;
 
 	int spriteIndex = 0;
-	int totalSprites;
 
 	// Delays
-	float spriteChangeDelay = 350;
+	float spriteChangeDelay = 150;
+
+	int totalSprites;
 
 	// Delay timers
 	float lastSpriteChange  = (float)SDL_GetTicks();

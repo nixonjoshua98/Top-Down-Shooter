@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JN_GameWorld.h" />
+    <ClInclude Include="JN_HealthController.h" />
     <ClInclude Include="JN_Logging.h" />
     <ClInclude Include="JN_PlayerControls.h" />
     <ClInclude Include="JN_Sprite.h" />
@@ -164,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JN_GameWorld.cpp" />
+    <ClCompile Include="JN_HealthController.cpp" />
     <ClCompile Include="JN_Logging.cpp" />
     <ClCompile Include="JN_Main.cpp" />
     <ClCompile Include="JN_PlayerControls.cpp" />

@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 
 #include "JN_GameWorld.h"
@@ -8,6 +7,13 @@
 #include <algorithm>
 #include <iostream>
 #include <math.h>
+
+
+JN_Player::JN_Player()
+{
+
+}
+
 
 JN_Player::~JN_Player()
 {
@@ -103,7 +109,9 @@ void JN_Player::Update()
 {
 	projectileController.Update();
 	Move();
+	RotatePlayer();
 	Shoot();
+	AnimationUpdate();
 }
 
 
@@ -119,7 +127,7 @@ void JN_Player::Move()
 	newRect.x = rect.x;
 	newRect.y = rect.y;
 
-	float movementMultiplier = statusEffects[SpriteType::MOVEMENT_DEBUFF] ? 0.5f : 1.0f;
+	float movementMultiplier = statusEffects[SpriteType::MOVEMENT_DEBUFF] ?  (1.0f / JN_Sprite::MOVEMENT_DEBUFF_AMOUNT) : 1.0f;
 
 	for (JN_PlayerControls::ControlAction key : controls.GetKeyboardPresses())
 	{
@@ -142,24 +150,14 @@ void JN_Player::Move()
 			break;
 		}
 	}
+}
 
-	if (now - lastSpriteChange > spriteChangeDelay)
-	{
-		if (controls.GetKeyboardPresses().size() == 0)
-			spriteIndex = 0;
 
-		else
-		{
-			lastSpriteChange = now;
-			spriteIndex = spriteIndex == 1 ? 2 : 1;
-		}
-
-	}
-
+void JN_Player::RotatePlayer()
+{
 	int x, y;
 	SDL_GetMouseState(&x, &y);
-	rotationAngle = atan2((y - 2) - newRect.y, (x - 2)- newRect.x) * 180.0f / 3.14159;
-	
+	rotationAngle = atan2((y - 2) - newRect.y, (x - 2) - newRect.x) * 180.0f / 3.14159;
 }
 
 
@@ -185,6 +183,9 @@ void JN_Player::ColliderManager(std::vector<JN_Sprite*> tiles)
 		case SpriteType::MOVEMENT_DEBUFF:
 			statusEffects[SpriteType::MOVEMENT_DEBUFF] = true;
 			break;
+
+		case SpriteType::FIRE_DAMAGE:
+			health.TakeDamage(FIRE_DAMAGE);
 		}
 	}
 }
@@ -224,6 +225,37 @@ std::set<JN_Player::SpriteType> JN_Player::GetColliders(std::vector<JN_Sprite*> 
 
 void JN_Player::Render(SDL_Renderer *renderer)
 {
+	RenderPlayerHealthBar(renderer);
 	JN_Sprite::Render(renderer);
 	projectileController.Render(renderer);
+
+}
+
+
+void JN_Player::AnimationUpdate()
+{
+	float now = (float)SDL_GetTicks();
+
+	if (now - lastSpriteChange > spriteChangeDelay)
+	{
+		lastSpriteChange = now;
+		if (controls.GetKeyboardPresses().size() > 0)
+			spriteIndex = spriteIndex == 1 ? 2 : 1;
+		else
+			spriteIndex = 0;
+	}
+}
+
+
+void JN_Player::RenderPlayerHealthBar(SDL_Renderer *renderer)
+{
+	SDL_Rect r;
+	r.w = (int)fmax(fmin(health.GetHealth(), 100), 1) * 2;
+	r.x = 400;
+	r.h = 16;
+	r.y = (JN_GameWorld::BANNER_HEIGHT - r.h) / 2;
+
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
+
+	SDL_RenderFillRect(renderer, &r);
 }
