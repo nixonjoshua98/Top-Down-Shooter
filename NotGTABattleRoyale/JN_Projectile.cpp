@@ -42,7 +42,7 @@ bool JN_Projectile::OutOfBounds()
 {
 	// Projectile out of screen - Splti over two lines as very long
 	bool a = (rect.x < 0 || rect.y < JN_GameWorld::BANNER_HEIGHT);
-	bool b = (rect.x + rect.w > JN_GameWorld::WINDOW_WIDTH || rect.y + rect.h > JN_GameWorld::WINDOW_HEIGHT);
+	bool b = (rect.x + rect.w > JN_GameWorld::MIN_WINDOW_WIDTH || rect.y + rect.h > JN_GameWorld::MIN_WINDOW_HEIGHT);
 	return a || b;
 }
 

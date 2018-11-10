@@ -29,6 +29,8 @@ struct SpriteAsset
 class JN_Sprite
 {
 public:
+	int _ = 0;
+
 	static const char EMPTY_TILE_CHAR           = '0';
 	static const char MOVEMENT_DEBUFF_TILE_CHAR = '1';
 	static const char FIRE_DAMAGE_TILE_CHAR     = '2';
@@ -42,7 +44,10 @@ public:
 	~JN_Sprite();
 
 	SpriteType type;
-	SDL_Rect rect  = SDL_Rect();
+	SDL_Rect rect         = SDL_Rect();
+	SDL_Rect originalRect = SDL_Rect();
+
+	void Resize(int x, int y, int w, int h);
 
 	void virtual Init(SpriteType _type, SDL_Renderer *renderer, SDL_Rect _rect, int _totalSprites);	// Init the sprite
 	void virtual Render(SDL_Renderer *renderer);													// Render the sprite onto the screen

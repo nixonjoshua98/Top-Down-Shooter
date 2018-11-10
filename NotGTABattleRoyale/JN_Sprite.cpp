@@ -38,7 +38,8 @@ void JN_Sprite::Init(SpriteType _type, SDL_Renderer *renderer, SDL_Rect _rect, i
 
 	this->totalSprites = _totalSprites;
 
-	this->rect    = _rect;
+	this->rect         = _rect;
+	this->originalRect = _rect;
 	this->surface = JN_Sprite::assetsMap[this->type]->surface;
 	this->texture = JN_Sprite::assetsMap[this->type]->texture;
 }
@@ -85,4 +86,12 @@ bool JN_Sprite::Collide(SDL_Rect a, SDL_Rect b)
 float JN_Sprite::DistanceBetween(SDL_Rect a, SDL_Rect b)
 {
 	return (float)sqrt(pow(a.x - b.x, 2) + (pow(a.y - b.y, 2)));
+}
+
+void JN_Sprite::Resize(int x, int y, int w, int h)
+{
+	rect.x = x;
+	rect.y = y;
+	rect.w = w;
+	rect.h = h;
 }

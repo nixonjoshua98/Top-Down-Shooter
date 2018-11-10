@@ -28,8 +28,8 @@ void JN_Player::Init(SDL_Renderer *renderer)
 
 	rect.w = JN_Player::PLAYER_WIDTH;
 	rect.h = JN_Player::PLAYER_HEIGHT;
-	rect.x = 0;
-	rect.y = JN_GameWorld::BANNER_HEIGHT;
+	rect.x = rect.w;
+	rect.y = JN_GameWorld::BANNER_HEIGHT + rect.h;
 
 	newRect.w = rect.w;
 	newRect.h = rect.h;
@@ -201,8 +201,8 @@ void JN_Player::ResetBuffs()
 void JN_Player::ConfirmPlayerMovement()
 {
 	// Makes sure that the player is always within the screen boundaries
-	newRect.x = (int)(fmin(JN_GameWorld::WORLD_WIDTH  - PLAYER_WIDTH, fmax(0, newRect.x)));
-	newRect.y = (int)(fmin(JN_GameWorld::WORLD_HEIGHT + JN_GameWorld::BANNER_HEIGHT - PLAYER_HEIGHT, fmax(JN_GameWorld::BANNER_HEIGHT, newRect.y)));
+	newRect.x = (int)(fmin(JN_GameWorld::MIN_WINDOW_WIDTH  - PLAYER_WIDTH, fmax(0, newRect.x)));
+	newRect.y = (int)(fmin(JN_GameWorld::MIN_WINDOW_HEIGHT + JN_GameWorld::BANNER_HEIGHT - PLAYER_HEIGHT, fmax(JN_GameWorld::BANNER_HEIGHT + 5, newRect.y)));
 
 	rect.x = newRect.x;
 	rect.y = newRect.y;
@@ -251,9 +251,9 @@ void JN_Player::RenderPlayerHealthBar(SDL_Renderer *renderer)
 {
 	SDL_Rect r;
 	r.w = (int)fmax(fmin(health.GetHealth(), 100), 1) * 2;
-	r.x = 400;
-	r.h = 16;
-	r.y = (JN_GameWorld::BANNER_HEIGHT - r.h) / 2;
+	r.x = 320 - (r.w / 2);
+	r.h = 8;
+	r.y = 5;
 
 	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
 

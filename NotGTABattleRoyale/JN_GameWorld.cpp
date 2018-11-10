@@ -14,11 +14,8 @@ JN_GameWorld::JN_GameWorld()
 
 JN_GameWorld::~JN_GameWorld()
 {
-	for (auto s : emptyTiles)
-		delete s;
-
-	for (auto s : collisionTiles)
-		delete s;
+	for (auto t : allTiles)
+		delete t;
 
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
@@ -30,13 +27,15 @@ bool JN_GameWorld::Init()
 	bool success = SDL_Init(SDL_INIT_EVERYTHING) == 0;
 
 	if (success) {
-		window = SDL_CreateWindow("Joshua Nixon, Games Computing, 16632283 | Not GTA Battle Royale", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+		window = SDL_CreateWindow("Joshua Nixon, Games Computing (BSc), 16632283 | Not GTA Battle Royale", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
 		if (window == NULL)
 			success =  false;
 		else
 		{
-			renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
+			renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED);
+
+			SDL_SetWindowMinimumSize(window, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
 			
 			player.Init(renderer);
 			BuildWorld();
@@ -73,6 +72,11 @@ void JN_GameWorld::Input()
 			running = false;
 			break;
 
+		case SDL_WINDOWEVENT:
+			if (e.window.event == SDL_WINDOWEVENT_RESIZED)
+				ResizeWorld();
+			break;
+
 		default:
 			player.Input(e);
 			break;
@@ -82,19 +86,15 @@ void JN_GameWorld::Input()
 
 void JN_GameWorld::Render()
 {
-	SDL_RenderClear(renderer);	// Clear render
+	SDL_RenderClear(renderer);									// Clear render
 
-	for (int i = 0; i < (int)collisionTiles.size(); i++)
-		collisionTiles[i]->Render(renderer);
-
-	for (int i = 0; i < (int)emptyTiles.size(); i++)
-		emptyTiles[i]->Render(renderer);
-
+	for (int i = 0; i < (int)allTiles.size(); i++)
+		allTiles[i]->Render(renderer);
 
 	player.Render(renderer);
 
-	SDL_SetRenderDrawColor(renderer, 155, 155, 155, 0);		// Set background color
-	SDL_RenderPresent(renderer);							// Flip the render
+	SDL_SetRenderDrawColor(renderer, 155, 155, 155, 0);			// Set background color
+	SDL_RenderPresent(renderer);								// Flip the render
 }
 
 void JN_GameWorld::Update()
@@ -151,6 +151,8 @@ void JN_GameWorld::BuildWorld()
 			r.x = j * CELL_WIDTH;
 			r.y = (i * CELL_HEIGHT) + BANNER_HEIGHT;
 
+			allTiles.push_back(s);
+
 			switch (charWorldArray[(i * LEVEL_WIDTH) + j])
 			{
 			case JN_Sprite::EMPTY_TILE_CHAR:
@@ -167,7 +169,39 @@ void JN_GameWorld::BuildWorld()
 				s->Init(JN_Sprite::SpriteType::FIRE_DAMAGE, renderer, r, 1);
 				collisionTiles.push_back(s);
 				break;
+
+			default:
+				s->Init(JN_Sprite::SpriteType::EMPTY, renderer, r, 1);
+				emptyTiles.push_back(s);
+				break;
 			}
 		}
 	}
+}
+
+void JN_GameWorld::ResizeWorld()
+{
+	//return;
+
+	int wW, wH;
+	SDL_GetWindowSize(window, &wW, &wH);
+
+	int cellWidth  = wW / LEVEL_WIDTH;
+	int cellHeight = wH / LEVEL_HEIGHT;
+
+	SDL_SetWindowSize(window, cellWidth * LEVEL_WIDTH, cellHeight * LEVEL_HEIGHT);
+
+	currentWindowWidth  = cellWidth * LEVEL_WIDTH;
+	currentWindowHeight = cellHeight * LEVEL_HEIGHT;
+
+	//player.Resize(0, 0, 0, 0);
+
+	for (int i = 0; i < LEVEL_HEIGHT; i++)
+	{
+		for (int j = 0; j < LEVEL_WIDTH; j++)
+		{
+			allTiles[(i * LEVEL_WIDTH) + j]->Resize(j * cellWidth, BANNER_HEIGHT + (i * cellHeight), cellWidth, cellHeight);
+		}
+	}
+
 }
