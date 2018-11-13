@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
 #include "JN_Sprite.h"
+#include "JN_RealTimer.h"
 #include "JN_Logging.h"
 
 #include <iostream>
@@ -15,18 +16,21 @@ std::map<JN_Sprite::SpriteType, SpriteAsset*> JN_Sprite::assetsMap = {
 
 JN_Sprite::JN_Sprite()
 {
-	// Default constructor
+	
 }
 
 JN_Sprite::~JN_Sprite()
 {
+
 	// They get deallocated in the SpriteAsset
 	surface = NULL;
 	texture = NULL;
 }
 
-void JN_Sprite::Init(SpriteType _type, SDL_Renderer *renderer, SDL_Rect _rect, int _totalSprites)
+void JN_Sprite::Init(SpriteType _type, SDL_Renderer *renderer, SDL_Rect _rect,  JN_Logging *logObj, int _totalSprites)
 {
+	this->logObj = logObj;
+
 	this->type = _type;
 
 	// These few lines mean only the images and textures are created once for each image
@@ -38,8 +42,7 @@ void JN_Sprite::Init(SpriteType _type, SDL_Renderer *renderer, SDL_Rect _rect, i
 
 	this->totalSprites = _totalSprites;
 
-	this->rect         = _rect;
-	this->originalRect = _rect;
+	this->rect    = _rect;
 	this->surface = JN_Sprite::assetsMap[this->type]->surface;
 	this->texture = JN_Sprite::assetsMap[this->type]->texture;
 }
@@ -88,10 +91,14 @@ float JN_Sprite::DistanceBetween(SDL_Rect a, SDL_Rect b)
 	return (float)sqrt(pow(a.x - b.x, 2) + (pow(a.y - b.y, 2)));
 }
 
-void JN_Sprite::Resize(int x, int y, int w, int h)
+void JN_Sprite::Resize(int x, int y)
 {
-	rect.x = x;
-	rect.y = y;
-	rect.w = w;
-	rect.h = h;
+	rect.x += x;
+	rect.y += y;
+
+	if (type == SpriteType::PLAYER)
+	{
+		std::cout << "Current X: " << rect.x << "\n";
+		std::cout << "X >> " << x << "\n";
+	}
 }

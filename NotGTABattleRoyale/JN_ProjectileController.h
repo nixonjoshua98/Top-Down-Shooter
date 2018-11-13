@@ -2,13 +2,20 @@
 #define JN_PROJECTILE_CONTROLLER_H
 
 #include "JN_Projectile.h"
+#include "JN_Logging.h"
+#include "JN_WindowData.h"
+
 #include "SDL.h"
+
+#include <vector>
 
 class JN_ProjectileController
 {
 public:
-	JN_ProjectileController(int _maxProjectiles);
+	JN_ProjectileController();
 	~JN_ProjectileController();
+
+	void Init(int maxProjectiles, JN_Logging *logObj, JN_WindowData *windowData);
 
 	bool Shoot(SDL_Rect sourceRecr, SDL_Rect targetRect);
 	void Update();
@@ -18,8 +25,11 @@ public:
 	void CreateInitialProjectiles(SDL_Renderer *renderer);
 
 private:
+	JN_Logging *logObj = NULL;
+	JN_WindowData *windowData = NULL;
+
 	int maxProjectiles;
-	JN_Projectile *projectiles = NULL;
+	std::vector<JN_Projectile*> projectiles;
 
 	bool ProjectileAvailable();
 	int GetAvailableProjectileIndex();

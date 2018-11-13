@@ -5,9 +5,18 @@
 
 #include <iostream>
 
-void JN_Projectile::Init(SDL_Renderer *renderer)
+JN_Projectile::~JN_Projectile()
 {
-	JN_Sprite::Init(SpriteType::PROJECTILE, renderer, SDL_Rect(), 1);
+	logObj = NULL;
+	windowData = NULL;
+}
+
+void JN_Projectile::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData)
+{
+	this->logObj = logObj;
+	this->windowData = windowData;
+
+	JN_Sprite::Init(SpriteType::PROJECTILE, renderer, SDL_Rect(), logObj, 1);
 
 	rect.w = PROJECTILE_WIDTH;
 	rect.h = PROJECTILE_HEIGHT;
@@ -40,10 +49,15 @@ void JN_Projectile::Update()
 
 bool JN_Projectile::OutOfBounds()
 {
-	// Projectile out of screen - Splti over two lines as very long
-	bool a = (rect.x < 0 || rect.y < JN_GameWorld::BANNER_HEIGHT);
-	bool b = (rect.x + rect.w > JN_GameWorld::MIN_WINDOW_WIDTH || rect.y + rect.h > JN_GameWorld::MIN_WINDOW_HEIGHT);
-	return a || b;
+	// Projectile out of screen - Split over two lines as very long
+	//bool a = (rect.x < 0 || rect.y < JN_GameWorld::BANNER_HEIGHT);
+	//bool b = (rect.x + rect.w > JN_GameWorld::MIN_WINDOW_WIDTH || rect.y + rect.h > JN_GameWorld::MIN_WINDOW_HEIGHT);
+	//return a || b;
+
+	bool x = ((rect.x + rect.w) < windowData->xOffset || (rect.x > (windowData->xOffset + JN_GameWorld::MIN_WINDOW_WIDTH)));
+	bool y = (rect.y < (windowData->yOffset + JN_GameWorld::BANNER_HEIGHT) || (rect.y > (windowData->yOffset + JN_GameWorld::MIN_WINDOW_HEIGHT)));
+
+	return x || y;
 }
 
 void JN_Projectile::LateUpdate()

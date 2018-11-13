@@ -88,7 +88,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -147,13 +147,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="JN_GameWorld.h" />
     <ClInclude Include="JN_HealthController.h" />
     <ClInclude Include="JN_Logging.h" />
     <ClInclude Include="JN_PlayerControls.h" />
+    <ClInclude Include="JN_RealTimer.h" />
     <ClInclude Include="JN_Sprite.h" />
     <ClInclude Include="JN_Timer.h" />
     <ClInclude Include="JN_Projectile.h" />
@@ -174,6 +172,7 @@
     <ClCompile Include="JN_Player.cpp" />
     <ClCompile Include="JN_Projectile.cpp" />
     <ClCompile Include="JN_ProjectileController.cpp" />
+    <ClCompile Include="JN_WindowData.h" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="JN_Vector2.cpp" />
   </ItemGroup>

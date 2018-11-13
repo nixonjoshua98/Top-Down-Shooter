@@ -6,13 +6,16 @@
 
 JN_Timer::JN_Timer(int fps)
 {
+	frameCount = 0;
 	this->FPS = fps;
 }
 
 void JN_Timer::Tick()
 {
-	this->startTicks = SDL_GetTicks();
-	frameCount++;
+	JN_Timer::frameCount++;
+
+	actualFPS = (1000 / (SDL_GetTicks() - startTicks));
+	startTicks = SDL_GetTicks();
 }
 
 void JN_Timer::Wait()

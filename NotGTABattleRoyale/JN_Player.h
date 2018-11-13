@@ -4,9 +4,11 @@
 #include "SDL.h"
 
 #include "JN_Sprite.h"
+
 #include "JN_ProjectileController.h"
-#include "JN_PlayerControls.h"
 #include "JN_HealthController.h"
+#include "JN_PlayerControls.h"
+#include "JN_WindowData.h"
 
 #include <set>
 #include <map>
@@ -24,7 +26,9 @@ public:
 
 	///<summary>Initialises the player objects</summary>
 	///<param name = "renderer">Used to load the images</param>
-	void Init(SDL_Renderer *renderer);
+	///<param name = "logObj">Logging object used to log events to file and console</param>
+	///<param name = "windowSize">Pointer to the windows width and height</param>
+	void Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData);
 
 
 	///<summary>Method which handles the user input</summary>
@@ -47,21 +51,25 @@ public:
 
 private:
 	static const int MOVEMENT_SPEED = 3;	// The amount the player moves each movement cycle
-	static const int MOVEMENT_DELAY = 10;	// The delay between movements
+	static const int MOVEMENT_DELAY = 25;	// The delay between movements
 	static const int SHOOT_DELAY    = 250;	// The delay between being able to fire a projectile
 	static const int PLAYER_WIDTH   = 20;	// ...
 	static const int PLAYER_HEIGHT  = 20;	// ...
 	
-	JN_HealthController health					 = JN_HealthController(100);	// Player health controller with a starting value of 100
-	JN_ProjectileController projectileController = JN_ProjectileController(10);	// Creates the controller with a maximum of 10 projectiles on screen at once
-	JN_PlayerControls controls		             = JN_PlayerControls();			// The controls object for the player, deals with all input
+	JN_Logging *logObj = NULL;							// Log object
+	JN_WindowData *windowData = NULL;
+	JN_HealthController health;							// Player health controller with a starting value of 100
+	JN_ProjectileController projectileController;		// Creates the controller with a maximum of 10 projectiles on screen at once
+	JN_PlayerControls controls;							// The controls object for the player, deals with all input
 
 	// Player buffs and debuffs
 	std::map<SpriteType, bool> statusEffects = {
 		{ SpriteType::MOVEMENT_DEBUFF, false }
 	};
 
+
 	SDL_Rect newRect = SDL_Rect();	// Temp rect used during collision detection
+
 
 	float lastMovementTime = 0;	// Movement delay timer
 	float lastShootTime    = 0;	// Shoot timer

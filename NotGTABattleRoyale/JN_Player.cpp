@@ -2,7 +2,7 @@
 
 #include "JN_GameWorld.h"
 #include "JN_Player.h"
-#include "JN_Logging.h"
+#include "JN_RealTimer.h"
 
 #include <algorithm>
 #include <iostream>
@@ -17,14 +17,22 @@ JN_Player::JN_Player()
 
 JN_Player::~JN_Player()
 {
-	// Deconstructor
+	logObj = NULL;
+	windowData = NULL;
 }
 
 
-void JN_Player::Init(SDL_Renderer *renderer)
+void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData)
 {
+	this->logObj = logObj;
+	this->windowData = windowData;
+
+	projectileController.Init(15, logObj, windowData);
+	health.Init(100, logObj);
+	controls.Init(logObj);
+
 	// Calls the base class constructor
-	JN_Sprite::Init(SpriteType::PLAYER, renderer, rect, 3);
+	JN_Sprite::Init(SpriteType::PLAYER, renderer, rect, logObj, 3);
 
 	rect.w = JN_Player::PLAYER_WIDTH;
 	rect.h = JN_Player::PLAYER_HEIGHT;
@@ -41,11 +49,13 @@ void JN_Player::Init(SDL_Renderer *renderer)
 void JN_Player::Input(SDL_Event e)
 {
 	// Keyboard key has been released or presses
-	if (e.type == SDL_KEYUP || e.type == SDL_KEYDOWN && controls.ValidControl(JN_PlayerControls::InputDevice::KEYBOARD, e.key.keysym.scancode))
+
+	// check () for AND OR
+	if ((e.type == SDL_KEYUP || e.type == SDL_KEYDOWN) && (controls.ValidControl(JN_PlayerControls::InputDevice::KEYBOARD, e.key.keysym.scancode)))
 		KeyboardInputHandler(e);
 
 	// Mouse button has been clicked or released
-	else if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP && controls.ValidControl(JN_PlayerControls::InputDevice::MOUSE, e.button.button))
+	else if ((e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP) && (controls.ValidControl(JN_PlayerControls::InputDevice::MOUSE, e.button.button)))
 		MouseInputHandler(e);
 }
 
@@ -55,11 +65,11 @@ void JN_Player::KeyboardInputHandler(SDL_Event e)
 	bool keyPressedDown = controls.IsKeyDown(JN_PlayerControls::InputDevice::KEYBOARD, e.key.keysym.scancode);
 
 	// New key has been pressed
-	if (e.type == SDL_KEYDOWN && !keyPressedDown)
+	if ((e.type == SDL_KEYDOWN) && !keyPressedDown)
 		controls.AddKeyPress(JN_PlayerControls::InputDevice::KEYBOARD, e.key.keysym.scancode);
 
 	// Old keypress has been lifted
-	else if (e.type == SDL_KEYUP && keyPressedDown)
+	else if ((e.type == SDL_KEYUP) && keyPressedDown)
 		controls.RemoveKeyPress(JN_PlayerControls::InputDevice::KEYBOARD, e.key.keysym.scancode);
 }
 
@@ -67,13 +77,13 @@ void JN_Player::KeyboardInputHandler(SDL_Event e)
 void JN_Player::MouseInputHandler(SDL_Event e)
 {
 	bool keyPressedDown = controls.IsKeyDown(JN_PlayerControls::InputDevice::MOUSE, e.button.button);
-
+	
 	// New mouse click
-	if (e.type == SDL_MOUSEBUTTONDOWN && !keyPressedDown)
+	if ((e.type == SDL_MOUSEBUTTONDOWN) && !keyPressedDown)
 		controls.AddKeyPress(JN_PlayerControls::InputDevice::MOUSE, e.button.button);
 	
 	// Old mouse click has been lifted
-	else if (e.type == SDL_MOUSEBUTTONUP && keyPressedDown)
+	else if ((e.type == SDL_MOUSEBUTTONUP) && keyPressedDown)
 		controls.RemoveKeyPress(JN_PlayerControls::InputDevice::MOUSE, e.button.button);
 }
 
@@ -201,8 +211,8 @@ void JN_Player::ResetBuffs()
 void JN_Player::ConfirmPlayerMovement()
 {
 	// Makes sure that the player is always within the screen boundaries
-	newRect.x = (int)(fmin(JN_GameWorld::MIN_WINDOW_WIDTH  - PLAYER_WIDTH, fmax(0, newRect.x)));
-	newRect.y = (int)(fmin(JN_GameWorld::MIN_WINDOW_HEIGHT + JN_GameWorld::BANNER_HEIGHT - PLAYER_HEIGHT, fmax(JN_GameWorld::BANNER_HEIGHT + 5, newRect.y)));
+	newRect.x = (int)(fmin(windowData->xOffset + JN_GameWorld::MIN_WINDOW_WIDTH - rect.w, fmax(newRect.x, windowData->xOffset)));
+	newRect.y = (int)(fmin(windowData->yOffset + JN_GameWorld::MIN_WINDOW_HEIGHT - rect.h, fmax(newRect.y, windowData->yOffset + JN_GameWorld::BANNER_HEIGHT)));
 
 	rect.x = newRect.x;
 	rect.y = newRect.y;

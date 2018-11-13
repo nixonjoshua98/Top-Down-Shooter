@@ -31,15 +31,15 @@
     <Filter Include="Source Files\Projectile">
       <UniqueIdentifier>{5503b54c-c488-49fd-aa4f-cba71be6518d}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="ReadMe.txt" />
+    <Filter Include="Header Files\Timer">
+      <UniqueIdentifier>{ff6e19d2-3182-4223-9965-0769412b6f31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Timer">
+      <UniqueIdentifier>{4aae5b06-2784-4112-959c-0d31f3b1e21a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JN_Logging.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JN_Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="JN_GameWorld.h">
@@ -72,15 +72,18 @@
     <ClInclude Include="JN_HealthController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JN_RealTimer.h">
+      <Filter>Header Files\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_Timer.h">
+      <Filter>Header Files\Timer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JN_Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JN_Logging.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JN_Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JN_GameWorld.cpp">
@@ -109,6 +112,12 @@
     </ClCompile>
     <ClCompile Include="JN_HealthController.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_Timer.cpp">
+      <Filter>Source Files\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_WindowData.h">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

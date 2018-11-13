@@ -19,7 +19,7 @@ JN_Vector2::JN_Vector2()
 
 float JN_Vector2::Magnitude()
 {
-	return sqrtf(pow(x, 2) + pow(y, 2));
+	return sqrtf((float)pow(x, 2) + (float)pow(y, 2));
 }
 
 JN_Vector2 JN_Vector2::Normalise()

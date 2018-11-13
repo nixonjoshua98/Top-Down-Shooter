@@ -45,16 +45,24 @@ public:
 
 	SpriteType type;
 	SDL_Rect rect         = SDL_Rect();
-	SDL_Rect originalRect = SDL_Rect();
 
-	void Resize(int x, int y, int w, int h);
 
-	void virtual Init(SpriteType _type, SDL_Renderer *renderer, SDL_Rect _rect, int _totalSprites);	// Init the sprite
-	void virtual Render(SDL_Renderer *renderer);													// Render the sprite onto the screen
+	void virtual Init(SpriteType _type, SDL_Renderer *renderer, SDL_Rect _rect, JN_Logging *logObj, int _totalSprites);	// Init the sprite
+
+
+	///<summary>Renders the sprite to the screen</summary>
+	///<param name = "renderer">The renderer which the sprite will be on</param>
+	void virtual Render(SDL_Renderer *renderer);
+
+
+	///<summary>Relocates the object based on the params</summary>
+	///<param name = "x">X offset which will be added ot rect.x</param>
+	///<param name = "y">Y offset which will be added ot rect.y</param>
+	void Resize(int x, int y);
 
 	// Static methods
-	static SDL_Surface* LoadMedia(char *path, bool makeTrans = true);
-	static SDL_Texture* Surface2Texture(SDL_Renderer *renderer, SDL_Surface *_surface);
+	SDL_Surface* LoadMedia(char *path, bool makeTrans = true);
+	SDL_Texture* Surface2Texture(SDL_Renderer *renderer, SDL_Surface *_surface);
 
 protected:
 	SDL_Surface *surface = NULL;
@@ -62,8 +70,10 @@ protected:
 
 	int spriteIndex = 0;
 
+	JN_Logging *logObj = NULL;
+
 	// Delays
-	float spriteChangeDelay = 150;
+	float spriteChangeDelay = 250;
 
 	int totalSprites;
 

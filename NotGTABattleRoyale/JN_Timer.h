@@ -2,13 +2,15 @@
 #define JN_TIMER_H
 
 #include <string>
+#include <ctime>
 
 class JN_Timer
 {
 private:
-	int frameCount = 0;
-	unsigned int FPS = 0;
-	unsigned int startTicks = 0;
+	int frameCount;
+	int startTicks;
+	int FPS;
+	int actualFPS;
 
 public:
 	JN_Timer(int fps);
@@ -16,9 +18,25 @@ public:
 	void Tick();
 	void Wait();
 
-	std::string GetFrameCount()
+	int GetFrameCount()
 	{
-		return std::to_string(frameCount);
+		return frameCount;
+	}
+
+	int GetFPS()
+	{
+		return actualFPS;
+	}
+
+	int GetAimFPS()
+	{
+		return FPS;
+	}
+
+	std::tm* GetTime()
+	{
+		time_t t = std::time(0);
+		return std::localtime(&t);
 	}
 };
 

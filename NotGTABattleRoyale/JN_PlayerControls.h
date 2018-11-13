@@ -4,19 +4,22 @@
 #include <map>
 #include <vector>
 
+#include "JN_Logging.h"
+
 #include "SDL.h"
 
 class JN_PlayerControls {
 
 public:
 	///<summary>Default constructor</summary>
-	JN_PlayerControls()
-	{
-		SetControls();
-	}
+	JN_PlayerControls();
 
 	enum class ControlAction { LEFT, RIGHT, UP, DOWN, NONE, SHOOT };	// Enum which stores all player input actions
 	enum class InputDevice { KEYBOARD, MOUSE };							// Input types
+
+
+	///<summary>Init the controls and the logging</summary>
+	void Init(JN_Logging *logObj);
 
 	///<summary>Returns a bool based on if the scancode is a valid control</summary>
 	bool ValidControl(InputDevice inputDevice, int scancode);
@@ -64,9 +67,7 @@ private:
 	std::vector<ControlAction> keyboardPresses = {};	// Stores the keyboard presses
 	std::vector<ControlAction> mousePresses    = {};	// Stores the mouse clicks which have a command attached
 
-
-	///<summary>Assign the default controls</summary>
-	void SetControls();
+	JN_Logging *logObj = NULL;	// Logging object
 
 };
 
