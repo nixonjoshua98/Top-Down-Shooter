@@ -9,6 +9,7 @@ JN_PlayerControls::JN_PlayerControls()
 
 }
 
+
 void JN_PlayerControls::Init(JN_Logging *logObj)
 {
 	keyboardControls[SDL_SCANCODE_W] = ControlAction::UP;
@@ -126,4 +127,11 @@ bool JN_PlayerControls::IsKeyDown(InputDevice inputDevice, ControlAction action)
 		return false;
 		break;
 	}
+}
+
+
+void JN_PlayerControls::EmptyInput()
+{
+	keyboardPresses = {};
+	mousePresses = {};
 }

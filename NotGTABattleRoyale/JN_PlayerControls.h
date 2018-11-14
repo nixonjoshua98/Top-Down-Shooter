@@ -14,6 +14,7 @@ public:
 	///<summary>Default constructor</summary>
 	JN_PlayerControls();
 
+
 	enum class ControlAction { LEFT, RIGHT, UP, DOWN, NONE, SHOOT };	// Enum which stores all player input actions
 	enum class InputDevice { KEYBOARD, MOUSE };							// Input types
 
@@ -59,6 +60,9 @@ public:
 
 	///<summary>Returns the mouse presses</summary>
 	std::vector<ControlAction> GetMousePresses() { return mousePresses; }
+
+	///<summary>Drops all input so the player has a fresh start</summary>
+	void EmptyInput();
 
 private:
 	std::map<int, ControlAction> keyboardControls = {};	// Map to assign keyboard controls to actions

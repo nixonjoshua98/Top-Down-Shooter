@@ -15,13 +15,18 @@ JN_Logging::JN_Logging()
 	LogMethod("Log was cleared");
 }
 
+
 JN_Logging::~JN_Logging()
 {
 	
 }
 
-void JN_Logging::Log()
+
+void JN_Logging::Log(bool logOverride)
 {
+	if (!currentlyLogging && !logOverride)
+		return;
+
 	std::string t;
 	std::ofstream f;
 
@@ -53,10 +58,24 @@ void JN_Logging::ClearLog()
 }
 
 
+void JN_Logging::ToggleLogging()
+{
+	if (currentlyLogging)
+		logQueue.Add(JN_RealTimer::GetTime() + " [INPUT] " + "Log turned off");
+	else
+		logQueue.Add(JN_RealTimer::GetTime() + " [INPUT] " + "Log turned on");
+
+	this->Log(true);
+
+	currentlyLogging = !currentlyLogging;
+}
+
+
 void JN_Logging::LogPerformance(int frameN, int currentFPS, int aimFPS)
 {
-	return;
+	if (!currentlyLogging)
 
+		return;
 	std::ostringstream oss;
 	oss << JN_RealTimer::GetTime() << " [SYSTEM] " << "Frame: " << frameN << " | " << "FPS: " << currentFPS << " | " << "Optimal FPS: " << aimFPS;
 	logQueue.Add(oss.str());
@@ -65,6 +84,9 @@ void JN_Logging::LogPerformance(int frameN, int currentFPS, int aimFPS)
 
 void JN_Logging::LogTimeSpan(std::string txt, float time)
 {
+	if (!currentlyLogging)
+		return;
+
 	std::ostringstream oss;
 	oss << JN_RealTimer::GetTime() << " [SYSTEM] " << txt << " | " << "Duration (ms): " << time;
 	logQueue.Add(oss.str());
@@ -73,22 +95,44 @@ void JN_Logging::LogTimeSpan(std::string txt, float time)
 
 void JN_Logging::LogMethod(std::string txt)
 {
+	if (!currentlyLogging)
+		return;
+
 	std::ostringstream oss;
-	oss << JN_RealTimer::GetTime() << " [SYSTEM]" << " | " << txt;
+	oss << JN_RealTimer::GetTime() << " [SYSTEM] " << txt;
 	logQueue.Add(oss.str());
 }
+
 
 void JN_Logging::LogWindowSize(int xa, int ya, int xb, int yb)
 {
+	if (!currentlyLogging)
+		return;
+
 	std::ostringstream oss;
-	oss << JN_RealTimer::GetTime() << " [INPUT] | Window resized (" << xa << ", " << ya << ") -> " << "(" << xb << ", " << yb << ")";
+	oss << JN_RealTimer::GetTime() << " [INPUT] Window resized (" << xa << ", " << ya << ") -> " << "(" << xb << ", " << yb << ")";
 	logQueue.Add(oss.str());
 
 }
 
+
 void JN_Logging::LogKeyboardInput(bool down, std::string key)
 {
+	if (!currentlyLogging)
+		return;
+
 	std::ostringstream oss;
-	oss << JN_RealTimer::GetTime() << " [INPUT] | Key " << (down ? "pressed" : "released") << " [" << key << "]";
+	oss << JN_RealTimer::GetTime() << " [INPUT] Key " << (down ? "pressed" : "released") << " [" << key << "]";
+	logQueue.Add(oss.str());
+}
+
+
+void JN_Logging::LogMouseInput(bool down, std::string key)
+{
+	if (!currentlyLogging)
+		return;
+
+	std::ostringstream oss;
+	oss << JN_RealTimer::GetTime() << " [INPUT] Mouse " << (down ? "pressed" : "released") << " [" << key << "]";
 	logQueue.Add(oss.str());
 }

@@ -1,7 +1,9 @@
 #ifndef JN_GAME_WORLD_H
 #define JN_GAME_WORLD_H
 
-#include "SDL.h"
+#include <SDL.h>
+#include <SDL_ttf.h>
+#include <vector>
 
 #include "JN_Player.h"
 #include "JN_Timer.h"
@@ -9,7 +11,6 @@
 #include "JN_Logging.h"
 #include "JN_WindowData.h"
 
-#include <vector>
 
 class JN_GameWorld
 {
@@ -36,6 +37,9 @@ public:
 	static const int CELL_HEIGHT = WORLD_HEIGHT / LEVEL_HEIGHT;			// Height of each cell
 	static const int CELL_WIDTH = WORLD_WIDTH / LEVEL_WIDTH;			// Width of each cell
 
+	static const int FULL_SCREEN_KEY = SDL_SCANCODE_1;					// ...
+	static const int LOG_TOGGLE_KEY = SDL_SCANCODE_2;					// ...
+	static const int PAUSE_GAME_KEY = SDL_SCANCODE_ESCAPE;				// ...
 
 	// Used or resizing objects, used as a pointer so the window height and width is always accurate
 	JN_WindowData *windowData = NULL;
@@ -49,7 +53,10 @@ public:
 	void Run();
 
 private:
-	bool running     = true;			// Boolean flag which keeps the game loop going if the game is active
+	bool running    = true;		// Boolean flag which keeps the game loop going if the game is active
+	bool fullscreen = false;	// Flag to check if game is full screen or not
+	bool gamePaused = false;	// ...
+
 	JN_Timer timer   = JN_Timer(FPS);	// Timer class which stores FPS, playtime etc.
 	JN_Player player = JN_Player();		// Player object, the user will control this objects
 
@@ -90,6 +97,12 @@ private:
 
 	///<summary>Method which is called upon the player resizing the window</summary>
 	void ResizeWorld();
+
+	///<summary>Toggles the windows view display from fullscreen to shown</summary>
+	void ToggleFullScreen();
+
+	///<summary>Pause the game</summary>
+	void TogglePauseGame();
 };
 
 #endif // !JN_GAME_WORLD_H

@@ -8,13 +8,14 @@
 #include <iostream>
 #include <math.h>
 
-
+// Default constructopr
 JN_Player::JN_Player()
 {
 
 }
 
 
+// De-constructor
 JN_Player::~JN_Player()
 {
 	logObj = NULL;
@@ -22,8 +23,11 @@ JN_Player::~JN_Player()
 }
 
 
+// Initilizes the player
 void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData)
 {
+	JN_RealTimer t = JN_RealTimer();
+
 	this->logObj = logObj;
 	this->windowData = windowData;
 
@@ -43,12 +47,15 @@ void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *
 	newRect.h = rect.h;
 
 	projectileController.CreateInitialProjectiles(renderer);
+
+	logObj->LogTimeSpan("Player initilized", t.Tick());
 }
 
 
+// Input...
 void JN_Player::Input(SDL_Event e)
 {
-	// Keyboard key has been released or presses
+	// Keyboard key has been released or pressed
 
 	// check () for AND OR
 	if ((e.type == SDL_KEYUP || e.type == SDL_KEYDOWN) && (controls.ValidControl(JN_PlayerControls::InputDevice::KEYBOARD, e.key.keysym.scancode)))
@@ -60,6 +67,7 @@ void JN_Player::Input(SDL_Event e)
 }
 
 
+// Updates current keyboard presses
 void JN_Player::KeyboardInputHandler(SDL_Event e)
 {
 	bool keyPressedDown = controls.IsKeyDown(JN_PlayerControls::InputDevice::KEYBOARD, e.key.keysym.scancode);
@@ -71,9 +79,13 @@ void JN_Player::KeyboardInputHandler(SDL_Event e)
 	// Old keypress has been lifted
 	else if ((e.type == SDL_KEYUP) && keyPressedDown)
 		controls.RemoveKeyPress(JN_PlayerControls::InputDevice::KEYBOARD, e.key.keysym.scancode);
+
+
+	logObj->LogKeyboardInput(e.type == SDL_KEYDOWN, SDL_GetScancodeName(e.key.keysym.scancode));
 }
 
 
+// Updates current mouse presses
 void JN_Player::MouseInputHandler(SDL_Event e)
 {
 	bool keyPressedDown = controls.IsKeyDown(JN_PlayerControls::InputDevice::MOUSE, e.button.button);
@@ -85,6 +97,8 @@ void JN_Player::MouseInputHandler(SDL_Event e)
 	// Old mouse click has been lifted
 	else if ((e.type == SDL_MOUSEBUTTONUP) && keyPressedDown)
 		controls.RemoveKeyPress(JN_PlayerControls::InputDevice::MOUSE, e.button.button);
+
+	logObj->LogMouseInput(e.type == SDL_MOUSEBUTTONDOWN, e.button.button == SDL_BUTTON_LEFT ? "Left" : "Right");
 }
 
 
@@ -121,7 +135,6 @@ void JN_Player::Update()
 	Move();
 	RotatePlayer();
 	Shoot();
-	AnimationUpdate();
 }
 
 
@@ -181,21 +194,22 @@ void JN_Player::LateUpdate(std::vector<JN_Sprite*> tiles)
 
 void JN_Player::ColliderManager(std::vector<JN_Sprite*> tiles)
 {
-	std::set<SpriteType> colliders = GetColliders(tiles);
-
 	ResetBuffs();
 
 	// Current colliders
-	for (auto c : colliders)
+	for (auto c : GetColliders(tiles))
 	{
 		switch (c)
 		{
 		case SpriteType::MOVEMENT_DEBUFF:
 			statusEffects[SpriteType::MOVEMENT_DEBUFF] = true;
+			logObj->LogMethod("Player collided with movement debuff tile");
 			break;
 
 		case SpriteType::FIRE_DAMAGE:
+			logObj->LogMethod("Player collided with fire damage tile");
 			health.TakeDamage(FIRE_DAMAGE);
+			break;
 		}
 	}
 }
@@ -235,10 +249,8 @@ std::set<JN_Player::SpriteType> JN_Player::GetColliders(std::vector<JN_Sprite*> 
 
 void JN_Player::Render(SDL_Renderer *renderer)
 {
-	RenderPlayerHealthBar(renderer);
 	JN_Sprite::Render(renderer);
 	projectileController.Render(renderer);
-
 }
 
 
@@ -257,15 +269,7 @@ void JN_Player::AnimationUpdate()
 }
 
 
-void JN_Player::RenderPlayerHealthBar(SDL_Renderer *renderer)
+void JN_Player::EmptyInput()
 {
-	SDL_Rect r;
-	r.w = (int)fmax(fmin(health.GetHealth(), 100), 1) * 2;
-	r.x = 320 - (r.w / 2);
-	r.h = 8;
-	r.y = 5;
-
-	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
-
-	SDL_RenderFillRect(renderer, &r);
+	controls.EmptyInput();
 }

@@ -6,22 +6,27 @@
 
 #include <iostream>
 
-
+// Default constructor
 JN_ProjectileController::JN_ProjectileController()
 {
 
 }
 
+
+// Init the controller
 void JN_ProjectileController::Init(int maxprojectiles, JN_Logging *logObj, JN_WindowData *windowData)
 {
 	this->windowData = windowData;
+	this->logObj = logObj;
 	this->maxProjectiles = maxprojectiles;
 }
 
+
+// De-constructor
 JN_ProjectileController::~JN_ProjectileController()
 {
-	logObj = NULL;
 	windowData = NULL;
+	logObj = NULL;
 
 	for (auto p : projectiles)
 	{
@@ -34,6 +39,8 @@ void JN_ProjectileController::CreateInitialProjectiles(SDL_Renderer *renderer)
 {
 	JN_Projectile *p;
 
+	JN_RealTimer t = JN_RealTimer();
+
 	for (int i = 0; i < maxProjectiles; i++)
 	{
 		p = new JN_Projectile();
@@ -41,6 +48,8 @@ void JN_ProjectileController::CreateInitialProjectiles(SDL_Renderer *renderer)
 		p->Init(renderer, logObj, windowData);
 		projectiles.push_back(p);
 	}
+
+	logObj->LogTimeSpan("Projectiles created", t.Tick());
 }
 
 bool JN_ProjectileController::Shoot(SDL_Rect sourceRect, SDL_Rect targetRect)

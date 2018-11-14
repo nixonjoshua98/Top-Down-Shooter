@@ -1,30 +1,10 @@
 #ifndef JN_SPRITE_H
 #define JN_SPRITE_H
 
-#include "SDL.h"
 #include "JN_Logging.h"	
+#include "JN_SpriteAsset.h"
 
 #include <map>
-
-struct SpriteAsset
-{
-	SpriteAsset() {}
-	SpriteAsset(char *path) { this->path = path; }
-
-	~SpriteAsset()
-	{
-		SDL_FreeSurface(this->surface);
-		SDL_DestroyTexture(this->texture);
-	}
-
-	char *path;
-	SDL_Surface *surface = NULL;
-	SDL_Texture *texture = NULL;
-};
-
-
-
-
 
 class JN_Sprite
 {
@@ -35,6 +15,8 @@ public:
 	static const char MOVEMENT_DEBUFF_TILE_CHAR = '1';
 	static const char FIRE_DAMAGE_TILE_CHAR     = '2';
 
+	static const int TOTAL_TILE_TYPES = 3;
+
 	static const int FIRE_DAMAGE			  = 1;	// 1 Damage every frame the user touches the collider
 	static const int MOVEMENT_DEBUFF_AMOUNT   = 2;	// Movement will be halved
 
@@ -44,7 +26,7 @@ public:
 	~JN_Sprite();
 
 	SpriteType type;
-	SDL_Rect rect         = SDL_Rect();
+	SDL_Rect rect;
 
 
 	void virtual Init(SpriteType _type, SDL_Renderer *renderer, SDL_Rect _rect, JN_Logging *logObj, int _totalSprites);	// Init the sprite
@@ -80,7 +62,7 @@ protected:
 	// Delay timers
 	float lastSpriteChange  = (float)SDL_GetTicks();
 
-	static std::map<SpriteType, SpriteAsset*> assetsMap;
+	static std::map<SpriteType, JN_SpriteAsset*> assetsMap;
 
 	double rotationAngle = 0;
 

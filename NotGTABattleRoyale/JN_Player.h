@@ -49,6 +49,10 @@ public:
 	///<param name = "renderer">The renderer which the player will be on</param>
 	void Render(SDL_Renderer *renderer) override;
 
+
+	///<summary>Drops all input so the player has a fresh start</summary>
+	void EmptyInput();
+
 private:
 	static const int MOVEMENT_SPEED = 3;	// The amount the player moves each movement cycle
 	static const int MOVEMENT_DELAY = 25;	// The delay between movements
@@ -57,10 +61,11 @@ private:
 	static const int PLAYER_HEIGHT  = 20;	// ...
 	
 	JN_Logging *logObj = NULL;							// Log object
-	JN_WindowData *windowData = NULL;
+	JN_WindowData *windowData = NULL;					// Window data, stores size and offsets
 	JN_HealthController health;							// Player health controller with a starting value of 100
 	JN_ProjectileController projectileController;		// Creates the controller with a maximum of 10 projectiles on screen at once
 	JN_PlayerControls controls;							// The controls object for the player, deals with all input
+
 
 	// Player buffs and debuffs
 	std::map<SpriteType, bool> statusEffects = {
@@ -77,10 +82,6 @@ private:
 
 	///<summary>Moves the player based on the input</summary>
 	void Move();
-
-
-	///<summary>Render the players health on screen as a red square</summary>
-	void RenderPlayerHealthBar(SDL_Renderer *renderer);
 
 
 	///<summary>Attempts to shoot a projectile</summary>

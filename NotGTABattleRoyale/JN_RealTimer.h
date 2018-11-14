@@ -7,30 +7,19 @@
 class JN_RealTimer
 {
 public:
-	JN_RealTimer()
-	{
-		start = std::chrono::system_clock::now();
-	}
+	///<summary>Default constructor</summary>
+	JN_RealTimer();
 
-	float Tick()
-	{
-		auto end = std::chrono::system_clock::now();
-		std::chrono::duration<float, std::milli> span = end - start;
 
-		return span.count();
-	}
+	///<summary>Returns time since init in milliseconds</summary>
+	float Tick();
 
-	static std::string GetTime()
-	{
-		time_t t = time(0);
-		std::tm* now = localtime(&t);
 
-		return std::to_string(now->tm_hour) + ":" + std::to_string(now->tm_min) + ":" + std::to_string(now->tm_sec);
-	}
+	///<summary>Returns current time (H:M:S)
+	static std::string GetTime();
 
 private:
-	std::chrono::system_clock::time_point start;
+	std::chrono::system_clock::time_point start;	// Time at init
 };
-
 
 #endif // !JN_REAL_TIMER_H

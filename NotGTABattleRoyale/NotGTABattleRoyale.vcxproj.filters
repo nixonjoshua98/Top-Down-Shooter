@@ -13,111 +13,162 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\DefaultHeaders">
-      <UniqueIdentifier>{2d00023d-32b6-4256-a896-d0f2ba37a78f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\DefaultSources">
-      <UniqueIdentifier>{21720a23-4bf0-4c37-b379-421c92524677}</UniqueIdentifier>
+    <Filter Include="Header Files\DataStructures">
+      <UniqueIdentifier>{ec80b447-1100-4ccc-9e0b-7771db7375d6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Player">
-      <UniqueIdentifier>{66019e06-22e1-4ac2-ac79-9446711bfa82}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Player">
-      <UniqueIdentifier>{d5b2c342-47f5-495d-9fbd-f255e96ddefc}</UniqueIdentifier>
+      <UniqueIdentifier>{561ec437-05e3-4116-934a-8bf7a3866ce2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Projectile">
-      <UniqueIdentifier>{5faaec20-aae5-49c4-a784-430d89a01ad5}</UniqueIdentifier>
+      <UniqueIdentifier>{083152cc-27ae-4d2d-9bbc-36810348c4da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Default">
+      <UniqueIdentifier>{6c8e00d3-86c1-4fc3-9f2a-7c0dc9c0b2b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Controllers">
+      <UniqueIdentifier>{0d5022d8-4b7b-41df-925b-f8dbf9e9bfef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Timers">
+      <UniqueIdentifier>{7405af9b-e37d-4216-9e0d-c9cc28663541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Bases">
+      <UniqueIdentifier>{853de38b-9872-40a1-b7a1-6b9e1d7d8531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DataStructures">
+      <UniqueIdentifier>{0629b398-1e1d-40c2-9b40-cad88dce96f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Default">
+      <UniqueIdentifier>{aafefb5c-adc1-4697-931f-7e19540f6e80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controllers">
+      <UniqueIdentifier>{e8f79534-87d3-4c3f-acd1-2a4d21eb6614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bases">
+      <UniqueIdentifier>{75135226-b0e9-4b14-9b05-c2b9bb30d827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Timers">
+      <UniqueIdentifier>{799552e9-ba41-46b7-9c55-833a8b18f948}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Projectile">
-      <UniqueIdentifier>{5503b54c-c488-49fd-aa4f-cba71be6518d}</UniqueIdentifier>
+      <UniqueIdentifier>{c8e5b8b4-1e1d-4e02-9e27-a755f6aa9949}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Timer">
-      <UniqueIdentifier>{ff6e19d2-3182-4223-9965-0769412b6f31}</UniqueIdentifier>
+    <Filter Include="Source Files\Player">
+      <UniqueIdentifier>{f9f8743f-fbbc-41ab-9b16-8e05873c77f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Timer">
-      <UniqueIdentifier>{4aae5b06-2784-4112-959c-0d31f3b1e21a}</UniqueIdentifier>
+    <Filter Include="Header Files\Misc">
+      <UniqueIdentifier>{59910f22-a42d-43aa-b012-b9afd6fe12b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Misc">
+      <UniqueIdentifier>{3e2ac6a1-6449-4179-b85d-2248777e3097}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="JN_Logging.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="JN_GameWorld.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files\DefaultHeaders</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files\DefaultHeaders</Filter>
-    </ClInclude>
-    <ClInclude Include="JN_Vector2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JN_Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="JN_Player.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="JN_PlayerControls.h">
-      <Filter>Header Files\Player</Filter>
+    <ClInclude Include="JN_Vector2.h">
+      <Filter>Header Files\DataStructures</Filter>
     </ClInclude>
     <ClInclude Include="JN_Projectile.h">
       <Filter>Header Files\Projectile</Filter>
     </ClInclude>
-    <ClInclude Include="JN_ProjectileController.h">
-      <Filter>Header Files\Projectile</Filter>
-    </ClInclude>
-    <ClInclude Include="JN_HealthController.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="JN_Timer.h">
+      <Filter>Header Files\Timers</Filter>
     </ClInclude>
     <ClInclude Include="JN_RealTimer.h">
-      <Filter>Header Files\Timer</Filter>
+      <Filter>Header Files\Timers</Filter>
     </ClInclude>
-    <ClInclude Include="JN_Timer.h">
-      <Filter>Header Files\Timer</Filter>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_HealthController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_ProjectileController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_Sprite.h">
+      <Filter>Header Files\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_PlayerControls.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_Logging.h">
+      <Filter>Header Files\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_Player.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_Queue.h">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_SpriteAsset.h">
+      <Filter>Header Files\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_P_Sprite.h">
+      <Filter>Header Files\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_P_Gameobject.h">
+      <Filter>Header Files\Bases</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JN_Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JN_Logging.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="JN_GameWorld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files\DefaultSources</Filter>
+    <ClCompile Include="JN_WindowData.h">
+      <Filter>Header Files\DataStructures</Filter>
     </ClCompile>
-    <ClCompile Include="JN_Vector2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JN_Sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JN_Player.cpp">
-      <Filter>Source Files\Player</Filter>
+    <ClCompile Include="JN_HealthController.cpp">
+      <Filter>Source Files\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="JN_PlayerControls.cpp">
-      <Filter>Source Files\Player</Filter>
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_ProjectileController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_Timer.cpp">
+      <Filter>Source Files\Timers</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_RealTimer.cpp">
+      <Filter>Source Files\Timers</Filter>
     </ClCompile>
     <ClCompile Include="JN_Projectile.cpp">
       <Filter>Source Files\Projectile</Filter>
     </ClCompile>
-    <ClCompile Include="JN_ProjectileController.cpp">
-      <Filter>Source Files\Projectile</Filter>
+    <ClCompile Include="JN_Sprite.cpp">
+      <Filter>Source Files\Bases</Filter>
     </ClCompile>
-    <ClCompile Include="JN_HealthController.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="JN_Vector2.cpp">
+      <Filter>Source Files\DataStructures</Filter>
     </ClCompile>
-    <ClCompile Include="JN_Timer.cpp">
-      <Filter>Source Files\Timer</Filter>
+    <ClCompile Include="JN_Logging.cpp">
+      <Filter>Source Files\Misc</Filter>
     </ClCompile>
-    <ClCompile Include="JN_WindowData.h">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="JN_Player.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_Queue.cpp">
+      <Filter>Source Files\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_P_Sprite.cpp">
+      <Filter>Source Files\Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_P_Gameobject.cpp">
+      <Filter>Source Files\Bases</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -5,13 +5,14 @@
 #include "JN_Logging.h"
 
 #include <iostream>
+#include <SDL.h>
 
-std::map<JN_Sprite::SpriteType, SpriteAsset*> JN_Sprite::assetsMap = {
-	{ SpriteType::EMPTY,           new SpriteAsset("Assets/FloorTile.BMP") },
-	{ SpriteType::MOVEMENT_DEBUFF, new SpriteAsset("Assets/MovementDebuffTile.BMP") },
-	{ SpriteType::PLAYER,          new SpriteAsset("Assets/PlayerSpritesheet.BMP") },
-	{ SpriteType::PROJECTILE,      new SpriteAsset("Assets/Projectile.BMP") },
-	{ SpriteType::FIRE_DAMAGE,     new SpriteAsset("Assets/FireDamageTile.BMP") },
+std::map<JN_Sprite::SpriteType, JN_SpriteAsset*> JN_Sprite::assetsMap = {
+	{ SpriteType::EMPTY,           new JN_SpriteAsset("Assets/FloorTile.BMP") },
+	{ SpriteType::MOVEMENT_DEBUFF, new JN_SpriteAsset("Assets/MovementDebuffTile.BMP") },
+	{ SpriteType::PLAYER,          new JN_SpriteAsset("Assets/PlayerSpritesheet.BMP") },
+	{ SpriteType::PROJECTILE,      new JN_SpriteAsset("Assets/Projectile.BMP") },
+	{ SpriteType::FIRE_DAMAGE,     new JN_SpriteAsset("Assets/FireDamageTile.BMP") },
 };
 
 JN_Sprite::JN_Sprite()
@@ -95,10 +96,4 @@ void JN_Sprite::Resize(int x, int y)
 {
 	rect.x += x;
 	rect.y += y;
-
-	if (type == SpriteType::PLAYER)
-	{
-		std::cout << "Current X: " << rect.x << "\n";
-		std::cout << "X >> " << x << "\n";
-	}
 }
