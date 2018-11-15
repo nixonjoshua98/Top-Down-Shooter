@@ -14,8 +14,9 @@ JN_ProjectileController::JN_ProjectileController()
 
 
 // Init the controller
-void JN_ProjectileController::Init(int maxprojectiles, JN_Logging *logObj, JN_WindowData *windowData)
+void JN_ProjectileController::Init(JN_Gameobject::Tag tag, int maxprojectiles, JN_Logging *logObj, JN_WindowData *windowData)
 {
+	this->tag = tag;
 	this->windowData = windowData;
 	this->logObj = logObj;
 	this->maxProjectiles = maxprojectiles;
@@ -35,6 +36,7 @@ JN_ProjectileController::~JN_ProjectileController()
 	}
 }
 
+
 void JN_ProjectileController::CreateInitialProjectiles(SDL_Renderer *renderer)
 {
 	JN_Projectile *p;
@@ -45,12 +47,13 @@ void JN_ProjectileController::CreateInitialProjectiles(SDL_Renderer *renderer)
 	{
 		p = new JN_Projectile();
 
-		p->Init(renderer, logObj, windowData);
+		p->Init(tag, renderer, logObj, windowData);
 		projectiles.push_back(p);
 	}
 
 	logObj->LogTimeSpan("Projectiles created", t.Tick());
 }
+
 
 bool JN_ProjectileController::Shoot(SDL_Rect sourceRect, SDL_Rect targetRect)
 {
@@ -61,6 +64,7 @@ bool JN_ProjectileController::Shoot(SDL_Rect sourceRect, SDL_Rect targetRect)
 
 	return projectileIndex >= 0;
 }
+
 
 bool JN_ProjectileController::ProjectileAvailable()
 {

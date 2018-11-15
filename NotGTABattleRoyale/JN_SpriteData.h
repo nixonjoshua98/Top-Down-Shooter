@@ -3,10 +3,10 @@
 
 #include <SDL.h>
 
-struct JN_SpriteAsset
+struct JN_SpriteData
 {
 	///<summary>Default constructor</summary>
-	JN_SpriteAsset()
+	JN_SpriteData()
 	{
 
 	}
@@ -14,14 +14,14 @@ struct JN_SpriteAsset
 
 	///<summary>Constructor overload</summary>
 	///<param name = "path">Path to the asset being 'saved'</param>
-	JN_SpriteAsset(char *path)
+	JN_SpriteData(char *path)
 	{
 		this->path = path;
 	}
 
 
 	///<summary>De-constructor</summary>
-	~JN_SpriteAsset()
+	~JN_SpriteData()
 	{
 		SDL_FreeSurface(this->surface);
 		SDL_DestroyTexture(this->texture);

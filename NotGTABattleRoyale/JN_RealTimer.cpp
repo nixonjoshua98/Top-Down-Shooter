@@ -20,7 +20,7 @@ float JN_RealTimer::Tick()
 }
 
 
-// Static method, returns curren time H:M:S
+// Static method, returns current time H:M:S
 std::string JN_RealTimer::GetTime()
 {
 	time_t t = time(0);

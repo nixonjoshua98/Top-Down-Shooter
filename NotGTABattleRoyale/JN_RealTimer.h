@@ -18,7 +18,7 @@ public:
 	///<summary>Returns current time (H:M:S)
 	static std::string GetTime();
 
-private:
+protected:
 	std::chrono::system_clock::time_point start;	// Time at init
 };
 

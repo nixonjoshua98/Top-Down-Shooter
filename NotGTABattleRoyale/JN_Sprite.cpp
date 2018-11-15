@@ -1,99 +1,60 @@
 #include "stdafx.h"
 
 #include "JN_Sprite.h"
-#include "JN_RealTimer.h"
-#include "JN_Logging.h"
 
-#include <iostream>
-#include <SDL.h>
 
-std::map<JN_Sprite::SpriteType, JN_SpriteAsset*> JN_Sprite::assetsMap = {
-	{ SpriteType::EMPTY,           new JN_SpriteAsset("Assets/FloorTile.BMP") },
-	{ SpriteType::MOVEMENT_DEBUFF, new JN_SpriteAsset("Assets/MovementDebuffTile.BMP") },
-	{ SpriteType::PLAYER,          new JN_SpriteAsset("Assets/PlayerSpritesheet.BMP") },
-	{ SpriteType::PROJECTILE,      new JN_SpriteAsset("Assets/Projectile.BMP") },
-	{ SpriteType::FIRE_DAMAGE,     new JN_SpriteAsset("Assets/FireDamageTile.BMP") },
+std::map<JN_Gameobject::Tag, JN_SpriteData*> JN_Sprite::assetsDataMap = {
+	{ JN_Gameobject::Tag::EMPTY,				new JN_SpriteData("Assets/FloorTile.BMP") },
+	{ JN_Gameobject::Tag::MOVEMENT_DEBUFF,		new JN_SpriteData("Assets/MovementDebuffTile.BMP") },
+	{ JN_Gameobject::Tag::PLAYER,				new JN_SpriteData("Assets/PlayerSpritesheet.BMP") },
+	{ JN_Gameobject::Tag::PLAYER_PROJECTILE,	new JN_SpriteData("Assets/Projectile.BMP") },
+	{ JN_Gameobject::Tag::DAMAGE,				new JN_SpriteData("Assets/FireDamageTile.BMP") },
 };
 
+// Default constructor
 JN_Sprite::JN_Sprite()
 {
-	
+
 }
+
 
 JN_Sprite::~JN_Sprite()
 {
-
-	// They get deallocated in the SpriteAsset
-	surface = NULL;
 	texture = NULL;
+	surface = NULL;
 }
 
-void JN_Sprite::Init(SpriteType _type, SDL_Renderer *renderer, SDL_Rect _rect,  JN_Logging *logObj, int _totalSprites)
+
+void JN_Sprite::Init(JN_Gameobject::Tag tag, SDL_Renderer *renderer)
 {
-	this->logObj = logObj;
+	if (assetsDataMap[tag]->surface == NULL)
+		assetsDataMap[tag]->surface = LoadMedia(tag);
 
-	this->type = _type;
+	if (assetsDataMap[tag]->texture == NULL)
+		assetsDataMap[tag]->texture = Surface2Texture(renderer);
 
-	// These few lines mean only the images and textures are created once for each image
-	if (JN_Sprite::assetsMap[this->type]->surface == NULL)
-		JN_Sprite::assetsMap[this->type]->surface = LoadMedia(assetsMap[this->type]->path);
-
-	if (JN_Sprite::assetsMap[this->type]->texture == NULL)
-		JN_Sprite::assetsMap[this->type]->texture = Surface2Texture(renderer, assetsMap[this->type]->surface);
-
-	this->totalSprites = _totalSprites;
-
-	this->rect    = _rect;
-	this->surface = JN_Sprite::assetsMap[this->type]->surface;
-	this->texture = JN_Sprite::assetsMap[this->type]->texture;
+	this->surface = assetsDataMap[tag]->surface;
+	this->texture = Surface2Texture(renderer);
 }
 
-SDL_Surface* JN_Sprite::LoadMedia(char *path, bool makeTrans)
-{
-	SDL_Surface *img =  SDL_LoadBMP(path);
 
-	if (makeTrans)
-		SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 255, 255, 255));
+SDL_Surface* JN_Sprite::LoadMedia(JN_Gameobject::Tag tag)
+{
+	SDL_Surface *img = SDL_LoadBMP(assetsDataMap[tag]->path);
+
+	SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 255, 255, 255));
 
 	return img;
 }
 
-SDL_Texture* JN_Sprite::Surface2Texture(SDL_Renderer *renderer, SDL_Surface *_surface)
+
+SDL_Texture* JN_Sprite::Surface2Texture(SDL_Renderer *renderer)
 {
-	return SDL_CreateTextureFromSurface(renderer, _surface);
+	return SDL_CreateTextureFromSurface(renderer, surface);
 }
 
-void JN_Sprite::Render(SDL_Renderer *renderer)
+
+SDL_Texture* JN_Sprite::GetTexture()
 {
-	if (totalSprites > 1)
-	{
-		SDL_Rect r;
-		r.x = spriteIndex * rect.w;
-		r.y = 0;
-		r.w = rect.w;
-		r.h = rect.h;
-
-		SDL_RenderCopyEx(renderer, this->texture, &r, &this->rect, this->rotationAngle, NULL, SDL_FLIP_NONE);
-	}
-	else
-		SDL_RenderCopyEx(renderer, this->texture, NULL, &this->rect, this->rotationAngle, NULL, SDL_FLIP_NONE);
-}
-
-bool JN_Sprite::Collide(SDL_Rect a, SDL_Rect b)
-{
-	int leftA = a.x, rightA = a.x + a.w, topA = a.y, bottomA = a.y + a.h;
-	int leftB = b.x, rightB = b.x + b.w, topB = b.y, bottomB = b.y + b.h;
-
-	return !(bottomA <= topB || topA >= bottomB || rightA <= leftB || leftA >= rightB);
-}
-
-float JN_Sprite::DistanceBetween(SDL_Rect a, SDL_Rect b)
-{
-	return (float)sqrt(pow(a.x - b.x, 2) + (pow(a.y - b.y, 2)));
-}
-
-void JN_Sprite::Resize(int x, int y)
-{
-	rect.x += x;
-	rect.y += y;
+	return texture;
 }

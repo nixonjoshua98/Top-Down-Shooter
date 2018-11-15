@@ -25,7 +25,7 @@ public:
 
 
 private:
-	bool currentlyLogging = false;
+	bool currentlyLogging = true;
 
 	void ClearLog();
 };

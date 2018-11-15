@@ -1,10 +1,10 @@
-#ifndef JN_TIMER_H
-#define JN_TIMER_H
+#ifndef JN_PERFORMANCETIMER_H
+#define JN_PERFORMANCETIMER_H
 
 #include <string>
 #include <ctime>
 
-class JN_Timer
+class JN_PerformanceTimer
 {
 private:
 	int frameCount;
@@ -13,7 +13,10 @@ private:
 	int actualFPS;
 
 public:
-	JN_Timer(int fps);
+	JN_PerformanceTimer();
+
+
+	JN_PerformanceTimer(int fps);
 
 	void Tick();
 	void Wait();
@@ -40,4 +43,4 @@ public:
 	}
 };
 
-#endif //!JN_TIMER_H
+#endif //!JN_PERFORMANCETIMER_H

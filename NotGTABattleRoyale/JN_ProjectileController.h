@@ -15,7 +15,7 @@ public:
 	JN_ProjectileController();
 	~JN_ProjectileController();
 
-	void Init(int maxProjectiles, JN_Logging *logObj, JN_WindowData *windowData);
+	void Init(JN_Gameobject::Tag tag, int maxProjectiles, JN_Logging *logObj, JN_WindowData *windowData);
 
 	bool Shoot(SDL_Rect sourceRecr, SDL_Rect targetRect);
 	void Update();
@@ -23,6 +23,8 @@ public:
 	void Render(SDL_Renderer *renderer);
 
 	void CreateInitialProjectiles(SDL_Renderer *renderer);
+
+	JN_Gameobject::Tag tag;
 
 private:
 	JN_Logging *logObj = NULL;

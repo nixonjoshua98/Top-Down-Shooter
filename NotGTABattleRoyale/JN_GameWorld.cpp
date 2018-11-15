@@ -5,8 +5,10 @@
 #include "JN_RealTimer.h"
 
 #include <iostream>
+#include <SDL_ttf.h>
 #include <fstream>
 #include <string>
+#include <math.h>
 
 // Default constructor
 JN_GameWorld::JN_GameWorld()
@@ -23,6 +25,7 @@ JN_GameWorld::~JN_GameWorld()
 {
 	logObj->Log();
 
+
 	for (int i = 0; i < (int)allTiles.size(); i++)
 	{
 		// Delete the tile from memory
@@ -37,9 +40,10 @@ JN_GameWorld::~JN_GameWorld()
 			emptyTiles[i] = NULL;
 	}
 
-	// Stop logging and remove the window data object
+	// Stop logging and remove pointers
 	delete logObj;
 	delete windowData;
+	delete timerText;
 
 	// Destroy the window, renderer and stop all SDL subsystems
 	SDL_DestroyWindow(window);
@@ -87,7 +91,7 @@ bool JN_GameWorld::Init()
 // Game loop
 void JN_GameWorld::Run()
 {
-	while (running)
+	while (running && !timerComplete)
 	{
 		timer.Tick();	// Must be at the start of the loop
 
@@ -103,7 +107,6 @@ void JN_GameWorld::Run()
 		}
 
 		logObj->Log();	// Appends the log queue to console and file
-
 		timer.Wait();	// Waits for the needed time to match the FPS aim
 	}
 
@@ -136,7 +139,7 @@ void JN_GameWorld::Input()
 			break;
 
 		default:
-			if (e.type == SDL_KEYDOWN && (e.key.keysym.scancode == FULL_SCREEN_KEY))
+			if (e.type == SDL_KEYDOWN && (e.key.keysym.scancode == FULL_SCREEN_KEY) && !gamePaused)
 				ToggleFullScreen();
 
 			else if (e.type == SDL_KEYDOWN && (e.key.keysym.scancode == LOG_TOGGLE_KEY))
@@ -176,8 +179,11 @@ void JN_GameWorld::Render()
 
 	logObj->LogTimeSpan("Player finished rendering", t.Tick());
 
-	SDL_SetRenderDrawColor(renderer, 155, 155, 155, 0);			// Set background color
-	SDL_RenderPresent(renderer);								// Flip the render
+	std::string timerTextText = std::to_string(60 - (int)gameDuration / 1000);
+	timerText->Render(renderer, timerTextText);
+
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);	// Set background color
+	SDL_RenderPresent(renderer);					// Flip the render
 
 	logObj->LogMethod("Renderer flipped");
 }
@@ -186,6 +192,10 @@ void JN_GameWorld::Render()
 // Call update on all the objects required
 void JN_GameWorld::Update()
 {
+	gameplayTimer.Tick();
+
+	gameDuration = gameplayTimer.GetDuration();
+
 	JN_RealTimer t = JN_RealTimer();
 	player.Update();
 	logObj->LogTimeSpan("Player update method concluded", t.Tick());
@@ -214,7 +224,7 @@ void JN_GameWorld::LoadWorldFile()
 
 		for (int i = 0; i < LEVEL_SIZE; i++)
 		{
-			char c = (rand() % JN_Sprite::TOTAL_TILE_TYPES) +  '0';
+			char c = (char)(rand() % JN_Gameobject::charToTagMap.size()) +  '0';
 			charWorldArray[i] = c;
 		}
 	}
@@ -247,13 +257,17 @@ void JN_GameWorld::LoadWorldFile()
 // Builds the world based on the char array
 void JN_GameWorld::BuildWorld()
 {
-	JN_RealTimer t = JN_RealTimer();
+	auto t = JN_RealTimer();
+	timerText = new JN_Text();
+	timer = JN_PerformanceTimer(FPS);
+	gameplayTimer = JN_GameplayTimer();
 
 	player.Init(renderer, logObj, windowData);
+	timerText->Init((WORLD_WIDTH / 2) - 25, 10, 50, 50, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
 	logObj->LogTimeSpan("Player initialized", t.Tick());
 
-	JN_Sprite *s;
+	JN_Gameobject *s;
 	SDL_Rect r;
 
 	r.w = CELL_WIDTH;
@@ -265,36 +279,21 @@ void JN_GameWorld::BuildWorld()
 	{
 		for (int j = 0; j < LEVEL_WIDTH; j++)
 		{
-			s = new JN_Sprite();
+			s = new JN_Gameobject();
 
 			r.x = j * CELL_WIDTH;
-			r.y = (i * CELL_HEIGHT ) + BANNER_HEIGHT;
+			r.y = i * CELL_HEIGHT;
+
+			JN_Gameobject::Tag tag = JN_Gameobject::charToTagMap[charWorldArray[(i * LEVEL_WIDTH) + j]];
+
+			s->Init(tag, renderer, r, logObj, 1);
 
 			allTiles.push_back(s);
 
-			switch (charWorldArray[(i * LEVEL_WIDTH) + j])
-			{
-			case JN_Sprite::EMPTY_TILE_CHAR:
-				s->Init(JN_Sprite::SpriteType::EMPTY, renderer, r, logObj,  1);
+			if (tag == JN_Gameobject::Tag::EMPTY)
 				emptyTiles.push_back(s);
-				break;
-
-			case JN_Sprite::MOVEMENT_DEBUFF_TILE_CHAR:
-				s->Init(JN_Sprite::SpriteType::MOVEMENT_DEBUFF, renderer, r, logObj, 1);
+			else
 				collisionTiles.push_back(s);
-				break;
-
-			case JN_Sprite::FIRE_DAMAGE_TILE_CHAR:
-				s->Init(JN_Sprite::SpriteType::FIRE_DAMAGE, renderer, r, logObj, 1);
-				collisionTiles.push_back(s);
-				break;
-
-			default:
-				logObj->LogMethod("Non-standard tile char found, replacing with empty tile");
-				s->Init(JN_Sprite::SpriteType::EMPTY, renderer, r, logObj, 1);
-				emptyTiles.push_back(s);
-				break;
-			}
 		}
 	}
 
@@ -319,6 +318,7 @@ void JN_GameWorld::ResizeWorld()
 	windowData->yOffset = (wH - MIN_WINDOW_HEIGHT) / 2;;
 
 	player.Resize(xChange, yChange);
+	timerText->Move(xChange, yChange);
 	
 	for (int i = 0; i < LEVEL_HEIGHT; i++)
 	{
@@ -332,7 +332,6 @@ void JN_GameWorld::ResizeWorld()
 void JN_GameWorld::ToggleFullScreen()
 {
 	logObj->LogMethod("Window was made fullscreen");
-
 	auto flag = fullscreen ? SDL_WINDOW_SHOWN : SDL_WINDOW_FULLSCREEN;
 	SDL_SetWindowFullscreen(window, flag);
 	fullscreen = !fullscreen;
@@ -349,27 +348,7 @@ void JN_GameWorld::TogglePauseGame()
 	else
 		logObj->LogMethod("Game was paused");
 
+	gameplayTimer.SetStartTime();
+
 	gamePaused = !gamePaused;
-
-
 }
-
-
-/*
-void JN_GameWorld::RenderGameTimer()
-{
-	SDL_Color col = SDL_Color{ 0, 0, 0 };
-	TTF_Font *font = TTF_OpenFont("Assets/321impact.ttf", 24);
-
-	SDL_Surface *textSurface = TTF_RenderText_Solid(font, "Poop", col);
-	SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
-
-	SDL_Rect r;
-	r.x = windowData->xOffset + (windowData->windowWidth / 2);
-	r.y = 5;
-	r.w = 100;
-	r.h = 50;
-
-	SDL_RenderCopy(renderer, textTexture, NULL, &r);
-}
-*/

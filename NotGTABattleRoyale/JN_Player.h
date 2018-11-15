@@ -3,8 +3,8 @@
 
 #include "SDL.h"
 
-#include "JN_Sprite.h"
-
+#include "JN_Gameobject.h"
+#include "JN_RealTimer.h"
 #include "JN_ProjectileController.h"
 #include "JN_HealthController.h"
 #include "JN_PlayerControls.h"
@@ -13,7 +13,7 @@
 #include <set>
 #include <map>
 
-class JN_Player : public JN_Sprite
+class JN_Player : public JN_Gameobject
 {
 public:
 	///<summary>Default constructor</summary>
@@ -42,7 +42,7 @@ public:
 
 	///<summary>Called after Update and handles collisions</summary>
 	///<param name = "tiles">The tiles which the player could potentially collide with</param>
-	void LateUpdate(std::vector<JN_Sprite*> tiles);
+	void LateUpdate(std::vector<JN_Gameobject*> tiles);
 
 
 	///<summary>Renders the player to the screen</summary>
@@ -54,22 +54,28 @@ public:
 	void EmptyInput();
 
 private:
-	static const int MOVEMENT_SPEED = 3;	// The amount the player moves each movement cycle
-	static const int MOVEMENT_DELAY = 25;	// The delay between movements
-	static const int SHOOT_DELAY    = 250;	// The delay between being able to fire a projectile
-	static const int PLAYER_WIDTH   = 20;	// ...
-	static const int PLAYER_HEIGHT  = 20;	// ...
-	
+	const int MOVEMENT_SPEED = 3;	// The amount the player moves each movement cycle
+	const int MOVEMENT_DELAY = 25;	// The delay between movements
+	const int SHOOT_DELAY = 250;	// The delay between being able to fire a projectile
+	const int PLAYER_WIDTH = 20;	// ...
+	const int PLAYER_HEIGHT = 20;	// ...
+
+
+	const int DAMAGE_TILE_AMOUNT = 1;			// Damage every 0.25s while the user touches the collider
+	const float MOVEMENT_DEBUFF_AMOUNT = 0.5f;	// Movement will be multiplied by this
+
+
 	JN_Logging *logObj = NULL;							// Log object
 	JN_WindowData *windowData = NULL;					// Window data, stores size and offsets
 	JN_HealthController health;							// Player health controller with a starting value of 100
+	JN_RealTimer damageTileTimer;						// Timer for damage tile delays
 	JN_ProjectileController projectileController;		// Creates the controller with a maximum of 10 projectiles on screen at once
 	JN_PlayerControls controls;							// The controls object for the player, deals with all input
 
 
 	// Player buffs and debuffs
-	std::map<SpriteType, bool> statusEffects = {
-		{ SpriteType::MOVEMENT_DEBUFF, false }
+	std::map<Tag, bool> statusEffects = {
+		{ Tag::MOVEMENT_DEBUFF, false }
 	};
 
 
@@ -78,6 +84,7 @@ private:
 
 	float lastMovementTime = 0;	// Movement delay timer
 	float lastShootTime    = 0;	// Shoot timer
+	float lastDmgFromTile  = 0;	
 
 
 	///<summary>Moves the player based on the input</summary>
@@ -110,14 +117,14 @@ private:
 	void ConfirmPlayerMovement();
 
 
-	///<summary>Returns a set containign the collision types</summary>
+	///<summary>Returns a set containing the game object types</summary>
 	///<param name = "tiles">vector of potential collisions</param>
-	std::set<SpriteType> GetColliders(std::vector<JN_Sprite*> tiles);
+	std::set<Tag> GetColliders(std::vector<JN_Gameobject*> tiles);
 
 
 	///<summary>Actions based on collisions</summary>
 	///<param name = "tiles">vector of potential collisions</param>
-	void ColliderManager(std::vector<JN_Sprite*> tiles);
+	void ColliderManager(std::vector<JN_Gameobject*> tiles);
 
 
 	///<summary>Resets all player status effects</summary>

@@ -7,6 +7,12 @@
 #include <iostream>
 
 /*
+	Sprite - Gameobject forward declarions
+	Resize - increase memory
+	BuildWorld - why doesn't error occur
+*/
+
+/*
 	1:	Toggle fullscreen
 	2:	Toggle logging
 	ESC:	Pause game
@@ -49,7 +55,7 @@
 				1st:	Speed control + gamepad support
 
 	Extra features (Row 9):
-				PASS:	60 seconds timer
+				PASS:	60 seconds timer									COMPLETE
 				2:2:	All main requirments met
 				2:1:	Keys can be remapped
 				1st:	Saving or loading of game state						COMPLETE

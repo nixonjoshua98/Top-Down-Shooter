@@ -6,10 +6,10 @@
 #include "JN_Logging.h"
 #include "JN_Vector2.h"
 #include "JN_WindowData.h"
-#include "JN_Sprite.h"
+#include "JN_Gameobject.h"
 
 
-class JN_Projectile : public JN_Sprite
+class JN_Projectile : public JN_Gameobject
 {
 public:
 	~JN_Projectile();
@@ -20,12 +20,12 @@ public:
 	bool visible = false;
 	JN_Vector2 vector2;
 
-	void Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData);
+	void Init(JN_Gameobject::Tag tag, SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData);
 	void Update();
 	bool OutOfBounds();
-	void Render(SDL_Renderer *renderer) override;
+	void Render(SDL_Renderer *renderer);
 	void LateUpdate();
-	void SetTarget(SDL_Rect _sourceRect, SDL_Rect _targetRect);
+	void SetTarget(SDL_Rect sourceRect, SDL_Rect targetRect);
 
 private:
 	static const int PROJECTILE_WIDTH  = 25;

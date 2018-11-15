@@ -2,7 +2,6 @@
 
 #include "JN_GameWorld.h"
 #include "JN_Player.h"
-#include "JN_RealTimer.h"
 
 #include <algorithm>
 #include <iostream>
@@ -28,20 +27,22 @@ void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *
 {
 	JN_RealTimer t = JN_RealTimer();
 
+	damageTileTimer = JN_RealTimer();
+
 	this->logObj = logObj;
 	this->windowData = windowData;
 
-	projectileController.Init(15, logObj, windowData);
+	projectileController.Init(Tag::PLAYER_PROJECTILE, 15, logObj, windowData);
 	health.Init(100, logObj);
 	controls.Init(logObj);
 
 	// Calls the base class constructor
-	JN_Sprite::Init(SpriteType::PLAYER, renderer, rect, logObj, 3);
+	JN_Gameobject::Init(Tag::PLAYER, renderer, rect, logObj, 3);
 
-	rect.w = JN_Player::PLAYER_WIDTH;
-	rect.h = JN_Player::PLAYER_HEIGHT;
+	rect.w = PLAYER_WIDTH;
+	rect.h = PLAYER_HEIGHT;
 	rect.x = rect.w;
-	rect.y = JN_GameWorld::BANNER_HEIGHT + rect.h;
+	rect.y = rect.h;
 
 	newRect.w = rect.w;
 	newRect.h = rect.h;
@@ -135,6 +136,7 @@ void JN_Player::Update()
 	Move();
 	RotatePlayer();
 	Shoot();
+	AnimationUpdate();
 }
 
 
@@ -150,7 +152,7 @@ void JN_Player::Move()
 	newRect.x = rect.x;
 	newRect.y = rect.y;
 
-	float movementMultiplier = statusEffects[SpriteType::MOVEMENT_DEBUFF] ?  (1.0f / JN_Sprite::MOVEMENT_DEBUFF_AMOUNT) : 1.0f;
+	float movementMultiplier = statusEffects[Tag::MOVEMENT_DEBUFF] ?  (1.0f * MOVEMENT_DEBUFF_AMOUNT) : 1.0f;
 
 	for (JN_PlayerControls::ControlAction key : controls.GetKeyboardPresses())
 	{
@@ -180,11 +182,11 @@ void JN_Player::RotatePlayer()
 {
 	int x, y;
 	SDL_GetMouseState(&x, &y);
-	rotationAngle = atan2((y - 2) - newRect.y, (x - 2) - newRect.x) * 180.0f / 3.14159;
+	rotationAngle = (float)(atan2((y - 2) - newRect.y, (x - 2) - newRect.x) * 180.0f / 3.14159);
 }
 
 
-void JN_Player::LateUpdate(std::vector<JN_Sprite*> tiles)
+void JN_Player::LateUpdate(std::vector<JN_Gameobject*> tiles)
 {
 	ConfirmPlayerMovement();
 	ColliderManager(tiles);
@@ -192,7 +194,7 @@ void JN_Player::LateUpdate(std::vector<JN_Sprite*> tiles)
 }
 
 
-void JN_Player::ColliderManager(std::vector<JN_Sprite*> tiles)
+void JN_Player::ColliderManager(std::vector<JN_Gameobject*> tiles)
 {
 	ResetBuffs();
 
@@ -201,14 +203,17 @@ void JN_Player::ColliderManager(std::vector<JN_Sprite*> tiles)
 	{
 		switch (c)
 		{
-		case SpriteType::MOVEMENT_DEBUFF:
-			statusEffects[SpriteType::MOVEMENT_DEBUFF] = true;
+		case Tag::MOVEMENT_DEBUFF:
+			statusEffects[Tag::MOVEMENT_DEBUFF] = true;
 			logObj->LogMethod("Player collided with movement debuff tile");
 			break;
 
-		case SpriteType::FIRE_DAMAGE:
-			logObj->LogMethod("Player collided with fire damage tile");
-			health.TakeDamage(FIRE_DAMAGE);
+		case Tag::DAMAGE:
+			if (damageTileTimer.Tick() > 250)
+			{
+				logObj->LogMethod("Player collided with fire damage tile");
+				health.TakeDamage(DAMAGE_TILE_AMOUNT);
+			}
 			break;
 		}
 	}
@@ -226,22 +231,22 @@ void JN_Player::ConfirmPlayerMovement()
 {
 	// Makes sure that the player is always within the screen boundaries
 	newRect.x = (int)(fmin(windowData->xOffset + JN_GameWorld::MIN_WINDOW_WIDTH - rect.w, fmax(newRect.x, windowData->xOffset)));
-	newRect.y = (int)(fmin(windowData->yOffset + JN_GameWorld::MIN_WINDOW_HEIGHT - rect.h, fmax(newRect.y, windowData->yOffset + JN_GameWorld::BANNER_HEIGHT)));
+	newRect.y = (int)(fmin(windowData->yOffset + JN_GameWorld::MIN_WINDOW_HEIGHT - rect.h, fmax(newRect.y, windowData->yOffset)));
 
 	rect.x = newRect.x;
 	rect.y = newRect.y;
 }
 
 
-std::set<JN_Player::SpriteType> JN_Player::GetColliders(std::vector<JN_Sprite*> tiles)
+std::set<JN_Player::Tag> JN_Player::GetColliders(std::vector<JN_Gameobject*> tiles)
 {
-	std::set<SpriteType> colliders = {};	// We only care about each type, not quantity
+	std::set<Tag> colliders = {};	// We only care about each type, not quantity
 
 	for (int i = 0; i < (int)tiles.size(); i++)
 	{
 		// Spent about an hour trying to fix this, I had + 1 instead of + i
-		if (Collide(rect, tiles[i]->rect))
-			colliders.insert(tiles[i]->type);
+		if (Collide(tiles[i]->rect))
+			colliders.insert(tiles[i]->tag);
 	}
 	return colliders;
 }
@@ -249,7 +254,7 @@ std::set<JN_Player::SpriteType> JN_Player::GetColliders(std::vector<JN_Sprite*> 
 
 void JN_Player::Render(SDL_Renderer *renderer)
 {
-	JN_Sprite::Render(renderer);
+	JN_Gameobject::Render(renderer);
 	projectileController.Render(renderer);
 }
 
