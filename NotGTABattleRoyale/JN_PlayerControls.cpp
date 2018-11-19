@@ -18,7 +18,6 @@ void JN_PlayerControls::Init(JN_Logging *logObj)
 	keyboardControls[SDL_SCANCODE_D] = ControlAction::RIGHT;
 
 	mouseControls[SDL_BUTTON_LEFT] = ControlAction::SHOOT;
-
 	this->logObj = logObj;
 }
 

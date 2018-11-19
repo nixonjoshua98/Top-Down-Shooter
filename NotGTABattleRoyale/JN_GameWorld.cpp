@@ -103,8 +103,9 @@ void JN_GameWorld::Run()
 		{
 			Update();
 			LateUpdate();
-			Render();
 		}
+
+		Render();
 
 		logObj->Log();	// Appends the log queue to console and file
 		timer.Wait();	// Waits for the needed time to match the FPS aim
@@ -332,7 +333,7 @@ void JN_GameWorld::ResizeWorld()
 void JN_GameWorld::ToggleFullScreen()
 {
 	logObj->LogMethod("Window was made fullscreen");
-	auto flag = fullscreen ? SDL_WINDOW_SHOWN : SDL_WINDOW_FULLSCREEN;
+	auto flag = fullscreen ? SDL_WINDOW_SHOWN : SDL_WINDOW_FULLSCREEN_DESKTOP;
 	SDL_SetWindowFullscreen(window, flag);
 	fullscreen = !fullscreen;
 }
