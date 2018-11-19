@@ -107,3 +107,11 @@ void JN_ProjectileController::Render(SDL_Renderer *renderer)
 	for (int i = 0; i < maxProjectiles; i++)
 		projectiles[i]->Render(renderer);
 }
+
+
+// Resize all projectiles 
+void JN_ProjectileController::Resize(int xOffset, int yOffset)
+{
+	for (int i = 0; i < maxProjectiles; i++)
+		projectiles[i]->Resize(xOffset, yOffset);
+}

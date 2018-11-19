@@ -25,6 +25,8 @@ JN_Player::~JN_Player()
 // Initilizes the player
 void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData)
 {
+	JN_Gameobject::Init(Tag::PLAYER, renderer, rect, logObj);	// Calls the base class constructor
+
 	JN_RealTimer t = JN_RealTimer();
 
 	damageTileTimer = JN_RealTimer();
@@ -35,9 +37,11 @@ void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *
 	projectileController.Init(Tag::PLAYER_PROJECTILE, 15, logObj, windowData);
 	health.Init(100, logObj);
 	controls.Init(logObj);
+	animController.Init(200, GetTexture());
 
-	// Calls the base class constructor
-	JN_Gameobject::Init(Tag::PLAYER, renderer, rect, logObj, 3);
+	// Add animations
+	animController.Add(JN_AnimationController::Animation::IDLE, 0, PLAYER_WIDTH, PLAYER_HEIGHT, 1);
+	animController.Add(JN_AnimationController::Animation::MOVING, 1, PLAYER_WIDTH, PLAYER_HEIGHT, 2);
 
 	rect.w = PLAYER_WIDTH;
 	rect.h = PLAYER_HEIGHT;
@@ -48,6 +52,7 @@ void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *
 	newRect.h = rect.h;
 
 	projectileController.CreateInitialProjectiles(renderer);
+	animController.Set(JN_AnimationController::Animation::IDLE);
 
 	logObj->LogTimeSpan("Player initilized", t.Tick());
 }
@@ -81,7 +86,6 @@ void JN_Player::KeyboardInputHandler(SDL_Event e)
 	else if ((e.type == SDL_KEYUP) && keyPressedDown)
 		controls.RemoveKeyPress(JN_PlayerControls::InputDevice::KEYBOARD, e.key.keysym.scancode);
 
-
 	logObj->LogKeyboardInput(e.type == SDL_KEYDOWN, SDL_GetScancodeName(e.key.keysym.scancode));
 }
 
@@ -90,11 +94,11 @@ void JN_Player::KeyboardInputHandler(SDL_Event e)
 void JN_Player::MouseInputHandler(SDL_Event e)
 {
 	bool keyPressedDown = controls.IsKeyDown(JN_PlayerControls::InputDevice::MOUSE, e.button.button);
-	
+
 	// New mouse click
 	if ((e.type == SDL_MOUSEBUTTONDOWN) && !keyPressedDown)
 		controls.AddKeyPress(JN_PlayerControls::InputDevice::MOUSE, e.button.button);
-	
+
 	// Old mouse click has been lifted
 	else if ((e.type == SDL_MOUSEBUTTONUP) && keyPressedDown)
 		controls.RemoveKeyPress(JN_PlayerControls::InputDevice::MOUSE, e.button.button);
@@ -108,7 +112,7 @@ void JN_Player::Shoot()
 	float now = (float)SDL_GetTicks();
 
 	bool readyToShoot = (now - lastShootTime > SHOOT_DELAY);
-	bool triggerDown  = controls.IsKeyDown(JN_PlayerControls::InputDevice::MOUSE, JN_PlayerControls::ControlAction::SHOOT);
+	bool triggerDown = controls.IsKeyDown(JN_PlayerControls::InputDevice::MOUSE, JN_PlayerControls::ControlAction::SHOOT);
 
 	if (!readyToShoot || !triggerDown)
 		return;
@@ -122,8 +126,8 @@ void JN_Player::Shoot()
 	target.y = (y - 2) - rect.y;
 
 	SDL_Rect sourceRect = SDL_Rect();
-	sourceRect.x = rect.x + (rect.w / 2);
-	sourceRect.y = rect.y + (rect.h / 2);
+	sourceRect.x = rect.x;
+	sourceRect.y = rect.y;
 
 	if (projectileController.Shoot(sourceRect, target))
 		lastShootTime = now;
@@ -136,7 +140,17 @@ void JN_Player::Update()
 	Move();
 	RotatePlayer();
 	Shoot();
-	AnimationUpdate();
+	animController.Update();
+}
+
+
+void JN_Player::UpdateAnimation()
+{
+	if (isAbleToMove && isMoving)
+		animController.Set(JN_AnimationController::Animation::MOVING);
+
+	else if (isAbleToMove && !isMoving)
+		animController.Set(JN_AnimationController::Animation::IDLE);
 }
 
 
@@ -145,14 +159,19 @@ void JN_Player::Move()
 	float now = (float)SDL_GetTicks();
 
 	if (now - lastMovementTime < MOVEMENT_DELAY)
+	{
+		isAbleToMove = false;
 		return;
+	}
+
+	isAbleToMove = true;
 
 	lastMovementTime = now;
 
 	newRect.x = rect.x;
 	newRect.y = rect.y;
 
-	float movementMultiplier = statusEffects[Tag::MOVEMENT_DEBUFF] ?  (1.0f * MOVEMENT_DEBUFF_AMOUNT) : 1.0f;
+	float movementMultiplier = statusEffects[Tag::MOVEMENT_DEBUFF] ? (1.0f * MOVEMENT_TILE_MULTIPLIER) : 1.0f;
 
 	for (JN_PlayerControls::ControlAction key : controls.GetKeyboardPresses())
 	{
@@ -189,6 +208,7 @@ void JN_Player::RotatePlayer()
 void JN_Player::LateUpdate(std::vector<JN_Gameobject*> tiles)
 {
 	ConfirmPlayerMovement();
+	UpdateAnimation();
 	ColliderManager(tiles);
 	projectileController.LateUpdate();
 }
@@ -229,12 +249,17 @@ void JN_Player::ResetBuffs()
 
 void JN_Player::ConfirmPlayerMovement()
 {
+	isMoving = false;
+
 	// Makes sure that the player is always within the screen boundaries
 	newRect.x = (int)(fmin(windowData->xOffset + JN_GameWorld::MIN_WINDOW_WIDTH - rect.w, fmax(newRect.x, windowData->xOffset)));
 	newRect.y = (int)(fmin(windowData->yOffset + JN_GameWorld::MIN_WINDOW_HEIGHT - rect.h, fmax(newRect.y, windowData->yOffset)));
 
-	rect.x = newRect.x;
-	rect.y = newRect.y;
+	if ((newRect.x != rect.x) || (newRect.y != rect.y))
+	{
+		isMoving = true;
+		rect = newRect;
+	}
 }
 
 
@@ -254,27 +279,22 @@ std::set<JN_Player::Tag> JN_Player::GetColliders(std::vector<JN_Gameobject*> til
 
 void JN_Player::Render(SDL_Renderer *renderer)
 {
-	JN_Gameobject::Render(renderer);
+	animController.Render(rect, rotationAngle, renderer);
 	projectileController.Render(renderer);
-}
-
-
-void JN_Player::AnimationUpdate()
-{
-	float now = (float)SDL_GetTicks();
-
-	if (now - lastSpriteChange > spriteChangeDelay)
-	{
-		lastSpriteChange = now;
-		if (controls.GetKeyboardPresses().size() > 0)
-			spriteIndex = spriteIndex == 1 ? 2 : 1;
-		else
-			spriteIndex = 0;
-	}
 }
 
 
 void JN_Player::EmptyInput()
 {
 	controls.EmptyInput();
+}
+
+
+void JN_Player::Resize(int xOffset, int yOffset)
+{
+	JN_Gameobject::Resize(xOffset, yOffset);
+	projectileController.Resize(xOffset, yOffset);
+
+	newRect.x += xOffset;
+	newRect.y += yOffset;
 }

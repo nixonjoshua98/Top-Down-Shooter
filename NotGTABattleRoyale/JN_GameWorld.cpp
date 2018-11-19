@@ -286,7 +286,7 @@ void JN_GameWorld::BuildWorld()
 
 			JN_Gameobject::Tag tag = JN_Gameobject::charToTagMap[charWorldArray[(i * LEVEL_WIDTH) + j]];
 
-			s->Init(tag, renderer, r, logObj, 1);
+			s->Init(tag, renderer, r, logObj);
 
 			allTiles.push_back(s);
 

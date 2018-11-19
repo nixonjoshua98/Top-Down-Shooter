@@ -22,6 +22,9 @@ public:
 	void LateUpdate();
 	void Render(SDL_Renderer *renderer);
 
+	///<summary>Resize all projectiles</summary>
+	void Resize(int xOffset, int yOffset);
+
 	void CreateInitialProjectiles(SDL_Renderer *renderer);
 
 	JN_Gameobject::Tag tag;

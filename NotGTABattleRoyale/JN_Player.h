@@ -9,6 +9,7 @@
 #include "JN_HealthController.h"
 #include "JN_PlayerControls.h"
 #include "JN_WindowData.h"
+#include "JN_AnimationController.h"
 
 #include <set>
 #include <map>
@@ -53,6 +54,10 @@ public:
 	///<summary>Drops all input so the player has a fresh start</summary>
 	void EmptyInput();
 
+
+	///<summary>Resize override</summary>
+	void Resize(int xOffset, int yOffset) override;
+
 private:
 	const int MOVEMENT_SPEED = 3;	// The amount the player moves each movement cycle
 	const int MOVEMENT_DELAY = 25;	// The delay between movements
@@ -60,10 +65,8 @@ private:
 	const int PLAYER_WIDTH = 20;	// ...
 	const int PLAYER_HEIGHT = 20;	// ...
 
-
 	const int DAMAGE_TILE_AMOUNT = 1;			// Damage every 0.25s while the user touches the collider
-	const float MOVEMENT_DEBUFF_AMOUNT = 0.5f;	// Movement will be multiplied by this
-
+	const float MOVEMENT_TILE_MULTIPLIER = 0.5f;	// Movement will be multiplied by this
 
 	JN_Logging *logObj = NULL;							// Log object
 	JN_WindowData *windowData = NULL;					// Window data, stores size and offsets
@@ -71,7 +74,10 @@ private:
 	JN_RealTimer damageTileTimer;						// Timer for damage tile delays
 	JN_ProjectileController projectileController;		// Creates the controller with a maximum of 10 projectiles on screen at once
 	JN_PlayerControls controls;							// The controls object for the player, deals with all input
+	JN_AnimationController animController;				// Animation controller
 
+	bool isMoving = false;
+	bool isAbleToMove = false;
 
 	// Player buffs and debuffs
 	std::map<Tag, bool> statusEffects = {
@@ -82,12 +88,12 @@ private:
 	SDL_Rect newRect = SDL_Rect();	// Temp rect used during collision detection
 
 
-	float lastMovementTime = 0;	// Movement delay timer
-	float lastShootTime    = 0;	// Shoot timer
-	float lastDmgFromTile  = 0;	
+	float lastMovementTime = 0;		// Movement delay timer
+	float lastShootTime = 0;		// Shoot timer
+	float lastDmgFromTile = 0;		// ...
 
 
-	///<summary>Moves the player based on the input</summary>
+									///<summary>Moves the player based on the input</summary>
 	void Move();
 
 
@@ -104,10 +110,6 @@ private:
 	void KeyboardInputHandler(SDL_Event e);
 
 
-	///<summary>Method to update the animation</summary>
-	void AnimationUpdate();
-
-
 	///<summary>Handles the mouse input</summary>
 	///<param name = "e">The event object</param>
 	void MouseInputHandler(SDL_Event e);
@@ -115,6 +117,10 @@ private:
 
 	///<summary>Sets the player position after collision checking</summary>
 	void ConfirmPlayerMovement();
+
+
+	///<summary>Updates the aniamtion based on movement</summary>
+	void UpdateAnimation();
 
 
 	///<summary>Returns a set containing the game object types</summary>

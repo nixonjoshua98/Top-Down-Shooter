@@ -4,11 +4,11 @@
 
 
 std::map<JN_Gameobject::Tag, JN_SpriteData*> JN_Sprite::assetsDataMap = {
-	{ JN_Gameobject::Tag::EMPTY,				new JN_SpriteData("Assets/FloorTile.BMP") },
-	{ JN_Gameobject::Tag::MOVEMENT_DEBUFF,		new JN_SpriteData("Assets/MovementDebuffTile.BMP") },
+	{ JN_Gameobject::Tag::EMPTY,				new JN_SpriteData("Assets/GrassTile.BMP") },
+	{ JN_Gameobject::Tag::MOVEMENT_DEBUFF,		new JN_SpriteData("Assets/DirtTile.BMP") },
 	{ JN_Gameobject::Tag::PLAYER,				new JN_SpriteData("Assets/PlayerSpritesheet.BMP") },
 	{ JN_Gameobject::Tag::PLAYER_PROJECTILE,	new JN_SpriteData("Assets/Projectile.BMP") },
-	{ JN_Gameobject::Tag::DAMAGE,				new JN_SpriteData("Assets/FireDamageTile.BMP") },
+	{ JN_Gameobject::Tag::DAMAGE,				new JN_SpriteData("Assets/WaterTile.BMP") },
 };
 
 // Default constructor
@@ -42,7 +42,9 @@ SDL_Surface* JN_Sprite::LoadMedia(JN_Gameobject::Tag tag)
 {
 	SDL_Surface *img = SDL_LoadBMP(assetsDataMap[tag]->path);
 
-	SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 255, 255, 255));
+
+	if (tag == JN_Gameobject::Tag::PLAYER || tag == JN_Gameobject::Tag::PLAYER_PROJECTILE)
+		SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 255, 255, 255));
 
 	return img;
 }

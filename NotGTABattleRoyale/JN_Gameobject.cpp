@@ -27,7 +27,7 @@ JN_Gameobject::~JN_Gameobject()
 }
 
 
-void JN_Gameobject::Init(Tag tag, SDL_Renderer *renderer, SDL_Rect rect,  JN_Logging *logObj, int totalSprites)
+void JN_Gameobject::Init(Tag tag, SDL_Renderer *renderer, SDL_Rect rect,  JN_Logging *logObj)
 {
 	sprite = new JN_Sprite();
 
@@ -35,24 +35,12 @@ void JN_Gameobject::Init(Tag tag, SDL_Renderer *renderer, SDL_Rect rect,  JN_Log
 
 	this->logObj = logObj;
 	this->tag = tag;
-	this->totalSprites = totalSprites;
 	this->rect = rect;
 }
 
 void JN_Gameobject::Render(SDL_Renderer *renderer)
 {
-	if (totalSprites > 1)
-	{
-		SDL_Rect r;
-		r.x = spriteIndex * rect.w;
-		r.y = 0;
-		r.w = rect.w;
-		r.h = rect.h;
-
-		SDL_RenderCopyEx(renderer, sprite->GetTexture(), &r, &this->rect, this->rotationAngle, NULL, SDL_FLIP_NONE);
-	}
-	else
-		SDL_RenderCopyEx(renderer, sprite->GetTexture(), NULL, &this->rect, this->rotationAngle, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, sprite->GetTexture(), NULL, &this->rect, this->rotationAngle, NULL, SDL_FLIP_NONE);
 }
 
 bool JN_Gameobject::Collide(SDL_Rect collider)
@@ -67,4 +55,9 @@ void JN_Gameobject::Resize(int x, int y)
 {
 	rect.x += x;
 	rect.y += y;
+}
+
+SDL_Texture* JN_Gameobject::GetTexture()
+{
+	return sprite->GetTexture();
 }

@@ -16,7 +16,7 @@ void JN_Projectile::Init(JN_Gameobject::Tag tag, SDL_Renderer *renderer, JN_Logg
 	this->logObj = logObj;
 	this->windowData = windowData;
 
-	JN_Gameobject::Init(tag, renderer, SDL_Rect(), logObj, 1);
+	JN_Gameobject::Init(tag, renderer, SDL_Rect(), logObj);
 
 	rect.w = PROJECTILE_WIDTH;
 	rect.h = PROJECTILE_HEIGHT;

@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\DataStructures">
-      <UniqueIdentifier>{c82c7809-cf9b-4a2c-b24a-d9a1c043a597}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\DataStructures">
-      <UniqueIdentifier>{1fab4d40-c280-4b6a-aa27-e6d38129d521}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JN_GameWorld.h">
@@ -57,15 +51,6 @@
     <ClInclude Include="JN_Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="JN_Vector2.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="JN_Queue.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="JN_SpriteData.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
     <ClInclude Include="JN_Text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -76,6 +61,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="JN_GameplayTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_Queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_SpriteData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_Vector2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_AnimationController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_AnimationData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -119,16 +119,19 @@
     <ClCompile Include="JN_Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JN_WindowData.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClCompile>
-    <ClCompile Include="JN_Queue.cpp">
-      <Filter>Source Files\DataStructures</Filter>
-    </ClCompile>
     <ClCompile Include="JN_Text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JN_PerformanceTimer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_WindowData.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_Queue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_AnimationController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

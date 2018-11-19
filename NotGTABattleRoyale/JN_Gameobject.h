@@ -36,7 +36,7 @@ public:
 	SDL_Rect rect;
 	float rotationAngle = 0.0f;
 
-	void virtual Init(Tag tag, SDL_Renderer *renderer, SDL_Rect rect, JN_Logging *logObj, int totalSprites);	// Init the sprite
+	void virtual Init(Tag tag, SDL_Renderer *renderer, SDL_Rect rect, JN_Logging *logObj);	// Init the sprite
 
 
 	///<summary>Renders the sprite to the screen</summary>
@@ -47,20 +47,12 @@ public:
 	///<summary>Relocates the object based on the params</summary>
 	///<param name = "x">X offset which will be added ot rect.x</param>
 	///<param name = "y">Y offset which will be added ot rect.y</param>
-	void Resize(int x, int y);
+	void virtual Resize(int x, int y);
+
+	SDL_Texture* GetTexture();
 
 protected:
-	int spriteIndex = 0;
-
 	JN_Logging *logObj = NULL;
-
-	// Delays
-	float spriteChangeDelay = 250;
-
-	int totalSprites;
-
-	// Delay timers
-	float lastSpriteChange  = (float)SDL_GetTicks();
 
 
 	///<summary>Checks if two rects are colliding</summary>
