@@ -30,11 +30,12 @@ void JN_Sprite::Init(JN_Gameobject::Tag tag, SDL_Renderer *renderer)
 	if (assetsDataMap[tag]->surface == NULL)
 		assetsDataMap[tag]->surface = LoadMedia(tag);
 
+	this->surface = assetsDataMap[tag]->surface;
+
 	if (assetsDataMap[tag]->texture == NULL)
 		assetsDataMap[tag]->texture = Surface2Texture(renderer);
 
-	this->surface = assetsDataMap[tag]->surface;
-	this->texture = Surface2Texture(renderer);
+	this->texture = assetsDataMap[tag]->texture;
 }
 
 
