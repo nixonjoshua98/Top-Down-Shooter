@@ -2,15 +2,9 @@
 #define JN_GAMEOBJECT_H
 
 #include "JN_Logging.h"	
-#include "JN_SpriteData.h"
+#include "JN_Asset.h"
 
 #include <map>
-
-
-// Forward declarations (They now have to be a pointer)
-class JN_Sprite;
-
-
 
 class JN_Gameobject
 {
@@ -22,21 +16,25 @@ public:
 	///<summary>De-constructor</summary>
 	~JN_Gameobject();
 
+	static JN_Asset tileSheet;
+	static JN_Asset playerProjectile;
+	static JN_Asset playerSpriteSheet;
+
+	SDL_Rect MOVEMENT_DEBUFF_TILE_RECT	= SDL_Rect{ 0,  0, 64, 64 };
+	SDL_Rect EMPTY_TILE_RECT			= SDL_Rect{ 64, 0, 64, 64 };
+	SDL_Rect DAMAGE_TILE_RECT			= SDL_Rect{ 128, 0, 64, 64 };
+
+	static const int TOTAL_TILES = 3;
 
 	// Possible game object types
 	enum class Tag { MOVEMENT_DEBUFF, EMPTY, PLAYER, PLAYER_PROJECTILE, DAMAGE };
-
-
-	// Declaration can be found at the top of JN_Gameobject.cpp
-	static std::map<char, Tag> charToTagMap;	// Char (text file) to tag
-
-	JN_Sprite *sprite = NULL;
 
 	Tag tag;
 	SDL_Rect rect;
 	float rotationAngle = 0.0f;
 
-	void virtual Init(Tag tag, SDL_Renderer *renderer, SDL_Rect rect, JN_Logging *logObj);	// Init the sprite
+	void Init(Tag tag, SDL_Texture* texture, SDL_Rect rect, JN_Logging *logObj);
+	void Init(Tag tag, SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect dstRect, JN_Logging* logObj);
 
 
 	///<summary>Renders the sprite to the screen</summary>
@@ -49,9 +47,14 @@ public:
 	///<param name = "y">Y offset which will be added ot rect.y</param>
 	void virtual Resize(int x, int y);
 
+
 	SDL_Texture* GetTexture();
 
 protected:
+	SDL_Rect srcRect;
+
+	SDL_Surface *surface = NULL;	// Not sure why i need the surface but if i do not, the projectiles don;t move for some reason
+	SDL_Texture *texture = NULL;	// ...
 	JN_Logging *logObj = NULL;
 
 

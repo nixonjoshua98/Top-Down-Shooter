@@ -11,15 +11,15 @@ JN_Projectile::~JN_Projectile()
 	windowData = NULL;
 }
 
-void JN_Projectile::Init(JN_Gameobject::Tag tag, SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData)
+void JN_Projectile::Init(JN_Gameobject::Tag tag, JN_Logging *logObj, JN_WindowData *windowData)
 {
 	this->logObj = logObj;
 	this->windowData = windowData;
 
-	JN_Gameobject::Init(tag, renderer, SDL_Rect(), logObj);
-
 	rect.w = PROJECTILE_WIDTH;
 	rect.h = PROJECTILE_HEIGHT;
+
+	JN_Gameobject::Init(tag, JN_Gameobject::playerProjectile.GetTexture(), rect, logObj);
 }
 
 void JN_Projectile::SetTarget(SDL_Rect sourceRect, SDL_Rect targetRect)
@@ -31,6 +31,8 @@ void JN_Projectile::SetTarget(SDL_Rect sourceRect, SDL_Rect targetRect)
 
 	rect.x = this->sourceRect.x;
 	rect.y = this->sourceRect.y;
+
+	rotationAngle = (float)(atan2((targetRect.y - 2) - sourceRect.y, (targetRect.x - 2) - sourceRect.x) * 180.0f / 3.14159);
 }
 
 void JN_Projectile::Update()

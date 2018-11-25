@@ -4,28 +4,23 @@
 #include "JN_Logging.h"
 #include "JN_RealTimer.h"
 
+#include "JN_ReadWriteFunctions.h"
+
 #include <iostream>
 #include <SDL_ttf.h>
-#include <fstream>
 #include <string>
 #include <math.h>
 
 // Default constructor
 JN_GameWorld::JN_GameWorld()
 {
-	logObj = new JN_Logging();
-	windowData = new JN_WindowData(0, 0, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
-
-	LoadWorldFile();
+	logObj = new JN_Logging();	// THIS HAS TO STAY IN THE CONSTRUCTOR
 }
 
 
 // Deconstructor (De-allocates memory)
 JN_GameWorld::~JN_GameWorld()
 {
-	logObj->Log();
-
-
 	for (int i = 0; i < (int)allTiles.size(); i++)
 	{
 		// Delete the tile from memory
@@ -39,6 +34,8 @@ JN_GameWorld::~JN_GameWorld()
 		if (i < (int)emptyTiles.size())
 			emptyTiles[i] = NULL;
 	}
+
+	logObj->Log();
 
 	// Stop logging and remove pointers
 	delete logObj;
@@ -63,7 +60,9 @@ bool JN_GameWorld::Init()
 	bool success = (SDL_Init(SDL_INIT_EVERYTHING) == 0) && (TTF_Init() == 0);	// Init SDL n TTF
 
 	if (success) {
-		window = SDL_CreateWindow("Joshua Nixon, Games Computing (BSc), 16632283 | Not GTA Battle Royale", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+		window = SDL_CreateWindow("Joshua Nixon, Games Computing (BSc), 16632283 | Not GTA Battle Royale", 
+			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
+			MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
 		if (window == NULL)
 		{
@@ -73,18 +72,37 @@ bool JN_GameWorld::Init()
 		else
 		{
 			logObj->LogMethod("SDL window initialized correctly");
-
 			renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED);
-
 			logObj->LogMethod("SDL renderer initialized correctly");
 
-			SDL_SetWindowMinimumSize(window, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
-			
-			BuildWorld();
+			Setup();
 		}
 	}
 
 	return success;
+}
+
+
+void JN_GameWorld::Setup()
+{
+	timerText = new JN_Text();
+	performanceTimer = JN_PerformanceTimer(FPS);
+	gameplayTimer = JN_GameplayTimer();
+	windowData = new JN_WindowData(0, 0, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
+
+	SDL_SetWindowMinimumSize(window, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
+
+	bool worldLoaded = ReadTextFile("Data/World.txt", charWorldArr, LEVEL_SIZE);
+
+	if (worldLoaded)
+		logObj->LogMethod("World text file was read OK");
+	else
+	{
+		logObj->LogMethod("World text file failed to be read so a random map was generated");
+		CreateRandomWorldMap();
+	}
+
+	BuildWorld();
 }
 
 
@@ -93,9 +111,9 @@ void JN_GameWorld::Run()
 {
 	while (running && !timerComplete)
 	{
-		timer.Tick();	// Must be at the start of the loop
+		performanceTimer.Tick();	// Must be at the start of the loop
 
-		logObj->LogPerformance(timer.GetFrameCount(), timer.GetFPS(), timer.GetAimFPS());
+		logObj->LogPerformance(performanceTimer.GetFrameCount(), performanceTimer.GetFPS(), FPS);
 
 		Input();
 
@@ -107,8 +125,8 @@ void JN_GameWorld::Run()
 
 		Render();
 
-		logObj->Log();	// Appends the log queue to console and file
-		timer.Wait();	// Waits for the needed time to match the FPS aim
+		logObj->Log();				// Appends the log queue to console and file
+		performanceTimer.Wait();	// Waits for the needed time to match the FPS aim
 	}
 
 	logObj->LogMethod("Game loop exited");
@@ -170,7 +188,9 @@ void JN_GameWorld::Render()
 	JN_RealTimer t = JN_RealTimer();
 
 	for (int i = 0; i < (int)allTiles.size(); i++)
+	{
 		allTiles[i]->Render(renderer);
+	}
 
 	logObj->LogTimeSpan("World tiles finished rendering", t.Tick());
 
@@ -180,8 +200,7 @@ void JN_GameWorld::Render()
 
 	logObj->LogTimeSpan("Player finished rendering", t.Tick());
 
-	std::string timerTextText = std::to_string(60 - (int)gameDuration / 1000);
-	timerText->Render(renderer, timerTextText);
+	timerText->Render(renderer, std::to_string(60 - (int)gameDuration / 1000));
 
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);	// Set background color
 	SDL_RenderPresent(renderer);					// Flip the render
@@ -212,61 +231,22 @@ void JN_GameWorld::LateUpdate()
 }
 
 
-// Loads in the world text file or randomly creates the world
-void JN_GameWorld::LoadWorldFile()
+void JN_GameWorld::CreateRandomWorldMap()
 {
-	std::ifstream f("Data/World.txt");
-
-	JN_RealTimer t = JN_RealTimer();
-
-	if (!f.is_open())
-	{
-		logObj->LogMethod("World text file failed to be read");
-
-		for (int i = 0; i < LEVEL_SIZE; i++)
-		{
-			char c = (char)(rand() % JN_Gameobject::charToTagMap.size()) +  '0';
-			charWorldArray[i] = c;
-		}
-	}
-	else
-	{
-		std::string line;
-		int i = 0;
-
-		while (std::getline(f, line))
-		{
-			for (char cell : line)
-			{
-				if (i + 1 > LEVEL_SIZE) // gut feeling > instead of >=
-					break;
-
-				charWorldArray[i++] = cell;
-			}
-
-			if (i + 1 > LEVEL_SIZE)
-				break;
-		}
-
-		f.close();
-	}
-
-	logObj->LogTimeSpan("World representation created", t.Tick());
+	for (int i = 0; i < LEVEL_SIZE; i++)
+		charWorldArr[i] = (char)(rand() % JN_Gameobject::TOTAL_TILES) + '0';
 }
 
 
 // Builds the world based on the char array
 void JN_GameWorld::BuildWorld()
 {
-	auto t = JN_RealTimer();
-	timerText = new JN_Text();
-	timer = JN_PerformanceTimer(FPS);
-	gameplayTimer = JN_GameplayTimer();
+	JN_Gameobject::tileSheet.Init(renderer, "Assets/TileSheet.bmp", false, logObj);
+	JN_Gameobject::playerProjectile.Init(renderer, "Assets/PlayerProjectile.bmp", true, logObj);
+	JN_Gameobject::playerSpriteSheet.Init(renderer, "Assets/PlayerSpriteSheet.bmp", true, logObj);
 
 	player.Init(renderer, logObj, windowData);
 	timerText->Init((WORLD_WIDTH / 2) - 25, 10, 50, 50, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-
-	logObj->LogTimeSpan("Player initialized", t.Tick());
 
 	JN_Gameobject *s;
 	SDL_Rect r;
@@ -274,7 +254,7 @@ void JN_GameWorld::BuildWorld()
 	r.w = CELL_WIDTH;
 	r.h = CELL_HEIGHT;
 
-	t = JN_RealTimer();
+	JN_RealTimer t = JN_RealTimer();
 
 	for (int i = 0; i < LEVEL_HEIGHT; i++)
 	{
@@ -285,16 +265,26 @@ void JN_GameWorld::BuildWorld()
 			r.x = j * CELL_WIDTH;
 			r.y = i * CELL_HEIGHT;
 
-			JN_Gameobject::Tag tag = JN_Gameobject::charToTagMap[charWorldArray[(i * LEVEL_WIDTH) + j]];
+			switch (charWorldArr[(i * LEVEL_WIDTH) + j])
+			{
+			default:
+				s->Init(JN_Gameobject::Tag::EMPTY, JN_Gameobject::tileSheet.GetTexture(), r, s->EMPTY_TILE_RECT, logObj);
+				emptyTiles.push_back(s);
+				break;
 
-			s->Init(tag, renderer, r, logObj);
+			case '1':
+				s->Init(JN_Gameobject::Tag::MOVEMENT_DEBUFF, JN_Gameobject::tileSheet.GetTexture(), r, s->MOVEMENT_DEBUFF_TILE_RECT, logObj);
+				collisionTiles.push_back(s);
+				break;
+
+			case '2':
+				s->Init(JN_Gameobject::Tag::DAMAGE, JN_Gameobject::tileSheet.GetTexture(), r, s->DAMAGE_TILE_RECT, logObj);
+				collisionTiles.push_back(s);
+				break;
+
+			}
 
 			allTiles.push_back(s);
-
-			if (tag == JN_Gameobject::Tag::EMPTY)
-				emptyTiles.push_back(s);
-			else
-				collisionTiles.push_back(s);
 		}
 	}
 

@@ -84,16 +84,13 @@ private:
 		{ Tag::MOVEMENT_DEBUFF, false }
 	};
 
-
 	SDL_Rect newRect = SDL_Rect();	// Temp rect used during collision detection
-
 
 	float lastMovementTime = 0;		// Movement delay timer
 	float lastShootTime = 0;		// Shoot timer
 	float lastDmgFromTile = 0;		// ...
 
-
-									///<summary>Moves the player based on the input</summary>
+	///<summary>Moves the player based on the input</summary>
 	void Move();
 
 

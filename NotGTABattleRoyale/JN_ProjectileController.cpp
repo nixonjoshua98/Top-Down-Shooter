@@ -37,7 +37,7 @@ JN_ProjectileController::~JN_ProjectileController()
 }
 
 
-void JN_ProjectileController::CreateInitialProjectiles(SDL_Renderer *renderer)
+void JN_ProjectileController::CreateInitialProjectiles()
 {
 	JN_Projectile *p;
 
@@ -47,7 +47,7 @@ void JN_ProjectileController::CreateInitialProjectiles(SDL_Renderer *renderer)
 	{
 		p = new JN_Projectile();
 
-		p->Init(tag, renderer, logObj, windowData);
+		p->Init(tag, logObj, windowData);
 		projectiles.push_back(p);
 	}
 

@@ -39,7 +39,7 @@ void JN_Logging::Log(bool logOverride)
 		if (t == "0")
 			continue;
 
-		std::cout << t << "\n";
+		//std::cout << t << "\n";
 		f << t << "\n";
 	}
 

@@ -27,7 +27,7 @@
 									input									MISSING GAMEPAD ONLY
 									collision								PLAYER COMPLETE ONLY
 				2:2:	Seperate render/game-loop/input methods in console	ONGOING
-				2:1:	Game score is shown on screen
+				2:1:	Game score + health is shown on screen
 				1st:	Log file											COMPLETE
 
 	Window features (Row 3):

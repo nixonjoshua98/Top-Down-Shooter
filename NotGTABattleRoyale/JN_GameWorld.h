@@ -56,10 +56,10 @@ private:
 	bool gamePaused = false;	// ...
 	bool timerComplete = false;	// ...
 
-	JN_PerformanceTimer timer;			// Timer class which stores FPS
-	JN_Player player = JN_Player();		// Player object, the user will control this objects
-	JN_Text *timerText = NULL;			// 60 seconds timer text
-	JN_GameplayTimer gameplayTimer;		// gameplay timer (60secs)
+	JN_PerformanceTimer performanceTimer;	// Timer class which stores FPS
+	JN_Player player = JN_Player();			// Player object, the user will control this objects
+	JN_Text *timerText = NULL;				// 60 seconds timer text
+	JN_GameplayTimer gameplayTimer;			// gameplay timer (60secs)
 
 	std::vector<JN_Gameobject*> emptyTiles = {};		// Vector which stores all of the tiles which will not need to be taken into accord during collision detection
 	std::vector<JN_Gameobject*> collisionTiles = {};	// Tiles which the player (or other objects) can collide with
@@ -68,8 +68,10 @@ private:
 	SDL_Window *window = NULL;							// Pointer to the game window
 	SDL_Renderer *renderer = NULL;						// Pointer to the renderer which the entire game will use
 
-	char charWorldArray[LEVEL_SIZE];	// Used when loading in the world text file
+	char charWorldArr[LEVEL_SIZE];	// Used when loading in the world text file
 	float gameDuration = 0.0f;
+
+	void Setup();
 
 
 	///<summary>Calls .Update() on all needed objects</summary>
@@ -87,9 +89,7 @@ private:
 	///<summary>Calls .Input() on all needed objects</summary>
 	void Input();
 
-
-	///<summary>Loads the world text file into an array</summary>
-	void LoadWorldFile();
+	void CreateRandomWorldMap();
 
 
 	///<summary>Creates the world based on the loaded in text file </summary>

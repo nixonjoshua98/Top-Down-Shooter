@@ -1,18 +1,15 @@
 #include "stdafx.h"
 
-#include "JN_Sprite.h"
-#include "JN_Gameobject.h"
+#include "JN_GameObject.h"
 #include "JN_RealTimer.h"
 #include "JN_Logging.h"
 
 #include <iostream>
 #include <SDL.h>
 
-std::map<char, JN_Gameobject::Tag> JN_Gameobject::charToTagMap = {
-	{'0', Tag::EMPTY},
-	{'1', Tag::MOVEMENT_DEBUFF },
-	{'2', Tag::DAMAGE },
-};
+JN_Asset JN_Gameobject::tileSheet = JN_Asset();
+JN_Asset JN_Gameobject::playerProjectile = JN_Asset();
+JN_Asset JN_Gameobject::playerSpriteSheet = JN_Asset();
 
 
 JN_Gameobject::JN_Gameobject()
@@ -23,25 +20,43 @@ JN_Gameobject::JN_Gameobject()
 
 JN_Gameobject::~JN_Gameobject()
 {
-	delete sprite;
+	JN_Gameobject::tileSheet.Cleanup();
+	JN_Gameobject::playerProjectile.Cleanup();
+	JN_Gameobject::playerSpriteSheet.Cleanup();
+
+	texture = NULL;
+	surface = NULL;
 }
 
 
-void JN_Gameobject::Init(Tag tag, SDL_Renderer *renderer, SDL_Rect rect,  JN_Logging *logObj)
+// Whole images
+void JN_Gameobject::Init(Tag tag, SDL_Texture* texture, SDL_Rect rect, JN_Logging *logObj)
 {
-	sprite = new JN_Sprite();
-
-	sprite->Init(tag, renderer);
-
-	this->logObj = logObj;
 	this->tag = tag;
 	this->rect = rect;
+	this->logObj = logObj;
+	this->texture = texture;
+
+	SDL_QueryTexture(texture, NULL, NULL, &srcRect.w, &srcRect.h);
 }
+
+
+// Tile from the TileSheet
+void JN_Gameobject::Init(Tag tag, SDL_Texture* texture, SDL_Rect dstRect, SDL_Rect srcRect, JN_Logging* logObj)
+{
+	this->tag = tag;
+	this->rect = dstRect;
+	this->logObj = logObj;
+	this->texture = texture;
+	this->srcRect = srcRect;
+}
+
 
 void JN_Gameobject::Render(SDL_Renderer *renderer)
 {
-	SDL_RenderCopyEx(renderer, sprite->GetTexture(), NULL, &this->rect, this->rotationAngle, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, GetTexture(), &srcRect, &rect, rotationAngle, NULL, SDL_FLIP_NONE);
 }
+
 
 bool JN_Gameobject::Collide(SDL_Rect collider)
 {
@@ -51,6 +66,7 @@ bool JN_Gameobject::Collide(SDL_Rect collider)
 	return !(bottomA <= topB || topA >= bottomB || rightA <= leftB || leftA >= rightB);
 }
 
+
 void JN_Gameobject::Resize(int x, int y)
 {
 	rect.x += x;
@@ -59,5 +75,5 @@ void JN_Gameobject::Resize(int x, int y)
 
 SDL_Texture* JN_Gameobject::GetTexture()
 {
-	return sprite->GetTexture();
+	return texture;
 }

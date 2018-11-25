@@ -25,15 +25,15 @@ JN_Player::~JN_Player()
 // Initilizes the player
 void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData)
 {
-	JN_Gameobject::Init(Tag::PLAYER, renderer, rect, logObj);	// Calls the base class constructor
+	JN_Gameobject::Init(Tag::PLAYER, JN_Gameobject::playerSpriteSheet.GetTexture(), rect, logObj);
 
 	JN_RealTimer t = JN_RealTimer();
-
 	damageTileTimer = JN_RealTimer();
 
 	this->logObj = logObj;
 	this->windowData = windowData;
 
+	// Init objects
 	projectileController.Init(Tag::PLAYER_PROJECTILE, 15, logObj, windowData);
 	health.Init(100, logObj);
 	controls.Init(logObj);
@@ -43,15 +43,10 @@ void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *
 	animController.Add(JN_AnimationController::Animation::IDLE, 0, PLAYER_WIDTH, PLAYER_HEIGHT, 1);
 	animController.Add(JN_AnimationController::Animation::MOVING, 1, PLAYER_WIDTH, PLAYER_HEIGHT, 2);
 
-	rect.w = PLAYER_WIDTH;
-	rect.h = PLAYER_HEIGHT;
-	rect.x = rect.w;
-	rect.y = rect.h;
+	rect = SDL_Rect{ PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT };
+	newRect = rect;
 
-	newRect.w = rect.w;
-	newRect.h = rect.h;
-
-	projectileController.CreateInitialProjectiles(renderer);
+	projectileController.CreateInitialProjectiles();
 	animController.Set(JN_AnimationController::Animation::IDLE);
 
 	logObj->LogTimeSpan("Player initilized", t.Tick());

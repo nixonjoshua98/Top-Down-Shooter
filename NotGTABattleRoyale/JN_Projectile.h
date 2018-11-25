@@ -20,7 +20,7 @@ public:
 	bool visible = false;
 	JN_Vector2 vector2;
 
-	void Init(JN_Gameobject::Tag tag, SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData);
+	void Init(JN_Gameobject::Tag tag, JN_Logging *logObj, JN_WindowData *windowData);
 	void Update();
 	bool OutOfBounds();
 	void Render(SDL_Renderer *renderer);

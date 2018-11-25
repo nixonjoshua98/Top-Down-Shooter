@@ -17,6 +17,26 @@ JN_PerformanceTimer::JN_PerformanceTimer(int fps)
 	this->FPS = fps;
 }
 
+
+int JN_PerformanceTimer::GetFrameCount()
+{
+	return frameCount;
+}
+
+
+int JN_PerformanceTimer::GetFPS()
+{
+	return actualFPS;
+}
+
+
+std::tm* JN_PerformanceTimer::GetTime()
+{
+	time_t t = std::time(0);
+	return std::localtime(&t);
+}
+
+
 void JN_PerformanceTimer::Tick()
 {
 	JN_PerformanceTimer::frameCount++;
@@ -29,6 +49,6 @@ void JN_PerformanceTimer::Wait()
 {
 	int nowTicks = SDL_GetTicks();
 
-	if ((1000 / this->FPS) > (nowTicks - startTicks))
-		SDL_Delay((1000 / this->FPS) - (nowTicks - startTicks));
+	if ((1000 / FPS) > (nowTicks - startTicks))
+		SDL_Delay((1000 / FPS) - (nowTicks - startTicks));
 }

@@ -18,9 +18,6 @@
     <ClInclude Include="JN_GameWorld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="JN_Gameobject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="JN_ProjectileController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,9 +45,6 @@
     <ClInclude Include="JN_RealTimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="JN_Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="JN_Text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -66,9 +60,6 @@
     <ClInclude Include="JN_Queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="JN_SpriteData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="JN_Vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -78,15 +69,21 @@
     <ClInclude Include="JN_AnimationData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JN_ReadWriteFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_Asset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JN_GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JN_Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JN_GameWorld.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JN_Gameobject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JN_HealthController.cpp">
@@ -116,9 +113,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JN_Sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="JN_Text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -132,6 +126,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JN_AnimationController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_ReadWriteFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JN_GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
