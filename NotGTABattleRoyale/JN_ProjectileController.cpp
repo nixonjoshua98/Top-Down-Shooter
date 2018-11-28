@@ -14,7 +14,7 @@ JN_ProjectileController::JN_ProjectileController()
 
 
 // Init the controller
-void JN_ProjectileController::Init(JN_Gameobject::Tag tag, int maxprojectiles, JN_Logging *logObj, JN_WindowData *windowData)
+void JN_ProjectileController::Init(JN_GameObject::Tag tag, int maxprojectiles, JN_Logging *logObj, JN_WindowData *windowData)
 {
 	this->tag = tag;
 	this->windowData = windowData;

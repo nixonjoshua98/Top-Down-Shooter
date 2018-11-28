@@ -46,3 +46,17 @@ bool ReadTextFile(char* path, char arr[], int length)
 
 	return true;
 }
+
+bool ReadControlFile(char* path)
+{
+	std::ifstream f(path);
+
+	if (!f.is_open())
+		return false;
+
+
+
+	f.close();
+
+	return true;
+}

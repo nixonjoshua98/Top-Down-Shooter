@@ -6,10 +6,10 @@
 #include "JN_Logging.h"
 #include "JN_Vector2.h"
 #include "JN_WindowData.h"
-#include "JN_Gameobject.h"
+#include "JN_GameObject.h"
 
 
-class JN_Projectile : public JN_Gameobject
+class JN_Projectile : public JN_GameObject
 {
 public:
 	~JN_Projectile();
@@ -20,7 +20,7 @@ public:
 	bool visible = false;
 	JN_Vector2 vector2;
 
-	void Init(JN_Gameobject::Tag tag, JN_Logging *logObj, JN_WindowData *windowData);
+	void Init(JN_GameObject::Tag tag, JN_Logging *logObj, JN_WindowData *windowData);
 	void Update();
 	bool OutOfBounds();
 	void Render(SDL_Renderer *renderer);
@@ -28,10 +28,10 @@ public:
 	void SetTarget(SDL_Rect sourceRect, SDL_Rect targetRect);
 
 private:
-	static const int PROJECTILE_WIDTH  = 25;
-	static const int PROJECTILE_HEIGHT = 25;
+	static const int PROJECTILE_WIDTH  = 15;
+	static const int PROJECTILE_HEIGHT = 15;
 
-	float speedMultiplier = 15.0f;
+	float speedMultiplier = 10.0f;
 
 	JN_Logging *logObj = NULL;
 	JN_WindowData *windowData = NULL;

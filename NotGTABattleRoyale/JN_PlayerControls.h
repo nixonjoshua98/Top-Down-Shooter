@@ -15,8 +15,8 @@ public:
 	JN_PlayerControls();
 
 
-	enum class ControlAction { LEFT, RIGHT, UP, DOWN, NONE, SHOOT };	// Enum which stores all player input actions
-	enum class InputDevice { KEYBOARD, MOUSE };							// Input types
+	enum class ControlAction { LEFT, RIGHT, UP, DOWN, NONE, SHOOT, SPEED_UP, SPEED_DOWN };	// Enum which stores all player input actions
+	enum class InputDevice { KEYBOARD, MOUSE };												// Input types
 
 
 	///<summary>Init the controls and the logging</summary>

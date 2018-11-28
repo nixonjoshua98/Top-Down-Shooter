@@ -7,12 +7,6 @@
 #include <iostream>
 
 /*
-	Sprite - Gameobject forward declarions
-	Resize - increase memory
-	BuildWorld - why doesn't error occur
-*/
-
-/*
 	1:	Toggle fullscreen
 	2:	Toggle logging
 	ESC:	Pause game
@@ -22,25 +16,25 @@
 	Logging and performance (Row 2):
 				PASS:	Log to console
 									Performance								COMPLETE
-									method times							ONGOING
-									init details							ONGOING
-									input									MISSING GAMEPAD ONLY
-									collision								PLAYER COMPLETE ONLY
-				2:2:	Seperate render/game-loop/input methods in console	ONGOING
-				2:1:	Game score + health is shown on screen
+									method times							COMPLETE
+									init details							COMPLETE
+									input									COMPLETE
+									collision								COMPLETE
+				2:2:	Seperate render/game-loop/input methods in console	COMPLETE
+				2:1:	Game score + health is shown on screen				COMPLETE
 				1st:	Log file											COMPLETE
 
 	Window features (Row 3):
 				PASS:	Title contains name, module, ID and game name		COMPLETE
 				2:2:	Window can be resized and moved						COMPLETE						
-				2:1:	Made full screen									COMPLETE (Buggy)
-				1st:	Correct aspect ratio maintained						COMPLETE (???)
+				2:1:	Made full screen									COMPLETE
+				1st:	Correct aspect ratio maintained						COMPLETE
 
 	Sprites (Row 4):
 				PASS:	One sprite on screen								COMPLETE
-				2:2:	Multiple moving sprites
+				2:2:	Multiple moving sprites								COMPLETE
 				2:1:	Transparent sprites									COMPLETE
-				1st:	Animation
+				1st:	Animation											COMPLETE
 
 	Movement, physics, collisions (Row 5):
 				PASS:	Players + NPC move around world
@@ -52,7 +46,7 @@
 				PASS:	Player can be controlled with 1 button				COMPLETE
 				2:2:	Multiple buttons, multiple directions				COMPLETE
 				2:1:	Combine actions via keyboard or gamepad				COMPLETE
-				1st:	Speed control + gamepad support
+				1st:	Speed control + gamepad support						NEED GAMEPAD SUPPORT
 
 	Extra features (Row 9):
 				PASS:	60 seconds timer									COMPLETE

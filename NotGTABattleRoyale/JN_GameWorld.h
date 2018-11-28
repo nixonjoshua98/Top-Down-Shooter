@@ -4,12 +4,13 @@
 #include <SDL.h>
 #include <vector>
 
-#include "JN_Player.h"
 #include "JN_PerformanceTimer.h"
-#include "JN_Gameobject.h"
-#include "JN_Logging.h"
 #include "JN_GameplayTimer.h"
+#include "JN_GameObject.h"
 #include "JN_WindowData.h"
+#include "JN_Logging.h"
+#include "JN_Player.h"
+#include "JN_Enemy.h"
 #include "JN_Text.h"
 
 
@@ -38,7 +39,6 @@ public:
 	static const int LOG_TOGGLE_KEY = SDL_SCANCODE_2;					// ...
 	static const int PAUSE_GAME_KEY = SDL_SCANCODE_ESCAPE;				// ...
 
-
 	// Used or resizing objects, used as a pointer so the window height and width is always accurate
 	JN_WindowData *windowData = NULL;
 
@@ -57,19 +57,26 @@ private:
 	bool timerComplete = false;	// ...
 
 	JN_PerformanceTimer performanceTimer;	// Timer class which stores FPS
-	JN_Player player = JN_Player();			// Player object, the user will control this objects
+	JN_Player *player = NULL;				// Player object, the user will control this objects
 	JN_Text *timerText = NULL;				// 60 seconds timer text
+	JN_Text *scoreText = NULL;
+	JN_Text *healthText = NULL;
 	JN_GameplayTimer gameplayTimer;			// gameplay timer (60secs)
 
-	std::vector<JN_Gameobject*> emptyTiles = {};		// Vector which stores all of the tiles which will not need to be taken into accord during collision detection
-	std::vector<JN_Gameobject*> collisionTiles = {};	// Tiles which the player (or other objects) can collide with
-	std::vector<JN_Gameobject*> allTiles = {};			// Vector of pointers to ALL world tiles
+	std::vector<JN_GameObject*> emptyTiles = {};		// Vector which stores all of the tiles which will not need to be taken into accord during collision detection
+	std::vector<JN_GameObject*> collisionTiles = {};	// Tiles which the player (or other objects) can collide with
+	std::vector<JN_GameObject*> allTiles = {};			// Vector of pointers to ALL world tiles
+	std::vector<JN_Enemy*> enemies = {};				// Vector to store all of the enemies in the world
 	JN_Logging *logObj = NULL;							// Object used to log to console and file
 	SDL_Window *window = NULL;							// Pointer to the game window
 	SDL_Renderer *renderer = NULL;						// Pointer to the renderer which the entire game will use
 
+	int enemiesSpawned = 0;
+
 	char charWorldArr[LEVEL_SIZE];	// Used when loading in the world text file
+
 	float gameDuration = 0.0f;
+	float lastEnemySpawn = 0.0f;
 
 	void Setup();
 
@@ -106,6 +113,10 @@ private:
 
 	///<summary>Pause the game</summary>
 	void TogglePauseGame();
+
+
+
+	void SpawnEnemy();
 };
 
 #endif // !JN_GAME_WORLD_H

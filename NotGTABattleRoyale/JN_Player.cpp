@@ -25,7 +25,7 @@ JN_Player::~JN_Player()
 // Initilizes the player
 void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData)
 {
-	JN_Gameobject::Init(Tag::PLAYER, JN_Gameobject::playerSpriteSheet.GetTexture(), rect, logObj);
+	JN_GameObject::Init(Tag::PLAYER, JN_GameObject::playerSpriteSheet.GetTexture(), rect, logObj);
 
 	JN_RealTimer t = JN_RealTimer();
 	damageTileTimer = JN_RealTimer();
@@ -43,7 +43,7 @@ void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *
 	animController.Add(JN_AnimationController::Animation::IDLE, 0, PLAYER_WIDTH, PLAYER_HEIGHT, 1);
 	animController.Add(JN_AnimationController::Animation::MOVING, 1, PLAYER_WIDTH, PLAYER_HEIGHT, 2);
 
-	rect = SDL_Rect{ PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT };
+	rect = SDL_Rect{ 0, 0, PLAYER_WIDTH, PLAYER_HEIGHT };
 	newRect = rect;
 
 	projectileController.CreateInitialProjectiles();
@@ -115,14 +115,14 @@ void JN_Player::Shoot()
 	int x, y;	// Get the mouse position
 	SDL_GetMouseState(&x, &y);
 
-	// Setup the target rect (Take the player coords into account)
+	// Setup the target rect
 	SDL_Rect target = SDL_Rect();
-	target.x = (x - 2) - rect.x;
-	target.y = (y - 2) - rect.y;
+	target.x = (x) - rect.x;
+	target.y = (y) - rect.y;
 
 	SDL_Rect sourceRect = SDL_Rect();
-	sourceRect.x = rect.x;
-	sourceRect.y = rect.y;
+	sourceRect.x = rect.x;// +(rect.w / 2);
+	sourceRect.y = rect.y - (rect.h / 2);
 
 	if (projectileController.Shoot(sourceRect, target))
 		lastShootTime = now;
@@ -153,11 +153,10 @@ void JN_Player::Move()
 {
 	float now = (float)SDL_GetTicks();
 
+	isAbleToMove = false;
+
 	if (now - lastMovementTime < MOVEMENT_DELAY)
-	{
-		isAbleToMove = false;
 		return;
-	}
 
 	isAbleToMove = true;
 
@@ -166,7 +165,7 @@ void JN_Player::Move()
 	newRect.x = rect.x;
 	newRect.y = rect.y;
 
-	float movementMultiplier = statusEffects[Tag::MOVEMENT_DEBUFF] ? (1.0f * MOVEMENT_TILE_MULTIPLIER) : 1.0f;
+	float movementMultiplier = (statusEffects[Tag::MOVEMENT_DEBUFF] ? (1.0f * MOVEMENT_TILE_MULTIPLIER) : 1.0f)  * speedControl;
 
 	for (JN_PlayerControls::ControlAction key : controls.GetKeyboardPresses())
 	{
@@ -187,6 +186,15 @@ void JN_Player::Move()
 		case JN_PlayerControls::ControlAction::DOWN:
 			newRect.y += (int)(MOVEMENT_SPEED * movementMultiplier);
 			break;
+
+		case JN_PlayerControls::ControlAction::SPEED_UP:
+			speedControl = (float)fminf(speedControl + 0.15f, 1.0f);
+			break;
+
+		case JN_PlayerControls::ControlAction::SPEED_DOWN:
+			speedControl = (float)fmaxf(speedControl - 0.15f, 0.0f);
+			break;
+
 		}
 	}
 }
@@ -200,7 +208,7 @@ void JN_Player::RotatePlayer()
 }
 
 
-void JN_Player::LateUpdate(std::vector<JN_Gameobject*> tiles)
+void JN_Player::LateUpdate(std::vector<JN_GameObject*> tiles)
 {
 	ConfirmPlayerMovement();
 	UpdateAnimation();
@@ -209,7 +217,7 @@ void JN_Player::LateUpdate(std::vector<JN_Gameobject*> tiles)
 }
 
 
-void JN_Player::ColliderManager(std::vector<JN_Gameobject*> tiles)
+void JN_Player::ColliderManager(std::vector<JN_GameObject*> tiles)
 {
 	ResetBuffs();
 
@@ -224,8 +232,9 @@ void JN_Player::ColliderManager(std::vector<JN_Gameobject*> tiles)
 			break;
 
 		case Tag::DAMAGE:
-			if (damageTileTimer.Tick() > 250)
+			if (damageTileTimer.Tick() >= 250)
 			{
+				damageTileTimer.Reset();
 				logObj->LogMethod("Player collided with fire damage tile");
 				health.TakeDamage(DAMAGE_TILE_AMOUNT);
 			}
@@ -247,8 +256,8 @@ void JN_Player::ConfirmPlayerMovement()
 	isMoving = false;
 
 	// Makes sure that the player is always within the screen boundaries
-	newRect.x = (int)(fmin(windowData->xOffset + JN_GameWorld::MIN_WINDOW_WIDTH - rect.w, fmax(newRect.x, windowData->xOffset)));
-	newRect.y = (int)(fmin(windowData->yOffset + JN_GameWorld::MIN_WINDOW_HEIGHT - rect.h, fmax(newRect.y, windowData->yOffset)));
+	newRect.x = (int)(fmin(windowData->xOffset + JN_GameWorld::MIN_WINDOW_WIDTH - rect.w, fmax(newRect.x, windowData->xOffset + (rect.w / 2))));
+	newRect.y = (int)(fmin(windowData->yOffset + JN_GameWorld::MIN_WINDOW_HEIGHT - rect.h, fmax(newRect.y, windowData->yOffset + (rect.h / 2))));
 
 	if ((newRect.x != rect.x) || (newRect.y != rect.y))
 	{
@@ -258,7 +267,7 @@ void JN_Player::ConfirmPlayerMovement()
 }
 
 
-std::set<JN_Player::Tag> JN_Player::GetColliders(std::vector<JN_Gameobject*> tiles)
+std::set<JN_Player::Tag> JN_Player::GetColliders(std::vector<JN_GameObject*> tiles)
 {
 	std::set<Tag> colliders = {};	// We only care about each type, not quantity
 
@@ -287,9 +296,21 @@ void JN_Player::EmptyInput()
 
 void JN_Player::Resize(int xOffset, int yOffset)
 {
-	JN_Gameobject::Resize(xOffset, yOffset);
+	JN_GameObject::Resize(xOffset, yOffset);
 	projectileController.Resize(xOffset, yOffset);
 
 	newRect.x += xOffset;
 	newRect.y += yOffset;
+}
+
+
+int JN_Player::GetHealth()
+{
+	return health.GetHealth();
+}
+
+
+int JN_Player::GetScore()
+{
+	return score;
 }

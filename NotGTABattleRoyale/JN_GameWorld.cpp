@@ -21,6 +21,17 @@ JN_GameWorld::JN_GameWorld()
 // Deconstructor (De-allocates memory)
 JN_GameWorld::~JN_GameWorld()
 {
+	delete player;
+
+	player = NULL;
+
+	// Remove all enmies from memory
+	for (int i = 0; i < (int)enemies.size(); i++)
+	{
+		delete enemies[i];
+		enemies[i] = NULL;
+	}
+
 	for (int i = 0; i < (int)allTiles.size(); i++)
 	{
 		// Delete the tile from memory
@@ -41,6 +52,8 @@ JN_GameWorld::~JN_GameWorld()
 	delete logObj;
 	delete windowData;
 	delete timerText;
+	delete scoreText;
+	delete healthText;
 
 	// Destroy the window, renderer and stop all SDL subsystems
 	SDL_DestroyWindow(window);
@@ -86,8 +99,11 @@ bool JN_GameWorld::Init()
 void JN_GameWorld::Setup()
 {
 	timerText = new JN_Text();
+	scoreText = new JN_Text();
 	performanceTimer = JN_PerformanceTimer(FPS);
 	gameplayTimer = JN_GameplayTimer();
+	player = new JN_Player();
+	healthText = new JN_Text();
 	windowData = new JN_WindowData(0, 0, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
 
 	SDL_SetWindowMinimumSize(window, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
@@ -102,6 +118,12 @@ void JN_GameWorld::Setup()
 		CreateRandomWorldMap();
 	}
 
+	// Init the assets
+	JN_GameObject::tileSheet.Init(renderer, "Assets/TileSheet.bmp", false, logObj);
+	JN_GameObject::playerProjectile.Init(renderer, "Assets/PlayerProjectile.bmp", true, logObj);
+	JN_GameObject::playerSpriteSheet.Init(renderer, "Assets/PlayerSpriteSheet.bmp", true, logObj);
+	JN_GameObject::scorpionSpriteSheet.Init(renderer, "Assets/ScorpionSpriteSheet.bmp", true, logObj);
+
 	BuildWorld();
 }
 
@@ -109,6 +131,8 @@ void JN_GameWorld::Setup()
 // Game loop
 void JN_GameWorld::Run()
 {
+	SpawnEnemy();
+
 	while (running && !timerComplete)
 	{
 		performanceTimer.Tick();	// Must be at the start of the loop
@@ -119,6 +143,8 @@ void JN_GameWorld::Run()
 
 		if (!gamePaused)
 		{
+			//SpawnEnemy();
+
 			Update();
 			LateUpdate();
 		}
@@ -130,6 +156,27 @@ void JN_GameWorld::Run()
 	}
 
 	logObj->LogMethod("Game loop exited");
+}
+
+
+// Spawn an enemy if timer is finished
+void JN_GameWorld::SpawnEnemy()
+{
+	if ((gameDuration - lastEnemySpawn) >= 500)
+	{
+		lastEnemySpawn = gameDuration;
+
+		JN_Enemy* e = new JN_Enemy();		
+
+		int x = (windowData->xOffset) + (rand() % (windowData->xOffset + WORLD_WIDTH));
+		int y = (windowData->yOffset) + (rand() % (windowData->yOffset + WORLD_HEIGHT));
+
+		e->Init(JN_GameObject::Tag::SCORPION, SDL_Rect{ x,  y}, JN_GameObject::scorpionSpriteSheet.GetTexture(), logObj, windowData);
+
+		enemies.push_back(e);
+
+		logObj->LogMethod("Enemy spawned");
+	}
 }
 
 
@@ -171,7 +218,7 @@ void JN_GameWorld::Input()
 			{
 				// Pass all other input to the player
 				JN_RealTimer t = JN_RealTimer();
-				player.Input(e);
+				player->Input(e);
 				logObj->LogTimeSpan("Player input event check completed", t.Tick());
 				break;
 			}
@@ -188,19 +235,22 @@ void JN_GameWorld::Render()
 	JN_RealTimer t = JN_RealTimer();
 
 	for (int i = 0; i < (int)allTiles.size(); i++)
-	{
 		allTiles[i]->Render(renderer);
-	}
 
 	logObj->LogTimeSpan("World tiles finished rendering", t.Tick());
 
+	for (int i = 0; i < (int)enemies.size(); i++)
+		enemies[i]->Render(renderer);
+
 	t = JN_RealTimer();
 
-	player.Render(renderer);
+	player->Render(renderer);
 
 	logObj->LogTimeSpan("Player finished rendering", t.Tick());
 
 	timerText->Render(renderer, std::to_string(60 - (int)gameDuration / 1000));
+	scoreText->Render(renderer, std::to_string(player->GetScore()));
+	healthText->Render(renderer, std::to_string(player->GetHealth()));
 
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);	// Set background color
 	SDL_RenderPresent(renderer);					// Flip the render
@@ -212,12 +262,14 @@ void JN_GameWorld::Render()
 // Call update on all the objects required
 void JN_GameWorld::Update()
 {
-	gameplayTimer.Tick();
+	gameDuration = gameplayTimer.Tick();
 
-	gameDuration = gameplayTimer.GetDuration();
+	for (int i = 0; i < (int)enemies.size(); i++)
+		enemies[i]->Update(player);
+
 
 	JN_RealTimer t = JN_RealTimer();
-	player.Update();
+	player->Update();
 	logObj->LogTimeSpan("Player update method concluded", t.Tick());
 }
 
@@ -226,7 +278,7 @@ void JN_GameWorld::Update()
 void JN_GameWorld::LateUpdate()
 {
 	JN_RealTimer t = JN_RealTimer();
-	player.LateUpdate(collisionTiles);
+	player->LateUpdate(collisionTiles);
 	logObj->LogTimeSpan("Player late update method concluded", t.Tick());
 }
 
@@ -234,21 +286,19 @@ void JN_GameWorld::LateUpdate()
 void JN_GameWorld::CreateRandomWorldMap()
 {
 	for (int i = 0; i < LEVEL_SIZE; i++)
-		charWorldArr[i] = (char)(rand() % JN_Gameobject::TOTAL_TILES) + '0';
+		charWorldArr[i] = (char)(rand() % JN_GameObject::TOTAL_TILES) + '0';
 }
 
 
 // Builds the world based on the char array
 void JN_GameWorld::BuildWorld()
 {
-	JN_Gameobject::tileSheet.Init(renderer, "Assets/TileSheet.bmp", false, logObj);
-	JN_Gameobject::playerProjectile.Init(renderer, "Assets/PlayerProjectile.bmp", true, logObj);
-	JN_Gameobject::playerSpriteSheet.Init(renderer, "Assets/PlayerSpriteSheet.bmp", true, logObj);
-
-	player.Init(renderer, logObj, windowData);
+	player->Init(renderer, logObj, windowData);
 	timerText->Init((WORLD_WIDTH / 2) - 25, 10, 50, 50, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	scoreText->Init((WORLD_WIDTH * 0.75) - 25, 10, 50, 50, SDL_Color{ 0, 0, 255 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	healthText->Init((WORLD_WIDTH * 0.25) - 25, 10, 50, 50, SDL_Color{ 255, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
-	JN_Gameobject *s;
+	JN_GameObject *s;
 	SDL_Rect r;
 
 	r.w = CELL_WIDTH;
@@ -260,7 +310,7 @@ void JN_GameWorld::BuildWorld()
 	{
 		for (int j = 0; j < LEVEL_WIDTH; j++)
 		{
-			s = new JN_Gameobject();
+			s = new JN_GameObject();
 
 			r.x = j * CELL_WIDTH;
 			r.y = i * CELL_HEIGHT;
@@ -268,20 +318,19 @@ void JN_GameWorld::BuildWorld()
 			switch (charWorldArr[(i * LEVEL_WIDTH) + j])
 			{
 			default:
-				s->Init(JN_Gameobject::Tag::EMPTY, JN_Gameobject::tileSheet.GetTexture(), r, s->EMPTY_TILE_RECT, logObj);
+				s->Init(JN_GameObject::Tag::EMPTY, JN_GameObject::tileSheet.GetTexture(), r, s->EMPTY_TILE_RECT, logObj);
 				emptyTiles.push_back(s);
 				break;
 
 			case '1':
-				s->Init(JN_Gameobject::Tag::MOVEMENT_DEBUFF, JN_Gameobject::tileSheet.GetTexture(), r, s->MOVEMENT_DEBUFF_TILE_RECT, logObj);
+				s->Init(JN_GameObject::Tag::MOVEMENT_DEBUFF, JN_GameObject::tileSheet.GetTexture(), r, s->MOVEMENT_DEBUFF_TILE_RECT, logObj);
 				collisionTiles.push_back(s);
 				break;
 
 			case '2':
-				s->Init(JN_Gameobject::Tag::DAMAGE, JN_Gameobject::tileSheet.GetTexture(), r, s->DAMAGE_TILE_RECT, logObj);
+				s->Init(JN_GameObject::Tag::DAMAGE, JN_GameObject::tileSheet.GetTexture(), r, s->DAMAGE_TILE_RECT, logObj);
 				collisionTiles.push_back(s);
 				break;
-
 			}
 
 			allTiles.push_back(s);
@@ -308,14 +357,19 @@ void JN_GameWorld::ResizeWorld()
 	windowData->xOffset = (wW - MIN_WINDOW_WIDTH) / 2;
 	windowData->yOffset = (wH - MIN_WINDOW_HEIGHT) / 2;;
 
-	player.Resize(xChange, yChange);
+	player->Resize(xChange, yChange);
 	timerText->Move(xChange, yChange);
+	scoreText->Move(xChange, yChange);
+	healthText->Move(xChange, yChange);
 	
 	for (int i = 0; i < LEVEL_HEIGHT; i++)
 	{
 		for (int j = 0; j < LEVEL_WIDTH; j++)
 			allTiles[(i * LEVEL_WIDTH) + j]->Resize(xChange, yChange);
 	}
+
+	for (int i = 0; i < (int)enemies.size(); i++)
+		enemies[i]->Resize(xChange, yChange);
 }
 
 
@@ -332,7 +386,7 @@ void JN_GameWorld::ToggleFullScreen()
 // Toggles pause mode
 void JN_GameWorld::TogglePauseGame()
 {
-	player.EmptyInput();
+	player->EmptyInput();
 
 	if (gamePaused)
 		logObj->LogMethod("Game was unpaused");

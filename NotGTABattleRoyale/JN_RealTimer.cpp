@@ -6,7 +6,7 @@
 // Default constructor
 JN_RealTimer::JN_RealTimer()
 {
-	start = std::chrono::system_clock::now();
+	Reset();
 }
 
 
@@ -17,6 +17,11 @@ float JN_RealTimer::Tick()
 	std::chrono::duration<float, std::milli> span = end - start;
 
 	return span.count();
+}
+
+void JN_RealTimer::Reset()
+{
+	start = std::chrono::system_clock::now();
 }
 
 

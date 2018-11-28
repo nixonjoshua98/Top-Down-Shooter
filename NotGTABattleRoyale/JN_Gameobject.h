@@ -6,28 +6,31 @@
 
 #include <map>
 
-class JN_Gameobject
+class JN_GameObject
 {
 public:
 	///<summary>Default constructor</summary>
-	JN_Gameobject();
+	JN_GameObject();
 
 
 	///<summary>De-constructor</summary>
-	~JN_Gameobject();
+	~JN_GameObject();
 
-	static JN_Asset tileSheet;
-	static JN_Asset playerProjectile;
-	static JN_Asset playerSpriteSheet;
 
-	SDL_Rect MOVEMENT_DEBUFF_TILE_RECT	= SDL_Rect{ 0,  0, 64, 64 };
-	SDL_Rect EMPTY_TILE_RECT			= SDL_Rect{ 64, 0, 64, 64 };
+	// These are static as i only need (and want) 1 instance of each
+	static JN_Asset tileSheet;				// Stores the tilesheet
+	static JN_Asset playerProjectile;		// ...
+	static JN_Asset playerSpriteSheet;		// The entire player spritesheet (idle, moving etc.)
+	static JN_Asset scorpionSpriteSheet;	// Scorption enemy sheet
+
+	SDL_Rect MOVEMENT_DEBUFF_TILE_RECT	= SDL_Rect{   0, 0, 64, 64 };
+	SDL_Rect EMPTY_TILE_RECT			= SDL_Rect{  64, 0, 64, 64 };
 	SDL_Rect DAMAGE_TILE_RECT			= SDL_Rect{ 128, 0, 64, 64 };
 
 	static const int TOTAL_TILES = 3;
 
 	// Possible game object types
-	enum class Tag { MOVEMENT_DEBUFF, EMPTY, PLAYER, PLAYER_PROJECTILE, DAMAGE };
+	enum class Tag { MOVEMENT_DEBUFF, EMPTY, PLAYER, PLAYER_PROJECTILE, DAMAGE, SCORPION };
 
 	Tag tag;
 	SDL_Rect rect;
@@ -48,14 +51,15 @@ public:
 	void virtual Resize(int x, int y);
 
 
+	///<summary>Return the sprites texture</summary>
 	SDL_Texture* GetTexture();
 
 protected:
-	SDL_Rect srcRect;
+	SDL_Rect srcRect;	// 
 
-	SDL_Surface *surface = NULL;	// Not sure why i need the surface but if i do not, the projectiles don;t move for some reason
+	SDL_Surface *surface = NULL;	// Not sure why i need the surface but if i do not, the projectiles don't move for some reason
 	SDL_Texture *texture = NULL;	// ...
-	JN_Logging *logObj = NULL;
+	JN_Logging *logObj = NULL;		// Pointer to the logging object
 
 
 	///<summary>Checks if two rects are colliding</summary>

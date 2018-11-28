@@ -15,6 +15,9 @@ public:
 	float Tick();
 
 
+	void Reset();
+
+
 	///<summary>Returns current time (H:M:S)
 	static std::string GetTime();
 

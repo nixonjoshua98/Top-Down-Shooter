@@ -3,7 +3,7 @@
 
 #include "SDL.h"
 
-#include "JN_Gameobject.h"
+#include "JN_GameObject.h"
 #include "JN_RealTimer.h"
 #include "JN_ProjectileController.h"
 #include "JN_HealthController.h"
@@ -14,7 +14,7 @@
 #include <set>
 #include <map>
 
-class JN_Player : public JN_Gameobject
+class JN_Player : public JN_GameObject
 {
 public:
 	///<summary>Default constructor</summary>
@@ -43,7 +43,7 @@ public:
 
 	///<summary>Called after Update and handles collisions</summary>
 	///<param name = "tiles">The tiles which the player could potentially collide with</param>
-	void LateUpdate(std::vector<JN_Gameobject*> tiles);
+	void LateUpdate(std::vector<JN_GameObject*> tiles);
 
 
 	///<summary>Renders the player to the screen</summary>
@@ -53,6 +53,12 @@ public:
 
 	///<summary>Drops all input so the player has a fresh start</summary>
 	void EmptyInput();
+
+
+	int GetHealth();
+
+
+	int GetScore();
 
 
 	///<summary>Resize override</summary>
@@ -76,6 +82,8 @@ private:
 	JN_PlayerControls controls;							// The controls object for the player, deals with all input
 	JN_AnimationController animController;				// Animation controller
 
+	float speedControl = 1.0f;
+
 	bool isMoving = false;
 	bool isAbleToMove = false;
 
@@ -89,6 +97,8 @@ private:
 	float lastMovementTime = 0;		// Movement delay timer
 	float lastShootTime = 0;		// Shoot timer
 	float lastDmgFromTile = 0;		// ...
+
+	int score = 0;
 
 	///<summary>Moves the player based on the input</summary>
 	void Move();
@@ -122,12 +132,12 @@ private:
 
 	///<summary>Returns a set containing the game object types</summary>
 	///<param name = "tiles">vector of potential collisions</param>
-	std::set<Tag> GetColliders(std::vector<JN_Gameobject*> tiles);
+	std::set<Tag> GetColliders(std::vector<JN_GameObject*> tiles);
 
 
 	///<summary>Actions based on collisions</summary>
 	///<param name = "tiles">vector of potential collisions</param>
-	void ColliderManager(std::vector<JN_Gameobject*> tiles);
+	void ColliderManager(std::vector<JN_GameObject*> tiles);
 
 
 	///<summary>Resets all player status effects</summary>

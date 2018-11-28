@@ -11,7 +11,7 @@ JN_Projectile::~JN_Projectile()
 	windowData = NULL;
 }
 
-void JN_Projectile::Init(JN_Gameobject::Tag tag, JN_Logging *logObj, JN_WindowData *windowData)
+void JN_Projectile::Init(JN_GameObject::Tag tag, JN_Logging *logObj, JN_WindowData *windowData)
 {
 	this->logObj = logObj;
 	this->windowData = windowData;
@@ -19,7 +19,7 @@ void JN_Projectile::Init(JN_Gameobject::Tag tag, JN_Logging *logObj, JN_WindowDa
 	rect.w = PROJECTILE_WIDTH;
 	rect.h = PROJECTILE_HEIGHT;
 
-	JN_Gameobject::Init(tag, JN_Gameobject::playerProjectile.GetTexture(), rect, logObj);
+	JN_GameObject::Init(tag, JN_GameObject::playerProjectile.GetTexture(), rect, logObj);
 }
 
 void JN_Projectile::SetTarget(SDL_Rect sourceRect, SDL_Rect targetRect)
@@ -67,5 +67,5 @@ void JN_Projectile::LateUpdate()
 void JN_Projectile::Render(SDL_Renderer *renderer)
 {
 	if (visible)
-		JN_Gameobject::Render(renderer);
+		JN_GameObject::Render(renderer);
 }
