@@ -3,6 +3,9 @@
 #include "JN_Vector2.h"
 #include "JN_Enemy.h"
 
+#include <iostream>
+#include <cmath>
+
 JN_Enemy::JN_Enemy()
 {
 
@@ -55,21 +58,10 @@ void JN_Enemy::Update(JN_Player *player)
 	{
 		lastMoveTime = now;
 
-		JN_Vector2 v = JN_Vector2(player->rect.x, player->rect.y).Normalise();
+		JN_Vector2 diffN = JN_Vector2(player->rect.x - rect.x, player->rect.y - rect.y).Normalise();
 
-		x += v.x * 1.5f;
-		y += v.y * 1.5f;
-
-		/*if (player->rect.x > rect.x)
-			x += v.x * 1.5f;
-		else
-			x -= v.x * 1.5f;
-
-		if (player->rect.y > rect.y)
-			y += v.y * 1.5f;
-		else
-			y -= v.y * 1.5f;
-		*/
+		x += (diffN.x * speedMultiplier);
+		y += (diffN.y * speedMultiplier);
 
 		rect.x = x;
 		rect.y = y;
