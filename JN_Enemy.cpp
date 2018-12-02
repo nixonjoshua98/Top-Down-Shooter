@@ -48,19 +48,19 @@ void JN_Enemy::Render(SDL_Renderer* renderer)
 }
 
 
-void JN_Enemy::Update(JN_Player *player)
+void JN_Enemy::Update(SDL_Rect playerRect)
 {
 	animController.Update();
 
 	float now = (float)SDL_GetTicks();
 
-	isCollidingWithPlayer = Collide(player->rect);
+	isCollidingWithPlayer = Collide(playerRect);
 
 	if (!(isDead && isCollidingWithPlayer) && now - lastMoveTime >= 100)
 	{
 		lastMoveTime = now;
 
-		JN_Vector2 diffN = JN_Vector2(player->rect.x - rect.x, player->rect.y - rect.y).Normalise();
+		JN_Vector2 diffN = JN_Vector2(playerRect.x - rect.x, playerRect.y - rect.y).Normalise();
 
 		x += (diffN.x * speedMultiplier);
 		y += (diffN.y * speedMultiplier);
@@ -68,7 +68,7 @@ void JN_Enemy::Update(JN_Player *player)
 		rect.x = x;
 		rect.y = y;
 
-		rotationAngle = (float)(atan2(player->rect.y - rect.y, player->rect.x - rect.x) * 180.0f / 3.14159);
+		rotationAngle = (float)(atan2(playerRect.y - rect.y, playerRect.x - rect.x) * 180.0f / 3.14159);
 	}
 }
 

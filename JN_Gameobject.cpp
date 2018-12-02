@@ -22,12 +22,15 @@ JN_GameObject::JN_GameObject()
 
 JN_GameObject::~JN_GameObject()
 {
+	texture = NULL;
+	surface = NULL;
+}
+
+void JN_GameObject::CleanupAssets()
+{
 	JN_GameObject::tileSheet.Cleanup();
 	JN_GameObject::playerProjectile.Cleanup();
 	JN_GameObject::playerSpriteSheet.Cleanup();
-
-	texture = NULL;
-	surface = NULL;
 }
 
 
@@ -64,6 +67,15 @@ bool JN_GameObject::Collide(SDL_Rect collider)
 {
 	int leftA = rect.x, rightA = rect.x + rect.w, topA = rect.y, bottomA = rect.y + rect.h;
 	int leftB = collider.x, rightB = collider.x + collider.w, topB = collider.y, bottomB = collider.y + collider.h;
+
+	return !(bottomA <= topB || topA >= bottomB || rightA <= leftB || leftA >= rightB);
+}
+
+
+bool JN_GameObject::Collide(SDL_Rect a, SDL_Rect b)
+{
+	int leftA = a.x, rightA = a.x + a.w, topA = a.y, bottomA = a.y + a.h;
+	int leftB = b.x, rightB = b.x + b.w, topB = b.y, bottomB = b.y + b.h;
 
 	return !(bottomA <= topB || topA >= bottomB || rightA <= leftB || leftA >= rightB);
 }

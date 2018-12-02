@@ -8,8 +8,15 @@ class JN_GameplayTimer : public JN_RealTimer
 public:
 	void SetStartTime()
 	{
+		Reset();
+	}
+
+
+	void Reset()
+	{
 		start = std::chrono::system_clock::now();
 	}
+
 
 	float Tick()
 	{

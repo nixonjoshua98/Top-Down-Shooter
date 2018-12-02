@@ -9,6 +9,7 @@
 #include "JN_GameObject.h"
 #include "JN_WindowData.h"
 #include "JN_Logging.h"
+#include "JN_Button.h"
 #include "JN_Player.h"
 #include "JN_Enemy.h"
 #include "JN_Text.h"
@@ -57,11 +58,13 @@ private:
 	bool fullscreen = false;	// Flag to check if game is full screen or not
 	bool gamePaused = false;	// ...
 	bool timerComplete = false;	// ...
+	bool gameStarted = false;
 
 	JN_PerformanceTimer performanceTimer;	// Timer class which stores FPS
 	JN_Player *player = NULL;				// Player object, the user will control this objects
 	JN_Text *timerText = NULL;				// 60 seconds timer text
 	JN_Text *scoreText = NULL;
+	JN_Button *startBtn = NULL;
 	JN_Text *healthText = NULL;
 	JN_GameplayTimer gameplayTimer;			// gameplay timer (60secs)
 

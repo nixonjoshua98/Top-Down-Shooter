@@ -51,6 +51,12 @@ public:
 	void virtual Resize(int x, int y);
 
 
+	static void CleanupAssets();
+
+
+	static bool Collide(SDL_Rect a, SDL_Rect b);
+
+
 	///<summary>Return the sprites texture</summary>
 	SDL_Texture* GetTexture();
 

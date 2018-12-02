@@ -34,6 +34,18 @@ void JN_Text::Init(int x, int y, int w, int h, SDL_Color col, char *fontPath, in
 	font = TTF_OpenFont(fontPath, size);
 }
 
+void JN_Text::Init(int x, int y, int w, int h, int r, int g, int b, char *fontPath, int size)
+{
+	this->col = SDL_Color{ (uint8_t)r, (uint8_t)g, (uint8_t)b };
+
+	rect.x = x;
+	rect.y = y;
+	rect.w = w;
+	rect.h = h;
+
+	font = TTF_OpenFont(fontPath, size);
+}
+
 void JN_Text::Render(SDL_Renderer *renderer, std::string txt)
 {
 	ClearText();

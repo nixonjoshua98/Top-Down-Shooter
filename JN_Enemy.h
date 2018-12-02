@@ -26,7 +26,7 @@ public:
 	void Render(SDL_Renderer* renderer) override;
 
 
-	void Update(JN_Player* player);
+	void Update(SDL_Rect playerRect);
 
 
 	void Resize(int x, int y) override;
@@ -39,7 +39,7 @@ private:
 
 	float lastMoveTime = 0.0f;
 
-	float speedMultiplier = 2.0f;
+	float speedMultiplier = 3.0f;
 
 	float x, y;
 };

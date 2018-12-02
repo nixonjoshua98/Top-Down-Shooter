@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="JN_AnimationController.h" />
     <ClInclude Include="JN_AnimationData.h" />
+    <ClInclude Include="JN_Button.h" />
     <ClInclude Include="JN_Enemy.h" />
     <ClInclude Include="JN_GameplayTimer.h" />
     <ClInclude Include="JN_PerformanceTimer.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="JN_GameObject.h" />
     <ClInclude Include="JN_Projectile.h" />
     <ClInclude Include="JN_ProjectileController.h" />
+    <ClInclude Include="JN_Square.h" />
     <ClInclude Include="JN_Text.h" />
     <ClInclude Include="JN_Asset.h" />
     <ClInclude Include="stdafx.h" />
@@ -171,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JN_AnimationController.cpp" />
+    <ClCompile Include="JN_Button.cpp" />
     <ClCompile Include="JN_Enemy.cpp" />
     <ClCompile Include="JN_GameWorld.cpp" />
     <ClCompile Include="JN_HealthController.cpp" />

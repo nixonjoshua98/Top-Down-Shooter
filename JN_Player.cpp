@@ -25,6 +25,7 @@ JN_Player::~JN_Player()
 // Initilizes the player
 void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData)
 {
+
 	JN_GameObject::Init(Tag::PLAYER, JN_GameObject::playerSpriteSheet.GetTexture(), rect, logObj);
 
 	JN_RealTimer t = JN_RealTimer();
@@ -43,7 +44,7 @@ void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *
 	animController.Add(JN_AnimationController::Animation::IDLE, 0, PLAYER_WIDTH, PLAYER_HEIGHT, 1);
 	animController.Add(JN_AnimationController::Animation::MOVING, 1, PLAYER_WIDTH, PLAYER_HEIGHT, 2);
 
-	rect = SDL_Rect{ 0, 0, PLAYER_WIDTH, PLAYER_HEIGHT };
+	rect = SDL_Rect{ PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT };
 	newRect = rect;
 
 	projectileController.CreateInitialProjectiles();

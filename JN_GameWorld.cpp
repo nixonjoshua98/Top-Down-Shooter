@@ -25,6 +25,8 @@ JN_GameWorld::~JN_GameWorld()
 
 	player = NULL;
 
+	JN_GameObject::CleanupAssets();
+
 	// Remove all enemies from memory
 	while (enemies.size() != 0)
 	{
@@ -101,6 +103,7 @@ void JN_GameWorld::Setup()
 {
 	timerText = new JN_Text();
 	scoreText = new JN_Text();
+	startBtn = new JN_Button();
 	performanceTimer = JN_PerformanceTimer(FPS);
 	gameplayTimer = JN_GameplayTimer();
 	player = new JN_Player();
@@ -140,12 +143,26 @@ void JN_GameWorld::Run()
 
 		Input();
 
-		if (!gamePaused)
+		if (gameStarted)
 		{
-			SpawnEnemy();
 
-			Update();
-			LateUpdate();
+			if (!gamePaused)
+			{
+				SpawnEnemy();
+
+				Update();
+				LateUpdate();
+			}
+			else
+			{
+				startBtn->Update();
+			}
+		}
+		else
+		{
+			startBtn->Update();
+			gameplayTimer.Reset();
+			gameStarted = startBtn->IsClicked();
 		}
 
 		Render();
@@ -213,7 +230,12 @@ void JN_GameWorld::Input()
 			else if (e.type == SDL_KEYDOWN && (e.key.keysym.scancode == PAUSE_GAME_KEY))
 				TogglePauseGame();
 
-			else if (!gamePaused)
+			else if ((!gameStarted || gamePaused) && (e.type == SDL_MOUSEBUTTONDOWN))
+			{
+				startBtn->Input(e);
+			}
+
+			else if (!gamePaused && (gameStarted))
 			{
 				// Pass all other input to the player
 				JN_RealTimer t = JN_RealTimer();
@@ -251,6 +273,9 @@ void JN_GameWorld::Render()
 	scoreText->Render(renderer, std::to_string(player->GetScore()));
 	healthText->Render(renderer, std::to_string(player->GetHealth()));
 
+	if (!gameStarted)
+		startBtn->Render(renderer);
+
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);	// Set background color
 	SDL_RenderPresent(renderer);					// Flip the render
 
@@ -264,7 +289,7 @@ void JN_GameWorld::Update()
 	gameDuration = gameplayTimer.Tick();
 
 	for (int i = 0; i < (int)enemies.size(); i++)
-		enemies[i]->Update(player);
+		enemies[i]->Update(player->rect);
 
 
 	JN_RealTimer t = JN_RealTimer();
@@ -287,8 +312,9 @@ void JN_GameWorld::LateUpdate()
 			if (enemies[i]->isCollidingWithPlayer)
 				player->TakeDamage(5);
 
-			//delete enemies[i];
-			//enemies[i] = NULL;
+			// TODO: Enemy Controller
+			delete enemies[i];
+			enemies[i] = NULL;
 			enemies.erase(enemies.begin() + i);
 			continue;
 		}
@@ -311,6 +337,8 @@ void JN_GameWorld::BuildWorld()
 	timerText->Init((WORLD_WIDTH / 2) - 25, 10, 50, 50, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 	scoreText->Init((WORLD_WIDTH * 0.75) - 25, 10, 50, 50, SDL_Color{ 0, 0, 255 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 	healthText->Init((WORLD_WIDTH * 0.25) - 25, 10, 50, 50, SDL_Color{ 255, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+
+	startBtn->Init("Start Round", (WORLD_WIDTH / 2) - 200, (WORLD_HEIGHT / 2) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
 	JN_GameObject *s;
 	SDL_Rect r;
@@ -375,6 +403,7 @@ void JN_GameWorld::ResizeWorld()
 	timerText->Move(xChange, yChange);
 	scoreText->Move(xChange, yChange);
 	healthText->Move(xChange, yChange);
+	startBtn->Resize(xChange, yChange);
 	
 	for (int i = 0; i < LEVEL_HEIGHT; i++)
 	{
@@ -405,7 +434,9 @@ void JN_GameWorld::TogglePauseGame()
 	if (gamePaused)
 		logObj->LogMethod("Game was unpaused");
 	else
+	{
 		logObj->LogMethod("Game was paused");
+	}
 
 	gameplayTimer.SetStartTime();
 

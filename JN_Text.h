@@ -5,7 +5,6 @@
 #include <SDL_ttf.h>
 #include <string>
 
-
 class JN_Text
 {
 public:
@@ -13,7 +12,11 @@ public:
 
 	~JN_Text();
 
+	SDL_Rect rect;
+
 	void Init(int x, int y, int w, int h, SDL_Color col, char *fontPath, int size);
+
+	void Init(int x, int y, int w, int h, int r, int g, int b, char *fontPath, int size);
 
 	void Render(SDL_Renderer *renderer, std::string txt);
 
@@ -24,7 +27,6 @@ public:
 private:
 	SDL_Color col;
 	TTF_Font *font;
-	SDL_Rect rect;
 	SDL_Surface *surface = NULL;
 	SDL_Texture *texture = NULL;
 };
