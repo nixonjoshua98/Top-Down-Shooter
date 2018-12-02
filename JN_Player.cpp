@@ -165,7 +165,7 @@ void JN_Player::Move()
 	newRect.x = rect.x;
 	newRect.y = rect.y;
 
-	float movementMultiplier = (statusEffects[Tag::MOVEMENT_DEBUFF] ? (1.0f * MOVEMENT_TILE_MULTIPLIER) : 1.0f)  * speedControl;
+	float movementMultiplier = (isSlowed ? (1.0f * MOVEMENT_TILE_MULTIPLIER) : 1.0f)  * speedControl;
 
 	for (JN_PlayerControls::ControlAction key : controls.GetKeyboardPresses())
 	{
@@ -227,7 +227,7 @@ void JN_Player::ColliderManager(std::vector<JN_GameObject*> tiles)
 		switch (c)
 		{
 		case Tag::MOVEMENT_DEBUFF:
-			statusEffects[Tag::MOVEMENT_DEBUFF] = true;
+			isSlowed = true;
 			logObj->LogMethod("Player collided with movement debuff tile");
 			break;
 
@@ -246,8 +246,7 @@ void JN_Player::ColliderManager(std::vector<JN_GameObject*> tiles)
 
 void JN_Player::ResetBuffs()
 {
-	for (const auto & kv : statusEffects)
-		statusEffects[kv.first] = false;
+	isSlowed = false;
 }
 
 
@@ -313,4 +312,10 @@ int JN_Player::GetHealth()
 int JN_Player::GetScore()
 {
 	return score;
+}
+
+
+void JN_Player::TakeDamage(int dmg)
+{
+	health.TakeDamage(dmg);
 }

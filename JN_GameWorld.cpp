@@ -25,11 +25,12 @@ JN_GameWorld::~JN_GameWorld()
 
 	player = NULL;
 
-	// Remove all enmies from memory
-	for (int i = 0; i < (int)enemies.size(); i++)
+	// Remove all enemies from memory
+	while (enemies.size() != 0)
 	{
-		delete enemies[i];
-		enemies[i] = NULL;
+		delete enemies[0];
+		enemies[0] = NULL;
+		enemies.erase(enemies.begin());
 	}
 
 	for (int i = 0; i < (int)allTiles.size(); i++)
@@ -160,7 +161,7 @@ void JN_GameWorld::Run()
 // Spawn an enemy if timer is finished
 void JN_GameWorld::SpawnEnemy()
 {
-	if ((gameDuration - lastEnemySpawn) >= 500)
+	if ((gameDuration - lastEnemySpawn) >= 500 && (enemies.size() < MAXIMUM_ENEMIES))
 	{
 		lastEnemySpawn = gameDuration;
 	
@@ -278,6 +279,21 @@ void JN_GameWorld::LateUpdate()
 	JN_RealTimer t = JN_RealTimer();
 	player->LateUpdate(collisionTiles);
 	logObj->LogTimeSpan("Player late update method concluded", t.Tick());
+
+	for (int i = 0; i < enemies.size();)
+	{
+		if (enemies[i]->isCollidingWithPlayer || enemies[i]->isDead)
+		{
+			if (enemies[i]->isCollidingWithPlayer)
+				player->TakeDamage(5);
+
+			//delete enemies[i];
+			//enemies[i] = NULL;
+			enemies.erase(enemies.begin() + i);
+			continue;
+		}
+		i++;
+	}
 }
 
 

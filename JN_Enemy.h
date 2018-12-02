@@ -16,6 +16,9 @@ public:
 
 	~JN_Enemy();
 
+	bool isDead = false;
+	bool isCollidingWithPlayer = false;
+
 
 	void Init(Tag tag, SDL_Rect rect, SDL_Texture* texture, JN_Logging* logObj, JN_WindowData* windowData);
 
@@ -24,6 +27,7 @@ public:
 
 
 	void Update(JN_Player* player);
+
 
 	void Resize(int x, int y) override;
 

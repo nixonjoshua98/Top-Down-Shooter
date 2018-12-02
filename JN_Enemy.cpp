@@ -54,7 +54,9 @@ void JN_Enemy::Update(JN_Player *player)
 
 	float now = (float)SDL_GetTicks();
 
-	if (now - lastMoveTime >= 100)
+	isCollidingWithPlayer = Collide(player->rect);
+
+	if (!(isDead && isCollidingWithPlayer) && now - lastMoveTime >= 100)
 	{
 		lastMoveTime = now;
 

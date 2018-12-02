@@ -55,23 +55,32 @@ public:
 	void EmptyInput();
 
 
+	///<summary>Returns the players current health>/summary>
 	int GetHealth();
 
 
+	///<summary>Returns the players score</summary>
 	int GetScore();
 
 
+	///<summary>Public method to access private attribute and it's method</summary>
+	///<param name = "dmg">The damage which the player should take</param>
+	void TakeDamage(int dmg);
+
+
 	///<summary>Resize override</summary>
+	///<param name = "xOffset">The window offset which the object needs to be moved by</param>
+	///<param name = "yOffset">The window offset in the Y which the player needs to be moves</param>
 	void Resize(int xOffset, int yOffset) override;
 
 private:
-	const int MOVEMENT_SPEED = 15;	// The amount the player moves each movement cycle
+	const int MOVEMENT_SPEED = 3;	// The amount the player moves each movement cycle
 	const int MOVEMENT_DELAY = 25;	// The delay between movements
 	const int SHOOT_DELAY = 250;	// The delay between being able to fire a projectile
 	const int PLAYER_WIDTH = 20;	// ...
 	const int PLAYER_HEIGHT = 20;	// ...
 
-	const int DAMAGE_TILE_AMOUNT = 1;			// Damage every 0.25s while the user touches the collider
+	const int DAMAGE_TILE_AMOUNT = 1;				// Damage every 0.25s while the user touches the collider
 	const float MOVEMENT_TILE_MULTIPLIER = 0.5f;	// Movement will be multiplied by this
 
 	JN_Logging *logObj = NULL;							// Log object
@@ -84,13 +93,9 @@ private:
 
 	float speedControl = 1.0f;
 
-	bool isMoving = false;
-	bool isAbleToMove = false;
-
-	// Player buffs and debuffs
-	std::map<Tag, bool> statusEffects = {
-		{ Tag::MOVEMENT_DEBUFF, false }
-	};
+	bool isMoving = false;		// Flag to check if the player is currently moving
+	bool isAbleToMove = false;	// Checks if the player is able to move (e.g. the movement cooldown has ended)
+	bool isSlowed = false;		// This is triggered by the player stepping on the movement debuff tile
 
 	SDL_Rect newRect = SDL_Rect();	// Temp rect used during collision detection
 
@@ -98,7 +103,7 @@ private:
 	float lastShootTime = 0;		// Shoot timer
 	float lastDmgFromTile = 0;		// ...
 
-	int score = 0;
+	int score = 0;	// ...
 
 	///<summary>Moves the player based on the input</summary>
 	void Move();

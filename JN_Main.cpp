@@ -37,10 +37,10 @@
 				1st:	Animation											COMPLETE
 
 	Movement, physics, collisions (Row 5):
-				PASS:	Players + NPC move around world
-				2:2:	Collision detection between chars
+				PASS:	Players + NPC move around world						COMPLETE
+				2:2:	Collision detection between chars					COMPLETE
 				2:1:	Cannot move outside of screen, react collison		COMPLETE
-				1st:	Game pause											RAW COMPLETE
+				1st:	Game pause											NEED MENU
 
 	Player Character Control (Row 6):
 				PASS:	Player can be controlled with 1 button				COMPLETE
