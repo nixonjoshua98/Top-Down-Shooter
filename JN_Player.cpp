@@ -2,6 +2,7 @@
 
 #include "JN_GameWorld.h"
 #include "JN_Player.h"
+#include "JN_Enemy.h"
 
 #include <algorithm>
 #include <iostream>
@@ -44,7 +45,7 @@ void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *
 	animController.Add(JN_AnimationController::Animation::IDLE, 0, PLAYER_WIDTH, PLAYER_HEIGHT, 1);
 	animController.Add(JN_AnimationController::Animation::MOVING, 1, PLAYER_WIDTH, PLAYER_HEIGHT, 2);
 
-	rect = SDL_Rect{ PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT };
+	rect = SDL_Rect{ windowData->windowWidth / 2, windowData->windowHeight / 2, PLAYER_WIDTH, PLAYER_HEIGHT };
 	newRect = rect;
 
 	projectileController.CreateInitialProjectiles();
@@ -123,16 +124,16 @@ void JN_Player::Shoot()
 
 	SDL_Rect sourceRect = SDL_Rect();
 	sourceRect.x = rect.x;// +(rect.w / 2);
-	sourceRect.y = rect.y - (rect.h / 2);
+	sourceRect.y = rect.y;// -(rect.h / 2);
 
 	if (projectileController.Shoot(sourceRect, target))
 		lastShootTime = now;
 }
 
 
-void JN_Player::Update()
+void JN_Player::Update(std::vector<JN_Enemy*> enemies)
 {
-	projectileController.Update();
+	projectileController.Update(enemies);
 	Move();
 	RotatePlayer();
 	Shoot();

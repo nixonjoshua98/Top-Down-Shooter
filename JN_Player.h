@@ -14,6 +14,10 @@
 #include <set>
 #include <map>
 
+
+class JN_Enemy;	// I hate C++ forward declarations
+
+
 class JN_Player : public JN_GameObject
 {
 public:
@@ -38,7 +42,7 @@ public:
 
 
 	///<summary>Method which is called every frame</summary>
-	void Update();
+	void Update(std::vector<JN_Enemy*> enemies);
 
 
 	///<summary>Called after Update and handles collisions</summary>

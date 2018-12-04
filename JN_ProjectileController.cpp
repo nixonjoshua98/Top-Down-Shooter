@@ -6,6 +6,8 @@
 
 #include <iostream>
 
+
+
 // Default constructor
 JN_ProjectileController::JN_ProjectileController()
 {
@@ -90,7 +92,7 @@ int JN_ProjectileController::GetAvailableProjectileIndex()
 	return -1;
 }
 
-void JN_ProjectileController::Update()
+void JN_ProjectileController::Update(std::vector<JN_Enemy*> enemies)
 {
 	for (int i = 0; i < maxProjectiles; i++)
 		projectiles[i]->Update();

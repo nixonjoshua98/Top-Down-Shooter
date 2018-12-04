@@ -49,6 +49,8 @@ void JN_Button::Update()
 
 void JN_Button::Input(SDL_Event e)
 {
+	isClicked = false;
+
 	if (isActive && e.type == SDL_MOUSEBUTTONDOWN && (e.button.button == SDL_BUTTON_LEFT))
 	{
 		isClicked = true;

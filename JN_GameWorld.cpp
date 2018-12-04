@@ -108,6 +108,7 @@ void JN_GameWorld::Setup()
 	gameplayTimer = JN_GameplayTimer();
 	player = new JN_Player();
 	healthText = new JN_Text();
+	resumeBtn = new JN_Button();
 	windowData = new JN_WindowData(0, 0, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
 
 	SDL_SetWindowMinimumSize(window, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
@@ -145,7 +146,6 @@ void JN_GameWorld::Run()
 
 		if (gameStarted)
 		{
-
 			if (!gamePaused)
 			{
 				SpawnEnemy();
@@ -155,11 +155,15 @@ void JN_GameWorld::Run()
 			}
 			else
 			{
-				startBtn->Update();
+				// Game is paused
+				gameplayTimer.SetStartTime();
+				resumeBtn->Update();
+				gamePaused = !resumeBtn->IsClicked();
 			}
 		}
 		else
 		{
+			// Game hasn't started yet
 			startBtn->Update();
 			gameplayTimer.Reset();
 			gameStarted = startBtn->IsClicked();
@@ -227,12 +231,15 @@ void JN_GameWorld::Input()
 			else if (e.type == SDL_KEYDOWN && (e.key.keysym.scancode == LOG_TOGGLE_KEY))
 				logObj->ToggleLogging();
 
-			else if (e.type == SDL_KEYDOWN && (e.key.keysym.scancode == PAUSE_GAME_KEY))
+			else if (e.type == SDL_KEYDOWN && (e.key.keysym.scancode == PAUSE_GAME_KEY) && (gameStarted))
 				TogglePauseGame();
 
 			else if ((!gameStarted || gamePaused) && (e.type == SDL_MOUSEBUTTONDOWN))
 			{
-				startBtn->Input(e);
+				if (!gameStarted)
+					startBtn->Input(e);
+				else if (gamePaused)
+					resumeBtn->Input(e);
 			}
 
 			else if (!gamePaused && (gameStarted))
@@ -276,6 +283,9 @@ void JN_GameWorld::Render()
 	if (!gameStarted)
 		startBtn->Render(renderer);
 
+	if (gamePaused)
+		resumeBtn->Render(renderer);
+
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);	// Set background color
 	SDL_RenderPresent(renderer);					// Flip the render
 
@@ -293,7 +303,7 @@ void JN_GameWorld::Update()
 
 
 	JN_RealTimer t = JN_RealTimer();
-	player->Update();
+	player->Update(enemies);
 	logObj->LogTimeSpan("Player update method concluded", t.Tick());
 }
 
@@ -339,6 +349,7 @@ void JN_GameWorld::BuildWorld()
 	healthText->Init((WORLD_WIDTH * 0.25) - 25, 10, 50, 50, SDL_Color{ 255, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
 	startBtn->Init("Start Round", (WORLD_WIDTH / 2) - 200, (WORLD_HEIGHT / 2) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	resumeBtn->Init("Resume Round", (WORLD_WIDTH / 2) - 200, (WORLD_HEIGHT / 2) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
 	JN_GameObject *s;
 	SDL_Rect r;
@@ -404,6 +415,7 @@ void JN_GameWorld::ResizeWorld()
 	scoreText->Move(xChange, yChange);
 	healthText->Move(xChange, yChange);
 	startBtn->Resize(xChange, yChange);
+	resumeBtn->Resize(xChange, yChange);
 	
 	for (int i = 0; i < LEVEL_HEIGHT; i++)
 	{
@@ -429,16 +441,16 @@ void JN_GameWorld::ToggleFullScreen()
 // Toggles pause mode
 void JN_GameWorld::TogglePauseGame()
 {
+	resumeBtn->Reset();
+
 	player->EmptyInput();
 
 	if (gamePaused)
-		logObj->LogMethod("Game was unpaused");
-	else
 	{
-		logObj->LogMethod("Game was paused");
+		logObj->LogMethod("Game was unpaused");
 	}
-
-	gameplayTimer.SetStartTime();
+	else
+		logObj->LogMethod("Game was paused");
 
 	gamePaused = !gamePaused;
 }

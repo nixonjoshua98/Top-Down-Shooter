@@ -4,10 +4,14 @@
 #include "JN_Projectile.h"
 #include "JN_Logging.h"
 #include "JN_WindowData.h"
+#include "JN_Enemy.h"
 
 #include "SDL.h"
 
 #include <vector>
+
+class JN_Enemy;
+
 
 class JN_ProjectileController
 {
@@ -18,7 +22,7 @@ public:
 	void Init(JN_GameObject::Tag tag, int maxProjectiles, JN_Logging *logObj, JN_WindowData *windowData);
 
 	bool Shoot(SDL_Rect sourceRecr, SDL_Rect targetRect);
-	void Update();
+	void Update(std::vector<JN_Enemy*> enemies);
 	void LateUpdate();
 	void Render(SDL_Renderer *renderer);
 

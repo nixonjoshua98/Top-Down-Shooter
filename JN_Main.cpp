@@ -40,7 +40,7 @@
 				PASS:	Players + NPC move around world						COMPLETE
 				2:2:	Collision detection between chars					COMPLETE
 				2:1:	Cannot move outside of screen, react collison		COMPLETE
-				1st:	Game pause											NEED MENU
+				1st:	Game pause											COMPLETE
 
 	Player Character Control (Row 6):
 				PASS:	Player can be controlled with 1 button				COMPLETE
@@ -53,6 +53,11 @@
 				2:2:	All main requirments met
 				2:1:	Keys can be remapped
 				1st:	Saving or loading of game state						COMPLETE
+*/
+
+
+/*
+	TODO: Throw away this garbage and start again
 */
 
 int main(int argc, char *argv[])

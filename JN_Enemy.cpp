@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cmath>
 
+
 JN_Enemy::JN_Enemy()
 {
 
@@ -25,8 +26,8 @@ void JN_Enemy::Init(Tag tag, SDL_Rect rect, SDL_Texture* texture, JN_Logging* lo
 	this->logObj = logObj;
 	this->tag = tag;
 
-	x = rect.x;
-	y = rect.y;
+	x = (float)rect.x;
+	y = (float)rect.y;
 
 	animController.Init(200, texture);
 
@@ -60,13 +61,13 @@ void JN_Enemy::Update(SDL_Rect playerRect)
 	{
 		lastMoveTime = now;
 
-		JN_Vector2 diffN = JN_Vector2(playerRect.x - rect.x, playerRect.y - rect.y).Normalise();
+		JN_Vector2 diffN = JN_Vector2((float)playerRect.x - rect.x, (float)playerRect.y - rect.y).Normalise();
 
 		x += (diffN.x * speedMultiplier);
 		y += (diffN.y * speedMultiplier);
 
-		rect.x = x;
-		rect.y = y;
+		rect.x = (int)x;
+		rect.y = (int)y;
 
 		rotationAngle = (float)(atan2(playerRect.y - rect.y, playerRect.x - rect.x) * 180.0f / 3.14159);
 	}

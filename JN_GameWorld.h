@@ -42,6 +42,7 @@ public:
 	static const int LOG_TOGGLE_KEY = SDL_SCANCODE_2;					// ...
 	static const int PAUSE_GAME_KEY = SDL_SCANCODE_ESCAPE;				// ...
 
+
 	// Used or resizing objects, used as a pointer so the window height and width is always accurate
 	JN_WindowData *windowData = NULL;
 
@@ -66,6 +67,7 @@ private:
 	JN_Text *scoreText = NULL;
 	JN_Button *startBtn = NULL;
 	JN_Text *healthText = NULL;
+	JN_Button *resumeBtn = NULL;
 	JN_GameplayTimer gameplayTimer;			// gameplay timer (60secs)
 
 	std::vector<JN_GameObject*> emptyTiles = {};		// Vector which stores all of the tiles which will not need to be taken into accord during collision detection
