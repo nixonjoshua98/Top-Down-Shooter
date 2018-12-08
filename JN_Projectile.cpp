@@ -1,5 +1,7 @@
 #include "stdafx.h"
 
+
+#include "JN_Enemy.h"
 #include "JN_Projectile.h"
 #include "JN_GameWorld.h"
 
@@ -58,10 +60,19 @@ bool JN_Projectile::OutOfBounds()
 	return x || y;
 }
 
-void JN_Projectile::LateUpdate()
+void JN_Projectile::LateUpdate(std::vector<JN_Enemy*> &enemies)
 {
 	if (visible && OutOfBounds())
 		visible = false;
+
+	if (!visible)
+		return;
+
+	for (int i = 0; i < (int)enemies.size(); i++)
+	{
+		if (Collide(enemies[i]->rect))
+			enemies[i]->isDead = true;
+	}
 }
 
 void JN_Projectile::Render(SDL_Renderer *renderer)

@@ -39,7 +39,7 @@ private:
 
 	float lastMoveTime = 0.0f;
 
-	float speedMultiplier = 3.0f;
+	float speedMultiplier = 3.5f;
 
 	float x, y;
 };

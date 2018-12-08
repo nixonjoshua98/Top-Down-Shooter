@@ -10,6 +10,7 @@
 #include <SDL_ttf.h>
 #include <string>
 #include <math.h>
+#include <iostream>
 
 // Default constructor
 JN_GameWorld::JN_GameWorld()
@@ -158,7 +159,8 @@ void JN_GameWorld::Run()
 				// Game is paused
 				gameplayTimer.SetStartTime();
 				resumeBtn->Update();
-				gamePaused = !resumeBtn->IsClicked();
+				if (resumeBtn->IsClicked())
+					TogglePauseGame();
 			}
 		}
 		else
@@ -182,7 +184,7 @@ void JN_GameWorld::Run()
 // Spawn an enemy if timer is finished
 void JN_GameWorld::SpawnEnemy()
 {
-	if ((gameDuration - lastEnemySpawn) >= 500 && (enemies.size() < MAXIMUM_ENEMIES))
+	if ((gameDuration - lastEnemySpawn) >= 200 && (enemies.size() < MAXIMUM_ENEMIES))
 	{
 		lastEnemySpawn = gameDuration;
 	
@@ -296,6 +298,8 @@ void JN_GameWorld::Render()
 // Call update on all the objects required
 void JN_GameWorld::Update()
 {
+	SDL_GameControllerUpdate();
+
 	gameDuration = gameplayTimer.Tick();
 
 	for (int i = 0; i < (int)enemies.size(); i++)
@@ -303,7 +307,7 @@ void JN_GameWorld::Update()
 
 
 	JN_RealTimer t = JN_RealTimer();
-	player->Update(enemies);
+	player->Update();
 	logObj->LogTimeSpan("Player update method concluded", t.Tick());
 }
 
@@ -312,7 +316,7 @@ void JN_GameWorld::Update()
 void JN_GameWorld::LateUpdate()
 {
 	JN_RealTimer t = JN_RealTimer();
-	player->LateUpdate(collisionTiles);
+	player->LateUpdate(collisionTiles, enemies);
 	logObj->LogTimeSpan("Player late update method concluded", t.Tick());
 
 	for (int i = 0; i < enemies.size();)
@@ -321,6 +325,8 @@ void JN_GameWorld::LateUpdate()
 		{
 			if (enemies[i]->isCollidingWithPlayer)
 				player->TakeDamage(5);
+			else
+				player->AddScore(5);
 
 			// TODO: Enemy Controller
 			delete enemies[i];
@@ -344,9 +350,9 @@ void JN_GameWorld::CreateRandomWorldMap()
 void JN_GameWorld::BuildWorld()
 {
 	player->Init(renderer, logObj, windowData);
-	timerText->Init((WORLD_WIDTH / 2) - 25, 10, 50, 50, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-	scoreText->Init((WORLD_WIDTH * 0.75) - 25, 10, 50, 50, SDL_Color{ 0, 0, 255 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-	healthText->Init((WORLD_WIDTH * 0.25) - 25, 10, 50, 50, SDL_Color{ 255, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	timerText->Init((int)(WORLD_WIDTH / 2) - 25, 10, 50, 50, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	scoreText->Init((int)(WORLD_WIDTH * 0.75f) - 25, 10, 50, 50, SDL_Color{ 0, 0, 255 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	healthText->Init((int)(WORLD_WIDTH * 0.25) - 25, 10, 50, 50, SDL_Color{ 255, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
 	startBtn->Init("Start Round", (WORLD_WIDTH / 2) - 200, (WORLD_HEIGHT / 2) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 	resumeBtn->Init("Resume Round", (WORLD_WIDTH / 2) - 200, (WORLD_HEIGHT / 2) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
@@ -416,15 +422,15 @@ void JN_GameWorld::ResizeWorld()
 	healthText->Move(xChange, yChange);
 	startBtn->Resize(xChange, yChange);
 	resumeBtn->Resize(xChange, yChange);
+
+	for (int i = 0; i < (int)enemies.size(); i++)
+		enemies[i]->Resize(xChange, yChange);
 	
 	for (int i = 0; i < LEVEL_HEIGHT; i++)
 	{
 		for (int j = 0; j < LEVEL_WIDTH; j++)
 			allTiles[(i * LEVEL_WIDTH) + j]->Resize(xChange, yChange);
 	}
-
-	for (int i = 0; i < (int)enemies.size(); i++)
-		enemies[i]->Resize(xChange, yChange);
 }
 
 
@@ -447,10 +453,14 @@ void JN_GameWorld::TogglePauseGame()
 
 	if (gamePaused)
 	{
+		SDL_SetWindowResizable(window, SDL_TRUE);
 		logObj->LogMethod("Game was unpaused");
 	}
 	else
+	{
+		SDL_SetWindowResizable(window, SDL_FALSE);
 		logObj->LogMethod("Game was paused");
+	}
 
 	gamePaused = !gamePaused;
 }

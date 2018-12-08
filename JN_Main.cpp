@@ -7,6 +7,10 @@
 #include <iostream>
 
 /*
+	Add more logging!
+*/
+
+/*
 	1:	Toggle fullscreen
 	2:	Toggle logging
 	ESC:	Pause game

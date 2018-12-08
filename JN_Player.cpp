@@ -1,12 +1,12 @@
 #include "stdafx.h"
 
-#include "JN_GameWorld.h"
 #include "JN_Player.h"
-#include "JN_Enemy.h"
+#include "JN_GameWorld.h"
+//#include "JN_Enemy.h"
 
 #include <algorithm>
 #include <iostream>
-#include <math.h>
+#include <cmath>
 
 // Default constructopr
 JN_Player::JN_Player()
@@ -18,15 +18,17 @@ JN_Player::JN_Player()
 // De-constructor
 JN_Player::~JN_Player()
 {
+	SDL_JoystickClose(gameController);
+
 	logObj = NULL;
 	windowData = NULL;
+	gameController = NULL;
 }
 
 
 // Initilizes the player
 void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData)
 {
-
 	JN_GameObject::Init(Tag::PLAYER, JN_GameObject::playerSpriteSheet.GetTexture(), rect, logObj);
 
 	JN_RealTimer t = JN_RealTimer();
@@ -51,6 +53,8 @@ void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *
 	projectileController.CreateInitialProjectiles();
 	animController.Set(JN_AnimationController::Animation::IDLE);
 
+	gameController = SDL_JoystickOpen(0);
+
 	logObj->LogTimeSpan("Player initilized", t.Tick());
 }
 
@@ -58,15 +62,19 @@ void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *
 // Input...
 void JN_Player::Input(SDL_Event e)
 {
-	// Keyboard key has been released or pressed
-
-	// check () for AND OR
+	// Keyboard key has been released or pressed | check () for AND OR
 	if ((e.type == SDL_KEYUP || e.type == SDL_KEYDOWN) && (controls.ValidControl(JN_PlayerControls::InputDevice::KEYBOARD, e.key.keysym.scancode)))
 		KeyboardInputHandler(e);
 
 	// Mouse button has been clicked or released
 	else if ((e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP) && (controls.ValidControl(JN_PlayerControls::InputDevice::MOUSE, e.button.button)))
 		MouseInputHandler(e);
+
+	else if ((e.type == SDL_JOYAXISMOTION || e.type == SDL_JOYBUTTONDOWN || e.type == SDL_JOYBUTTONUP) && (isUsingGamepad))
+	{
+		GamepadInputHandler(e);
+	}
+
 }
 
 
@@ -104,6 +112,22 @@ void JN_Player::MouseInputHandler(SDL_Event e)
 }
 
 
+void JN_Player::GamepadInputHandler(SDL_Event e)
+{
+	if (e.type == SDL_JOYAXISMOTION)
+	{
+		gamepadVector.x = SDL_JoystickGetAxis(gameController, 0) / 3276.70f;
+		gamepadVector.y = SDL_JoystickGetAxis(gameController, 1) / 3276.70f;
+
+		if (abs(gamepadVector.x) <= 1.0f)
+			gamepadVector.x = 0;
+
+		if (abs(gamepadVector.y) <= 1.0f)
+			gamepadVector.y = 0;
+	}
+}
+
+
 void JN_Player::Shoot()
 {
 	float now = (float)SDL_GetTicks();
@@ -114,26 +138,22 @@ void JN_Player::Shoot()
 	if (!readyToShoot || !triggerDown)
 		return;
 
-	int x, y;	// Get the mouse position
-	SDL_GetMouseState(&x, &y);
-
 	// Setup the target rect
 	SDL_Rect target = SDL_Rect();
-	target.x = (x) - rect.x;
-	target.y = (y) - rect.y;
 
-	SDL_Rect sourceRect = SDL_Rect();
-	sourceRect.x = rect.x;// +(rect.w / 2);
-	sourceRect.y = rect.y;// -(rect.h / 2);
+	int x, y;	// Get the mouse position
+	SDL_GetMouseState(&x, &y);
+	target.x = x - rect.x;
+	target.y = y - rect.y;
 
-	if (projectileController.Shoot(sourceRect, target))
+	if (projectileController.Shoot(rect, target))
 		lastShootTime = now;
 }
 
 
-void JN_Player::Update(std::vector<JN_Enemy*> enemies)
+void JN_Player::Update()
 {
-	projectileController.Update(enemies);
+	projectileController.Update();
 	Move();
 	RotatePlayer();
 	Shoot();
@@ -164,8 +184,10 @@ void JN_Player::Move()
 
 	lastMovementTime = now;
 
-	newRect.x = rect.x;
-	newRect.y = rect.y;
+	newRect = SDL_Rect{ rect.x, rect.y, rect.w, rect.h};
+
+	velocity.x = 0;
+	velocity.y = 0;
 
 	float movementMultiplier = (isSlowed ? (1.0f * MOVEMENT_TILE_MULTIPLIER) : 1.0f)  * speedControl;
 
@@ -174,48 +196,68 @@ void JN_Player::Move()
 		switch (key)
 		{
 		case JN_PlayerControls::ControlAction::LEFT:
-			newRect.x -= (int)(MOVEMENT_SPEED * movementMultiplier);
+			velocity.x -= (int)(MOVEMENT_SPEED * movementMultiplier);
 			break;
 
 		case JN_PlayerControls::ControlAction::RIGHT:
-			newRect.x += (int)(MOVEMENT_SPEED * movementMultiplier);
+			velocity.x += (int)(MOVEMENT_SPEED * movementMultiplier);
 			break;
 
 		case JN_PlayerControls::ControlAction::UP:
-			newRect.y -= (int)(MOVEMENT_SPEED * movementMultiplier);
+			velocity.y -= (int)(MOVEMENT_SPEED * movementMultiplier);
 			break;
 
 		case JN_PlayerControls::ControlAction::DOWN:
-			newRect.y += (int)(MOVEMENT_SPEED * movementMultiplier);
+			velocity.y += (int)(MOVEMENT_SPEED * movementMultiplier);
 			break;
 
 		case JN_PlayerControls::ControlAction::SPEED_UP:
-			speedControl = (float)fminf(speedControl + 0.15f, 1.0f);
+			speedControl = (float)std::fmin(speedControl + 0.15f, 1.0f);
 			break;
 
 		case JN_PlayerControls::ControlAction::SPEED_DOWN:
-			speedControl = (float)fmaxf(speedControl - 0.15f, 0.0f);
+			speedControl = (float)std::fmax(speedControl - 0.15f, 0.0f);
 			break;
 
 		}
+	}
+	if (!isUsingGamepad)
+	{
+		newRect.x += velocity.x;
+		newRect.y += velocity.y;
+	}
+	else
+	{
+		newRect.x += (MOVEMENT_SPEED * movementMultiplier) * (gamepadVector.x / 10);
+		newRect.y += (MOVEMENT_SPEED * movementMultiplier) * (gamepadVector.y / 10);
 	}
 }
 
 
 void JN_Player::RotatePlayer()
 {
-	int x, y;
-	SDL_GetMouseState(&x, &y);
-	rotationAngle = (float)(atan2((y - 2) - newRect.y, (x - 2) - newRect.x) * 180.0f / 3.14159);
+	if (!isUsingGamepad)
+	{
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		rotationAngle = (float)(atan2((y - 2) - newRect.y, (x - 2) - newRect.x) * 180.0f / 3.14159);
+	}
+	else
+	{
+		//int x = SDL_JoystickGetAxis(gameController, 3) / 3276.70f;
+		//int y = SDL_JoystickGetAxis(gameController, 4) / 3276.70f;
+
+		rotationAngle = (float)(atan2(gamepadVector.y, gamepadVector.x) * 180.0f / M_PI);
+	}
 }
 
 
-void JN_Player::LateUpdate(std::vector<JN_GameObject*> tiles)
+void JN_Player::LateUpdate(std::vector<JN_GameObject*> tiles, std::vector<JN_Enemy*> enemies)
 {
 	ConfirmPlayerMovement();
 	UpdateAnimation();
 	ColliderManager(tiles);
-	projectileController.LateUpdate();
+	projectileController.LateUpdate(enemies);
 }
 
 
@@ -320,4 +362,10 @@ int JN_Player::GetScore()
 void JN_Player::TakeDamage(int dmg)
 {
 	health.TakeDamage(dmg);
+}
+
+
+void JN_Player::AddScore(int s)
+{
+	score += s;
 }

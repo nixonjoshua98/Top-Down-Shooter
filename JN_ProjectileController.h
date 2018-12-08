@@ -2,12 +2,11 @@
 #define JN_PROJECTILE_CONTROLLER_H
 
 #include "JN_Projectile.h"
-#include "JN_Logging.h"
-#include "JN_WindowData.h"
-#include "JN_Enemy.h"
+//#include "JN_Logging.h"
+//#include "JN_WindowData.h"
+//#include "JN_Enemy.h"
 
-#include "SDL.h"
-
+#include <SDL.h>
 #include <vector>
 
 class JN_Enemy;
@@ -22,8 +21,8 @@ public:
 	void Init(JN_GameObject::Tag tag, int maxProjectiles, JN_Logging *logObj, JN_WindowData *windowData);
 
 	bool Shoot(SDL_Rect sourceRecr, SDL_Rect targetRect);
-	void Update(std::vector<JN_Enemy*> enemies);
-	void LateUpdate();
+	void Update();
+	void LateUpdate(std::vector<JN_Enemy*> &enemies);
 	void Render(SDL_Renderer *renderer);
 
 	///<summary>Resize all projectiles</summary>
@@ -38,7 +37,8 @@ private:
 	JN_WindowData *windowData = NULL;
 
 	int maxProjectiles;
-	std::vector<JN_Projectile*> projectiles;
+
+	JN_Projectile* projectiles = NULL;
 
 	bool ProjectileAvailable();
 	int GetAvailableProjectileIndex();

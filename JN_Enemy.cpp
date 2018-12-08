@@ -57,7 +57,7 @@ void JN_Enemy::Update(SDL_Rect playerRect)
 
 	isCollidingWithPlayer = Collide(playerRect);
 
-	if (!(isDead && isCollidingWithPlayer) && now - lastMoveTime >= 100)
+	if (!(isDead && isCollidingWithPlayer) && now - lastMoveTime >= 50)
 	{
 		lastMoveTime = now;
 
@@ -77,4 +77,7 @@ void JN_Enemy::Resize(int x, int y)
 {
 	this->x += x;
 	this->y += y;
+
+	rect.x = (int)this->x;
+	rect.y = (int)this->y;
 }

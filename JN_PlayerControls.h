@@ -15,8 +15,11 @@ public:
 	JN_PlayerControls();
 
 
+	~JN_PlayerControls();
+
+
 	enum class ControlAction { LEFT, RIGHT, UP, DOWN, NONE, SHOOT, SPEED_UP, SPEED_DOWN };	// Enum which stores all player input actions
-	enum class InputDevice { KEYBOARD, MOUSE };												// Input types
+	enum class InputDevice { KEYBOARD, MOUSE, GAMEPAD };												// Input types
 
 
 	///<summary>Init the controls and the logging</summary>
@@ -67,11 +70,13 @@ public:
 private:
 	std::map<int, ControlAction> keyboardControls = {};	// Map to assign keyboard controls to actions
 	std::map<int, ControlAction> mouseControls    = {};	// Assigns mouse buttons to actions
+	std::map<int, ControlAction> gamepadControls = {};
 
 	std::vector<ControlAction> keyboardPresses = {};	// Stores the keyboard presses
 	std::vector<ControlAction> mousePresses    = {};	// Stores the mouse clicks which have a command attached
+	std::vector<ControlAction> gamepadPresses = {};
 
-	JN_Logging *logObj = NULL;	// Logging object
+	JN_Logging *logObj = NULL;		// Logging object
 
 };
 

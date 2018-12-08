@@ -9,6 +9,11 @@ JN_PlayerControls::JN_PlayerControls()
 
 }
 
+JN_PlayerControls::~JN_PlayerControls()
+{
+
+}
+
 
 void JN_PlayerControls::Init(JN_Logging *logObj)
 {
@@ -21,6 +26,9 @@ void JN_PlayerControls::Init(JN_Logging *logObj)
 	keyboardControls[SDL_SCANCODE_DOWN] = ControlAction::SPEED_DOWN;
 
 	mouseControls[SDL_BUTTON_LEFT] = ControlAction::SHOOT;
+
+	gamepadControls[1] = ControlAction::SHOOT;
+
 	this->logObj = logObj;
 }
 
@@ -74,6 +82,10 @@ bool JN_PlayerControls::IsKeyDown(InputDevice inputDevice, int scancode)
 		return std::find(mousePresses.begin(), mousePresses.end(), mouseControls[scancode]) != mousePresses.end();
 		break;
 
+	case InputDevice::GAMEPAD:
+		return std::find(gamepadPresses.begin(), gamepadPresses.end(), gamepadControls[scancode]) != gamepadPresses.end();
+		break;
+
 	default:
 		return false;
 		break;
@@ -92,6 +104,10 @@ void JN_PlayerControls::AddKeyPress(InputDevice inputDevice, int scancode)
 
 	case InputDevice::MOUSE:
 		mousePresses.push_back(mouseControls[scancode]);
+		break;
+
+	case InputDevice::GAMEPAD:
+		gamepadPresses.push_back(gamepadControls[scancode]);
 		break;
 	}
 }
@@ -125,6 +141,10 @@ bool JN_PlayerControls::IsKeyDown(InputDevice inputDevice, ControlAction action)
 		return std::find(mousePresses.begin(), mousePresses.end(), action) != mousePresses.end();
 		break;
 
+	case InputDevice::GAMEPAD:
+		return std::find(gamepadPresses.begin(), gamepadPresses.end(), action) != gamepadPresses.end();
+		break;
+
 	default:
 		return false;
 		break;
@@ -136,4 +156,5 @@ void JN_PlayerControls::EmptyInput()
 {
 	keyboardPresses = {};
 	mousePresses = {};
+	gamepadPresses = {};
 }

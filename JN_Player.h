@@ -3,13 +3,13 @@
 
 #include "SDL.h"
 
-#include "JN_GameObject.h"
-#include "JN_RealTimer.h"
+#include "JN_AnimationController.h"
 #include "JN_ProjectileController.h"
 #include "JN_HealthController.h"
 #include "JN_PlayerControls.h"
-#include "JN_WindowData.h"
-#include "JN_AnimationController.h"
+//#include "JN_GameObject.h"
+//#include "JN_WindowData.h"
+//#include "JN_RealTimer.h"
 
 #include <set>
 #include <map>
@@ -42,12 +42,12 @@ public:
 
 
 	///<summary>Method which is called every frame</summary>
-	void Update(std::vector<JN_Enemy*> enemies);
+	void Update();
 
 
 	///<summary>Called after Update and handles collisions</summary>
 	///<param name = "tiles">The tiles which the player could potentially collide with</param>
-	void LateUpdate(std::vector<JN_GameObject*> tiles);
+	void LateUpdate(std::vector<JN_GameObject*> tiles, std::vector<JN_Enemy*> enemies);
 
 
 	///<summary>Renders the player to the screen</summary>
@@ -65,6 +65,9 @@ public:
 
 	///<summary>Returns the players score</summary>
 	int GetScore();
+
+
+	void AddScore(int s);
 
 
 	///<summary>Public method to access private attribute and it's method</summary>
@@ -87,19 +90,23 @@ private:
 	const int DAMAGE_TILE_AMOUNT = 1;				// Damage every 0.25s while the user touches the collider
 	const float MOVEMENT_TILE_MULTIPLIER = 0.5f;	// Movement will be multiplied by this
 
-	JN_Logging *logObj = NULL;							// Log object
-	JN_WindowData *windowData = NULL;					// Window data, stores size and offsets
-	JN_HealthController health;							// Player health controller with a starting value of 100
-	JN_RealTimer damageTileTimer;						// Timer for damage tile delays
-	JN_ProjectileController projectileController;		// Creates the controller with a maximum of 10 projectiles on screen at once
-	JN_PlayerControls controls;							// The controls object for the player, deals with all input
-	JN_AnimationController animController;				// Animation controller
+	JN_Logging *logObj = NULL;						// Log object
+	JN_WindowData *windowData = NULL;				// Window data, stores size and offsets
+	JN_HealthController health;						// Player health controller with a starting value of 100
+	JN_RealTimer damageTileTimer;					// Timer for damage tile delays
+	JN_ProjectileController projectileController;	// Creates the controller with a maximum of 10 projectiles on screen at once
+	JN_PlayerControls controls;						// The controls object for the player, deals with all input
+	JN_AnimationController animController;			// Animation controller
+	SDL_Joystick* gameController = NULL;			// Game controller...
+	JN_Vector2 gamepadVector;
+	JN_Vector2 velocity;
 
 	float speedControl = 1.0f;
 
 	bool isMoving = false;		// Flag to check if the player is currently moving
 	bool isAbleToMove = false;	// Checks if the player is able to move (e.g. the movement cooldown has ended)
 	bool isSlowed = false;		// This is triggered by the player stepping on the movement debuff tile
+	bool isUsingGamepad = true;
 
 	SDL_Rect newRect = SDL_Rect();	// Temp rect used during collision detection
 
@@ -129,6 +136,9 @@ private:
 	///<summary>Handles the mouse input</summary>
 	///<param name = "e">The event object</param>
 	void MouseInputHandler(SDL_Event e);
+
+
+	void GamepadInputHandler(SDL_Event e);
 
 
 	///<summary>Sets the player position after collision checking</summary>

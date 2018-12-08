@@ -9,6 +9,8 @@
 #include "JN_GameObject.h"
 
 
+class JN_Enemy;
+
 class JN_Projectile : public JN_GameObject
 {
 public:
@@ -24,7 +26,7 @@ public:
 	void Update();
 	bool OutOfBounds();
 	void Render(SDL_Renderer *renderer);
-	void LateUpdate();
+	void LateUpdate(std::vector<JN_Enemy*> &enemies);
 	void SetTarget(SDL_Rect sourceRect, SDL_Rect targetRect);
 
 private:
