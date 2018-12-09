@@ -6,6 +6,8 @@
 #include <fstream>
 #include <iostream>
 
+#include <SDL.h>
+
 SDL_Surface* LoadBMP(char* path, SDL_Renderer* renderer, bool isTransparent)
 {
 	SDL_Surface *img = SDL_LoadBMP(path);
@@ -57,6 +59,17 @@ bool ReadControlFile(char* path)
 
 
 	f.close();
+
+	return true;
+}
+
+bool ReadJson(char* path, json &j)
+{
+	std::ifstream inStream;
+
+	inStream.open(path, std::ios_base::in);
+
+	inStream >> j;
 
 	return true;
 }

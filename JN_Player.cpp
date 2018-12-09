@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <iostream>
 #include <cmath>
+#include <string>
 
 // Default constructopr
 JN_Player::JN_Player()
@@ -71,10 +72,7 @@ void JN_Player::Input(SDL_Event e)
 		MouseInputHandler(e);
 
 	else if ((e.type == SDL_JOYAXISMOTION || e.type == SDL_JOYBUTTONDOWN || e.type == SDL_JOYBUTTONUP) && (isUsingGamepad))
-	{
 		GamepadInputHandler(e);
-	}
-
 }
 
 
@@ -125,15 +123,23 @@ void JN_Player::GamepadInputHandler(SDL_Event e)
 		if (abs(gamepadVector.y) <= 1.0f)
 			gamepadVector.y = 0;
 	}
+	else if (e.jbutton.button == 5)
+	{
+		isGamepadShooting = !isGamepadShooting;
+		logObj->LogGamepadInput("Shoot");
+	}
 }
 
 
 void JN_Player::Shoot()
 {
+	if ((velocity.x == 0 && velocity.y == 0) && (gamepadVector.x == 0 && gamepadVector.y == 0))
+		return;
+
 	float now = (float)SDL_GetTicks();
 
 	bool readyToShoot = (now - lastShootTime > SHOOT_DELAY);
-	bool triggerDown = controls.IsKeyDown(JN_PlayerControls::InputDevice::MOUSE, JN_PlayerControls::ControlAction::SHOOT);
+	bool triggerDown = controls.IsKeyDown(JN_PlayerControls::InputDevice::MOUSE, JN_PlayerControls::ControlAction::SHOOT) || isGamepadShooting;
 
 	if (!readyToShoot || !triggerDown)
 		return;
@@ -142,9 +148,20 @@ void JN_Player::Shoot()
 	SDL_Rect target = SDL_Rect();
 
 	int x, y;	// Get the mouse position
-	SDL_GetMouseState(&x, &y);
-	target.x = x - rect.x;
-	target.y = y - rect.y;
+	if (!isUsingGamepad)
+	{
+		SDL_GetMouseState(&x, &y);
+		target.x = x - rect.x;
+		target.y = y - rect.y;
+	}
+	else
+	{
+		if (rotationVector.x == 0 && rotationVector.y == 0)
+			return;
+
+		target.x = (rect.x + rotationVector.x) - rect.x;
+		target.y = (rect.y + rotationVector.y) - rect.y;
+	}
 
 	if (projectileController.Shoot(rect, target))
 		lastShootTime = now;
@@ -153,6 +170,8 @@ void JN_Player::Shoot()
 
 void JN_Player::Update()
 {
+	isUsingGamepad = controls.GetKeyboardPresses().empty();
+
 	projectileController.Update();
 	Move();
 	RotatePlayer();
@@ -221,33 +240,39 @@ void JN_Player::Move()
 
 		}
 	}
-	if (!isUsingGamepad)
-	{
+
+	if (abs(velocity.x) > abs((MOVEMENT_SPEED * movementMultiplier) * (gamepadVector.x / 10)))
 		newRect.x += velocity.x;
-		newRect.y += velocity.y;
-	}
 	else
-	{
 		newRect.x += (MOVEMENT_SPEED * movementMultiplier) * (gamepadVector.x / 10);
+
+
+	if (abs(velocity.y) > abs((MOVEMENT_SPEED * movementMultiplier) * (gamepadVector.y / 10)))
+		newRect.y += velocity.y;
+	else
 		newRect.y += (MOVEMENT_SPEED * movementMultiplier) * (gamepadVector.y / 10);
-	}
+
+	logObj->LogVelocity(newRect.x - rect.x, newRect.y - rect.y);
 }
 
 
 void JN_Player::RotatePlayer()
 {
-	if (!isUsingGamepad)
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+
+	if (isUsingGamepad)
 	{
-		int x, y;
-		SDL_GetMouseState(&x, &y);
-		rotationAngle = (float)(atan2((y - 2) - newRect.y, (x - 2) - newRect.x) * 180.0f / 3.14159);
+		x = SDL_JoystickGetAxis(gameController, 3) / 3276.70f;
+		y = SDL_JoystickGetAxis(gameController, 4) / 3276.70f;
+		rotationAngle = (float)(atan2((newRect.y - y) - newRect.y, (newRect.x - x) - newRect.x) * 180.0f / 3.14159) + 180.0f;
+
+		rotationVector.x = x;
+		rotationVector.y = y;
 	}
 	else
 	{
-		//int x = SDL_JoystickGetAxis(gameController, 3) / 3276.70f;
-		//int y = SDL_JoystickGetAxis(gameController, 4) / 3276.70f;
-
-		rotationAngle = (float)(atan2(gamepadVector.y, gamepadVector.x) * 180.0f / M_PI);
+		rotationAngle = (float)(atan2((y - 2) - newRect.y, (x - 2) - newRect.x) * 180.0f / 3.14159);
 	}
 }
 
@@ -368,4 +393,9 @@ void JN_Player::TakeDamage(int dmg)
 void JN_Player::AddScore(int s)
 {
 	score += s;
+}
+
+int JN_Player::GetDamageTaken()
+{
+	return health.GetDamageTaken();
 }

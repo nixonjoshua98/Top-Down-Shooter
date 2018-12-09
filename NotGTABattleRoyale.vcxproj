@@ -23,7 +23,7 @@
     <ProjectGuid>{8E3A05F8-B27C-4818-98DF-047C87BB68B5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>NotGTABattleRoyale</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -164,9 +164,11 @@
     <ClInclude Include="JN_GameObject.h" />
     <ClInclude Include="JN_Projectile.h" />
     <ClInclude Include="JN_ProjectileController.h" />
+    <ClInclude Include="JN_SplashScreen.h" />
     <ClInclude Include="JN_Square.h" />
     <ClInclude Include="JN_Text.h" />
     <ClInclude Include="JN_Asset.h" />
+    <ClInclude Include="json.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="JN_Vector2.h" />
@@ -186,6 +188,7 @@
     <ClCompile Include="JN_ReadWriteFunctions.cpp" />
     <ClCompile Include="JN_RealTimer.cpp" />
     <ClCompile Include="JN_GameObject.cpp" />
+    <ClCompile Include="JN_SplashScreen.cpp" />
     <ClCompile Include="JN_Text.cpp" />
     <ClCompile Include="JN_Projectile.cpp" />
     <ClCompile Include="JN_ProjectileController.cpp" />

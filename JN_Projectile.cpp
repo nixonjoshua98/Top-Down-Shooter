@@ -29,12 +29,14 @@ void JN_Projectile::SetTarget(SDL_Rect sourceRect, SDL_Rect targetRect)
 	visible = true;
 	this->sourceRect = sourceRect;
 	vector2 = JN_Vector2((float)targetRect.x, (float)targetRect.y);
-	x = (float)sourceRect.x, y = (float)sourceRect.y;
+
+	x = (float)sourceRect.x;
+	y = (float)sourceRect.y;
 
 	rect.x = this->sourceRect.x;
 	rect.y = this->sourceRect.y;
 
-	rotationAngle = (float)(atan2((targetRect.y - 2) - sourceRect.y, (targetRect.x - 2) - sourceRect.x) * 180.0f / 3.14159);
+	rotationAngle = (float)(atan2((targetRect.y - 2) - sourceRect.y, (targetRect.x - 2) - sourceRect.x) * 180.0f / M_PI);
 }
 
 void JN_Projectile::Update()

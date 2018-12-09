@@ -79,7 +79,8 @@ bool JN_GameWorld::Init()
 	if (success) {
 		window = SDL_CreateWindow("Joshua Nixon, Games Computing (BSc), 16632283 | Not GTA Battle Royale", 
 			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-			MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+			MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT, 
+			SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
 		if (window == NULL)
 		{
@@ -88,6 +89,8 @@ bool JN_GameWorld::Init()
 		}
 		else
 		{
+			SDL_SetWindowResizable(window, SDL_FALSE);
+
 			logObj->LogMethod("SDL window initialized correctly");
 			renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED);
 			logObj->LogMethod("SDL renderer initialized correctly");
@@ -184,8 +187,9 @@ void JN_GameWorld::Run()
 // Spawn an enemy if timer is finished
 void JN_GameWorld::SpawnEnemy()
 {
-	if ((gameDuration - lastEnemySpawn) >= 200 && (enemies.size() < MAXIMUM_ENEMIES))
+	if ((gameDuration - lastEnemySpawn) >= 333 && (enemies.size() < MAXIMUM_ENEMIES))
 	{
+		_++;
 		lastEnemySpawn = gameDuration;
 	
 		JN_Enemy* e = new JN_Enemy();		
@@ -278,9 +282,9 @@ void JN_GameWorld::Render()
 
 	logObj->LogTimeSpan("Player finished rendering", t.Tick());
 
-	timerText->Render(renderer, std::to_string(60 - (int)gameDuration / 1000));
-	scoreText->Render(renderer, std::to_string(player->GetScore()));
-	healthText->Render(renderer, std::to_string(player->GetHealth()));
+	timerText->Render(renderer, "TIMER: " + std::to_string(60 - (int)gameDuration / 1000));
+	scoreText->Render(renderer, "SCORE: " + std::to_string(player->GetScore()));
+	healthText->Render(renderer, "DMG TAKEN: " + std::to_string(player->GetDamageTaken()));
 
 	if (!gameStarted)
 		startBtn->Render(renderer);
@@ -299,6 +303,9 @@ void JN_GameWorld::Render()
 void JN_GameWorld::Update()
 {
 	SDL_GameControllerUpdate();
+
+	if (gameDuration >= 60000)
+		running = false;
 
 	gameDuration = gameplayTimer.Tick();
 
@@ -324,9 +331,15 @@ void JN_GameWorld::LateUpdate()
 		if (enemies[i]->isCollidingWithPlayer || enemies[i]->isDead)
 		{
 			if (enemies[i]->isCollidingWithPlayer)
-				player->TakeDamage(5);
+			{
+				logObj->LogMethod("Player took 3 damage");
+				player->TakeDamage(3);
+			}
 			else
+			{
+				logObj->LogMethod("Player gained 5 score by killing an enemy");
 				player->AddScore(5);
+			}
 
 			// TODO: Enemy Controller
 			delete enemies[i];
@@ -350,9 +363,9 @@ void JN_GameWorld::CreateRandomWorldMap()
 void JN_GameWorld::BuildWorld()
 {
 	player->Init(renderer, logObj, windowData);
-	timerText->Init((int)(WORLD_WIDTH / 2) - 25, 10, 50, 50, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-	scoreText->Init((int)(WORLD_WIDTH * 0.75f) - 25, 10, 50, 50, SDL_Color{ 0, 0, 255 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-	healthText->Init((int)(WORLD_WIDTH * 0.25) - 25, 10, 50, 50, SDL_Color{ 255, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	timerText->Init((int)(WORLD_WIDTH * 0.5f) - 120, 10, 240, 50, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	scoreText->Init((int)(WORLD_WIDTH * 0.8f) - 120, 10, 240, 50, SDL_Color{ 0, 0, 255 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	healthText->Init((int)(WORLD_WIDTH * 0.2f) - 120, 10, 240, 50, SDL_Color{ 255, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
 	startBtn->Init("Start Round", (WORLD_WIDTH / 2) - 200, (WORLD_HEIGHT / 2) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 	resumeBtn->Init("Resume Round", (WORLD_WIDTH / 2) - 200, (WORLD_HEIGHT / 2) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
@@ -463,4 +476,16 @@ void JN_GameWorld::TogglePauseGame()
 	}
 
 	gamePaused = !gamePaused;
+}
+
+
+SDL_Renderer* JN_GameWorld::GetRenderer()
+{
+	return renderer;
+}
+
+
+std::vector<JN_GameObject*> JN_GameWorld::GetTiles()
+{
+	return allTiles;
 }

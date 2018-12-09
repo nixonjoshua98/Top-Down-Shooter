@@ -39,7 +39,7 @@ void JN_Logging::Log(bool logOverride)
 		if (t == "0")
 			continue;
 
-		//std::cout << t << "\n";
+		std::cout << t << "\n";
 		f << t << "\n";
 	}
 
@@ -134,5 +134,25 @@ void JN_Logging::LogMouseInput(bool down, std::string key)
 
 	std::ostringstream oss;
 	oss << JN_RealTimer::GetTime() << " [INPUT] Mouse " << (down ? "pressed" : "released") << " [" << key << "]";
+	logQueue.Add(oss.str());
+}
+
+void JN_Logging::LogVelocity(float x, float y)
+{
+	if (!currentlyLogging)
+		return;
+
+	std::ostringstream oss;
+	oss << JN_RealTimer::GetTime() << " [PLAYER] " << "Velocity " << "(" << x << ", " << y << ")";
+	logQueue.Add(oss.str());
+}
+
+void JN_Logging::LogGamepadInput(std::string b)
+{
+	if (!currentlyLogging)
+		return;
+
+	std::ostringstream oss;
+	oss << JN_RealTimer::GetTime() << " [INPUT] Gamepad " << b;
 	logQueue.Add(oss.str());
 }

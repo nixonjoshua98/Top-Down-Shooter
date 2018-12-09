@@ -22,6 +22,8 @@ public:
 	void LogWindowSize(int xa, int ya, int xb, int yb);
 	void LogKeyboardInput(bool down, std::string key);
 	void LogMouseInput(bool down, std::string key);
+	void LogVelocity(float x, float y);
+	void LogGamepadInput(std::string b);
 
 
 private:

@@ -3,6 +3,7 @@
 #include "JN_GameWorld.h"
 #include "JN_Logging.h"
 #include "JN_RealTimer.h"
+#include "JN_SplashScreen.h"
 
 #include <iostream>
 
@@ -50,12 +51,24 @@
 				PASS:	Player can be controlled with 1 button				COMPLETE
 				2:2:	Multiple buttons, multiple directions				COMPLETE
 				2:1:	Combine actions via keyboard or gamepad				COMPLETE
-				1st:	Speed control + gamepad support						NEED GAMEPAD SUPPORT
+				1st:	Speed control + gamepad support						COMPLETE
+
+	Menu (Row 7):
+				PASS:	Splash screen (contains title and controls)			COMPLETE
+				2:2:	Menu, elements can be accessed using the keyboard
+				2:1:	Menu elements highlight in colour when selected
+				1st:	menu controler with mouse + sub-menus
+
+	Audio (Row 8):
+				PASS:	Clear background audio
+				2:2:	Sound effects
+				2:1:	Audio colume controlled in-game
+				1st:	Mute/un-mute SFX/BGM
 
 	Extra features (Row 9):
 				PASS:	60 seconds timer									COMPLETE
 				2:2:	All main requirments met
-				2:1:	Keys can be remapped
+				2:1:	Keys can be remapped								COMPLETE
 				1st:	Saving or loading of game state						COMPLETE
 */
 
@@ -69,9 +82,15 @@ int main(int argc, char *argv[])
 	srand((int)time(NULL));
 
 	JN_GameWorld gw = JN_GameWorld();
+	JN_SplashScreen ss = JN_SplashScreen();
 
 	if (gw.Init())
-		gw.Run();
+	{
+		ss.Run(gw.GetRenderer(), gw.GetTiles(), 5);
+
+		if (!ss.GetQuit())
+			gw.Run();
+	}
 
     return 0;
 }

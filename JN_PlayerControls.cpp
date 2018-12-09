@@ -1,8 +1,14 @@
 #include "stdafx.h"
 
+
+#include "JN_ReadWriteFunctions.h"
 #include "JN_PlayerControls.h"
 
 #include <iostream>
+
+#include "json.hpp"
+
+using json = nlohmann::json;
 
 JN_PlayerControls::JN_PlayerControls()
 {
@@ -17,16 +23,29 @@ JN_PlayerControls::~JN_PlayerControls()
 
 void JN_PlayerControls::Init(JN_Logging *logObj)
 {
-	keyboardControls[SDL_SCANCODE_W] = ControlAction::UP;
-	keyboardControls[SDL_SCANCODE_A] = ControlAction::LEFT;
-	keyboardControls[SDL_SCANCODE_S] = ControlAction::DOWN;
-	keyboardControls[SDL_SCANCODE_D] = ControlAction::RIGHT;
+	json j;
 
-	keyboardControls[SDL_SCANCODE_UP]   = ControlAction::SPEED_UP;
-	keyboardControls[SDL_SCANCODE_DOWN] = ControlAction::SPEED_DOWN;
+	ReadJson("Data/controls.json", j);
+
+	// :(
+	SDL_Scancode left      = SDL_GetScancodeFromKey(SDL_GetKeyFromName(j["left"].get<std::string>().c_str()));
+	SDL_Scancode right     = SDL_GetScancodeFromKey(SDL_GetKeyFromName(j["right"].get<std::string>().c_str()));
+	SDL_Scancode up        = SDL_GetScancodeFromKey(SDL_GetKeyFromName(j["up"].get<std::string>().c_str()));
+	SDL_Scancode down      = SDL_GetScancodeFromKey(SDL_GetKeyFromName(j["down"].get<std::string>().c_str()));
+	SDL_Scancode speedUp   = SDL_GetScancodeFromKey(SDL_GetKeyFromName(j["speedUp"].get<std::string>().c_str()));
+	SDL_Scancode speedDown = SDL_GetScancodeFromKey(SDL_GetKeyFromName(j["speedDown"].get<std::string>().c_str()));
+
+	keyboardControls[up] = ControlAction::UP;
+	keyboardControls[left] = ControlAction::LEFT;
+	keyboardControls[down] = ControlAction::DOWN;
+	keyboardControls[right] = ControlAction::RIGHT;
+
+	keyboardControls[speedUp] = ControlAction::SPEED_UP;
+	keyboardControls[speedDown] = ControlAction::SPEED_DOWN;
 
 	mouseControls[SDL_BUTTON_LEFT] = ControlAction::SHOOT;
 
+	// No one cares about this 
 	gamepadControls[1] = ControlAction::SHOOT;
 
 	this->logObj = logObj;

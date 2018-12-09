@@ -70,6 +70,9 @@ public:
 	void AddScore(int s);
 
 
+	int GetDamageTaken();
+
+
 	///<summary>Public method to access private attribute and it's method</summary>
 	///<param name = "dmg">The damage which the player should take</param>
 	void TakeDamage(int dmg);
@@ -83,7 +86,7 @@ public:
 private:
 	const int MOVEMENT_SPEED = 3;	// The amount the player moves each movement cycle
 	const int MOVEMENT_DELAY = 25;	// The delay between movements
-	const int SHOOT_DELAY = 250;	// The delay between being able to fire a projectile
+	const int SHOOT_DELAY = 200;	// The delay between being able to fire a projectile
 	const int PLAYER_WIDTH = 20;	// ...
 	const int PLAYER_HEIGHT = 20;	// ...
 
@@ -100,6 +103,7 @@ private:
 	SDL_Joystick* gameController = NULL;			// Game controller...
 	JN_Vector2 gamepadVector;
 	JN_Vector2 velocity;
+	JN_Vector2 rotationVector;
 
 	float speedControl = 1.0f;
 
@@ -107,6 +111,7 @@ private:
 	bool isAbleToMove = false;	// Checks if the player is able to move (e.g. the movement cooldown has ended)
 	bool isSlowed = false;		// This is triggered by the player stepping on the movement debuff tile
 	bool isUsingGamepad = true;
+	bool isGamepadShooting = false;
 
 	SDL_Rect newRect = SDL_Rect();	// Temp rect used during collision detection
 

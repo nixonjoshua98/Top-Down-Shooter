@@ -18,6 +18,10 @@
 class JN_GameWorld
 {
 public:
+
+	int _ = 0;
+
+
 	///<summary>The default constructor which takes zero parameters</summary>
 	JN_GameWorld();
 
@@ -53,6 +57,11 @@ public:
 	///<summary>The game loop which will be run thoughtout the game sequence</summary>
 	void Run();
 
+
+	SDL_Renderer* GetRenderer();
+
+	std::vector<JN_GameObject*> GetTiles();
+
 private:
 	bool running    = true;		// Boolean flag which keeps the game loop going if the game is active
 	bool fullscreen = false;	// Flag to check if game is full screen or not
@@ -84,6 +93,7 @@ private:
 	float gameDuration = 0.0f;
 	float lastEnemySpawn = 0.0f;
 
+	///<summary>Setup the application<summary>
 	void Setup();
 
 
@@ -121,7 +131,7 @@ private:
 	void TogglePauseGame();
 
 
-
+	///<summary>Spawn an enemy if allowed</summary>
 	void SpawnEnemy();
 };
 
