@@ -2,6 +2,8 @@
 
 #include "JN_GameObject.h"
 #include "JN_Button.h"
+#include "JN_GameWorld.h"
+#include "SDL_mixer.h"
 
 JN_Button::JN_Button()
 {
@@ -45,16 +47,14 @@ void JN_Button::Update()
 	SDL_Rect r = SDL_Rect{x, y, 5, 5};
 	
 	isActive = JN_GameObject::Collide(square.rect, r);
+
+	if (isClicked && (!JN_GameWorld::isSfxMute))
+		Mix_PlayChannel(-1, JN_GameWorld::buttonClick, 0);
 }
 
 void JN_Button::Input(SDL_Event e)
 {
-	isClicked = false;
-
-	if (isActive && e.type == SDL_MOUSEBUTTONDOWN && (e.button.button == SDL_BUTTON_LEFT))
-	{
-		isClicked = true;
-	}
+	isClicked = isActive && (e.type == SDL_MOUSEBUTTONDOWN) && (e.button.button == SDL_BUTTON_LEFT);
 }
 
 

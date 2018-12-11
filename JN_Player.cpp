@@ -19,6 +19,7 @@ JN_Player::JN_Player()
 // De-constructor
 JN_Player::~JN_Player()
 {
+	Mix_FreeChunk(pewpew);
 	SDL_JoystickClose(gameController);
 
 	logObj = NULL;
@@ -30,6 +31,7 @@ JN_Player::~JN_Player()
 // Initilizes the player
 void JN_Player::Init(SDL_Renderer *renderer, JN_Logging *logObj, JN_WindowData *windowData)
 {
+	pewpew = Mix_LoadWAV("Assets/pewPew.wav");
 	JN_GameObject::Init(Tag::PLAYER, JN_GameObject::playerSpriteSheet.GetTexture(), rect, logObj);
 
 	JN_RealTimer t = JN_RealTimer();
@@ -164,7 +166,11 @@ void JN_Player::Shoot()
 	}
 
 	if (projectileController.Shoot(rect, target))
+	{
+		if (!JN_GameWorld::isSfxMute)
+			Mix_PlayChannel(1, pewpew, 0);
 		lastShootTime = now;
+	}
 }
 
 

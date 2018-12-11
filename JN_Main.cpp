@@ -57,13 +57,13 @@
 	Menu (Row 7):
 				PASS:	Splash screen (contains title and controls)			COMPLETE
 				2:2:	Menu, elements can be accessed using the keyboard
-				2:1:	Menu elements highlight in colour when selected
+				2:1:	Menu elements highlight in colour when selected		COMPLETE
 				1st:	menu controler with mouse + sub-menus
 
 	Audio (Row 8):
 				PASS:	Clear background audio
-				2:2:	Sound effects
-				2:1:	Audio colume controlled in-game
+				2:2:	Sound effects										COMPLETE
+				2:1:	Audio volume controlled in-game
 				1st:	Mute/un-mute SFX/BGM
 
 	Extra features (Row 9):
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 
 	if (gw.Init())
 	{
-		ss.Run(gw.GetRenderer(), gw.GetTiles(), 6);
+		ss.Run(gw.GetRenderer(), gw.GetTiles(), 1);
 
 		if (!ss.GetQuit())
 		{

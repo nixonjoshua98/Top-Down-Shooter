@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <vector>
+#include <SDL_mixer.h>
 
 #include "JN_PerformanceTimer.h"
 #include "JN_GameplayTimer.h"
@@ -29,7 +30,7 @@ public:
 	///<summary>The deconstructor which deallocates objects from memory</summary>
 	~JN_GameWorld();
 
-	static const int FPS = 60;											// Frames per second aim
+	static const int FPS = 40;											// Frames per second aim
 	static const int MIN_WINDOW_WIDTH  = 960;							// Starting width of the entire window in px
 	static const int MIN_WINDOW_HEIGHT = 720;							// Min height of the entire window in px
 	static const int LEVEL_HEIGHT = 20;									// Cells high the game world is	
@@ -40,11 +41,20 @@ public:
 	static const int CELL_HEIGHT = WORLD_HEIGHT / LEVEL_HEIGHT;			// Height of each cell
 	static const int CELL_WIDTH = WORLD_WIDTH / LEVEL_WIDTH;			// Width of each cell
 
-	static const int MAXIMUM_ENEMIES = 40;								// ...
+	static const int MAXIMUM_ENEMIES = 32;								// ...
 
 	static const int FULL_SCREEN_KEY = SDL_SCANCODE_F11;				// ...
 	static const int LOG_TOGGLE_KEY = SDL_SCANCODE_F1;					// ...
 	static const int PAUSE_GAME_KEY = SDL_SCANCODE_ESCAPE;				// ...
+
+	static bool isSfxMute;
+
+	static Mix_Chunk* buttonClick;
+	
+	Mix_Chunk* oof = NULL;
+	Mix_Chunk* coins = NULL;
+
+	static int vol;
 
 	// Used or resizing objects, used as a pointer so the window height and width is always accurate
 	JN_WindowData *windowData = NULL;
@@ -67,13 +77,12 @@ private:
 	bool fullscreen = false;	// Flag to check if game is full screen or not
 	bool gamePaused = false;	// ...
 	bool timerComplete = false;	// ...
-	bool gameStarted = false;
+	bool gameStarted = true;
 
 	JN_PerformanceTimer performanceTimer;	// Timer class which stores FPS
 	JN_Player *player = NULL;				// Player object, the user will control this objects
 	JN_Text *timerText = NULL;				// 60 seconds timer text
 	JN_Text *scoreText = NULL;
-	JN_Button *startBtn = NULL;
 	JN_Text *healthText = NULL;
 	JN_Button *resumeBtn = NULL;
 	JN_GameplayTimer gameplayTimer;			// gameplay timer (60secs)

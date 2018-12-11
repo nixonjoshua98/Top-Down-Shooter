@@ -1,17 +1,2354 @@
-23:47:0 [SYSTEM] Log was cleared
-23:47:0 [SYSTEM] SDL window initialized correctly
-23:47:0 [SYSTEM] SDL renderer initialized correctly
-23:47:0 [SYSTEM] World text file was read OK
-23:47:0 [SYSTEM] Assets/TileSheet.bmp has been read in
-23:47:0 [SYSTEM] Assets/PlayerProjectile.bmp has been read in
-23:47:0 [SYSTEM] Assets/PlayerSpriteSheet.bmp has been read in
-23:47:0 [SYSTEM] Assets/ScorpionSpriteSheet.bmp has been read in
-23:47:0 [SYSTEM] Projectiles created | Duration (ms): 0.0095
-23:47:1 [SYSTEM] Player initilized | Duration (ms): 0.9742
-23:47:1 [SYSTEM] World tiles initialized | Duration (ms): 0.7439
-23:47:6 [SYSTEM] Assets/TileSheet.bmp surface has been freed
-23:47:6 [SYSTEM] Assets/TileSheet.bmp texture has been destroyed
-23:47:6 [SYSTEM] Assets/PlayerProjectile.bmp surface has been freed
-23:47:6 [SYSTEM] Assets/PlayerProjectile.bmp texture has been destroyed
-23:47:6 [SYSTEM] Assets/PlayerSpriteSheet.bmp surface has been freed
-23:47:6 [SYSTEM] Assets/PlayerSpriteSheet.bmp texture has been destroyed
+16:15:10 [SYSTEM] Log was cleared
+16:15:11 [SYSTEM] SDL window initialized correctly
+16:15:11 [SYSTEM] SDL renderer initialized correctly
+16:15:11 [SYSTEM] World text file was read OK
+16:15:11 [SYSTEM] Assets/TileSheet.bmp has been read in
+16:15:11 [SYSTEM] Assets/PlayerProjectile.bmp has been read in
+16:15:11 [SYSTEM] Assets/PlayerSpriteSheet.bmp has been read in
+16:15:11 [SYSTEM] Assets/ScorpionSpriteSheet.bmp has been read in
+16:15:11 [SYSTEM] Projectiles created | Duration (ms): 0.0102
+16:15:11 [SYSTEM] Player initilized | Duration (ms): 1.1384
+16:15:11 [SYSTEM] World tiles initialized | Duration (ms): 0.8462
+16:15:13 [SYSTEM] Frame: 1 | FPS: 0 | Optimal FPS: 40
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.1378
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.1076
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2678
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0839
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 2 | FPS: 15 | Optimal FPS: 40
+16:15:13 [INPUT] Mouse released [Left]
+16:15:13 [SYSTEM] Player input event check completed | Duration (ms): 0.0487
+16:15:13 [SYSTEM] Player input event check completed | Duration (ms): 0
+16:15:13 [SYSTEM] Enemy spawned
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.0623
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.1038
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2431
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 3 | FPS: 5 | Optimal FPS: 40
+16:15:13 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.0989
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.111
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3323
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 4 | FPS: 24 | Optimal FPS: 40
+16:15:13 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.0842
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.0997
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2613
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 5 | FPS: 11 | Optimal FPS: 40
+16:15:13 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.0778
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.0978
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2616
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 6 | FPS: 23 | Optimal FPS: 40
+16:15:13 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:13 [SYSTEM] Enemy spawned
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.0608
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.1212
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3674
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 7 | FPS: 20 | Optimal FPS: 40
+16:15:13 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.0918
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.1163
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4071
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 8 | FPS: 23 | Optimal FPS: 40
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.0835
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.1027
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2677
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 9 | FPS: 27 | Optimal FPS: 40
+16:15:13 [SYSTEM] Player input event check completed | Duration (ms): 0.0003
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.0849
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.0997
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.224
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0037
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 10 | FPS: 27 | Optimal FPS: 40
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.1004
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.0959
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3269
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 11 | FPS: 25 | Optimal FPS: 40
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.0849
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.105
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2998
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0037
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 12 | FPS: 25 | Optimal FPS: 40
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.2299
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.1126
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2786
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 13 | FPS: 27 | Optimal FPS: 40
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.1808
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.1046
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2994
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:13 [SYSTEM] Renderer flipped
+16:15:13 [SYSTEM] Frame: 14 | FPS: 28 | Optimal FPS: 40
+16:15:13 [PLAYER] Velocity (0, 0)
+16:15:13 [SYSTEM] Player update method concluded | Duration (ms): 0.0789
+16:15:13 [SYSTEM] Player late update method concluded | Duration (ms): 0.105
+16:15:13 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2685
+16:15:13 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:13 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 15 | FPS: 27 | Optimal FPS: 40
+16:15:14 [SYSTEM] Enemy spawned
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.0782
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.1147
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4226
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 16 | FPS: 23 | Optimal FPS: 40
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.1068
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.0967
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3662
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 17 | FPS: 27 | Optimal FPS: 40
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.0812
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.1204
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3545
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 18 | FPS: 25 | Optimal FPS: 40
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.0906
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.1171
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3188
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 19 | FPS: 27 | Optimal FPS: 40
+16:15:14 [INPUT] Window resized (960, 720) -> (1920, 1027)
+16:15:14 [SYSTEM] Window resizing callback completed | Duration (ms): 0.1793
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.174
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.128
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 8.6622
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0371
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 20 | FPS: 5 | Optimal FPS: 40
+16:15:14 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:14 [SYSTEM] Player input event check completed | Duration (ms): 0
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.0967
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.1091
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3987
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 21 | FPS: 18 | Optimal FPS: 40
+16:15:14 [SYSTEM] Player input event check completed | Duration (ms): 0.0008
+16:15:14 [SYSTEM] Enemy spawned
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.0687
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.1118
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.318
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 22 | FPS: 20 | Optimal FPS: 40
+16:15:14 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.1013
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.0989
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3398
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 23 | FPS: 20 | Optimal FPS: 40
+16:15:14 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.0801
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.108
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.267
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 24 | FPS: 22 | Optimal FPS: 40
+16:15:14 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.1367
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.0933
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2956
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0037
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 25 | FPS: 29 | Optimal FPS: 40
+16:15:14 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.0845
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.0936
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2481
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 26 | FPS: 29 | Optimal FPS: 40
+16:15:14 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:14 [PLAYER] Velocity (0, 0)
+16:15:14 [SYSTEM] Player update method concluded | Duration (ms): 0.0951
+16:15:14 [SYSTEM] Player late update method concluded | Duration (ms): 0.0925
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3957
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0037
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 27 | FPS: 27 | Optimal FPS: 40
+16:15:14 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:14 [SYSTEM] Game was paused
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2949
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 28 | FPS: 34 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4916
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 29 | FPS: 38 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4418
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0072
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 30 | FPS: 28 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3682
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 31 | FPS: 38 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3428
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0226
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 32 | FPS: 38 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4109
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 33 | FPS: 38 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.444
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 34 | FPS: 38 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2964
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 35 | FPS: 40 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3839
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 36 | FPS: 38 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4864
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 37 | FPS: 40 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3454
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 38 | FPS: 34 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2907
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 39 | FPS: 38 | Optimal FPS: 40
+16:15:14 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3216
+16:15:14 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:14 [SYSTEM] Renderer flipped
+16:15:14 [SYSTEM] Frame: 40 | FPS: 40 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3349
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 41 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3409
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 42 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2446
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 43 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4719
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0079
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 44 | FPS: 40 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3995
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 45 | FPS: 37 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3402
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 46 | FPS: 35 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.372
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 47 | FPS: 40 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3791
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0087
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 48 | FPS: 31 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3005
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 49 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2878
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 50 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4526
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 51 | FPS: 40 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3262
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 52 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4312
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 53 | FPS: 37 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.605
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 54 | FPS: 40 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3028
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 55 | FPS: 40 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2534
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 56 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2541
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 57 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2447
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 58 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2937
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 59 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3727
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 60 | FPS: 37 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3643
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0098
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 61 | FPS: 40 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3934
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0215
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 62 | FPS: 33 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3341
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 63 | FPS: 40 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4116
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0207
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 64 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2579
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 65 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4795
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 66 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2583
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 67 | FPS: 37 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3655
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0212
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 68 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3432
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0057
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 69 | FPS: 35 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2991
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 70 | FPS: 34 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3248
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 71 | FPS: 40 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4388
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0075
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 72 | FPS: 37 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3099
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 73 | FPS: 40 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3754
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 74 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3912
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 75 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2881
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 76 | FPS: 38 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2567
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 77 | FPS: 40 | Optimal FPS: 40
+16:15:15 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2405
+16:15:15 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:15 [SYSTEM] Renderer flipped
+16:15:15 [SYSTEM] Frame: 78 | FPS: 38 | Optimal FPS: 40
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.375
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 79 | FPS: 35 | Optimal FPS: 40
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4331
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0313
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 80 | FPS: 38 | Optimal FPS: 40
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3018
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 81 | FPS: 38 | Optimal FPS: 40
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4806
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 82 | FPS: 40 | Optimal FPS: 40
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3126
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 83 | FPS: 38 | Optimal FPS: 40
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2382
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0136
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 84 | FPS: 40 | Optimal FPS: 40
+16:15:16 [SYSTEM] Game was unpaused
+16:15:16 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0857
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.1559
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2832
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 85 | FPS: 21 | Optimal FPS: 40
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0771
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.097
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2273
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 86 | FPS: 24 | Optimal FPS: 40
+16:15:16 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:16 [SYSTEM] Player input event check completed | Duration (ms): 0.0057
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0993
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.0951
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3807
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 87 | FPS: 20 | Optimal FPS: 40
+16:15:16 [SYSTEM] Enemy spawned
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0612
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.0944
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2447
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0075
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 88 | FPS: 22 | Optimal FPS: 40
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0977
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.0917
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2232
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 89 | FPS: 21 | Optimal FPS: 40
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0888
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.0955
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2885
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.008
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 90 | FPS: 26 | Optimal FPS: 40
+16:15:16 [INPUT] Window resized (1920, 1027) -> (960, 720)
+16:15:16 [SYSTEM] Window resizing callback completed | Duration (ms): 0.2194
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0989
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.1371
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 5.1944
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0888
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 91 | FPS: 7 | Optimal FPS: 40
+16:15:16 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0849
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.1903
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2669
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 92 | FPS: 20 | Optimal FPS: 40
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.102
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.1099
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3912
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0185
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 93 | FPS: 21 | Optimal FPS: 40
+16:15:16 [SYSTEM] Enemy spawned
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0631
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.1209
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4104
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0102
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 94 | FPS: 24 | Optimal FPS: 40
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0838
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.1477
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.393
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 95 | FPS: 31 | Optimal FPS: 40
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0812
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.0974
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4275
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 96 | FPS: 27 | Optimal FPS: 40
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0774
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.1454
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2889
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 97 | FPS: 23 | Optimal FPS: 40
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0823
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.1254
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 1.0856
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.011
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 98 | FPS: 23 | Optimal FPS: 40
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0899
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.0944
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3035
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 99 | FPS: 27 | Optimal FPS: 40
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.1035
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.0936
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2602
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 100 | FPS: 26 | Optimal FPS: 40
+16:15:16 [PLAYER] Velocity (0, 0)
+16:15:16 [SYSTEM] Player update method concluded | Duration (ms): 0.0933
+16:15:16 [SYSTEM] Player late update method concluded | Duration (ms): 0.0956
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3089
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 101 | FPS: 29 | Optimal FPS: 40
+16:15:16 [SYSTEM] Game was paused
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4632
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:16 [SYSTEM] Renderer flipped
+16:15:16 [SYSTEM] Frame: 102 | FPS: 31 | Optimal FPS: 40
+16:15:16 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4365
+16:15:16 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:16 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 103 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3281
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 104 | FPS: 38 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4047
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0064
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 105 | FPS: 37 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.248
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 106 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2594
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 107 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3508
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 108 | FPS: 38 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3262
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 109 | FPS: 38 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4716
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0068
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 110 | FPS: 38 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2684
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 111 | FPS: 37 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3764
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 112 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4285
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0204
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 113 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4674
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 114 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2953
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 115 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3546
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 116 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2568
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 117 | FPS: 38 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4289
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0072
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 118 | FPS: 38 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3179
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 119 | FPS: 38 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.364
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 120 | FPS: 38 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3518
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 121 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3515
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 122 | FPS: 38 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3591
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 123 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3357
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0057
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 124 | FPS: 37 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.5014
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.008
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 125 | FPS: 38 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3504
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0064
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 126 | FPS: 31 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2462
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 127 | FPS: 37 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3255
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 128 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.31
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 129 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3874
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 130 | FPS: 37 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.25
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 131 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4572
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 132 | FPS: 40 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3463
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 133 | FPS: 35 | Optimal FPS: 40
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2451
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 134 | FPS: 38 | Optimal FPS: 40
+16:15:17 [SYSTEM] Game was unpaused
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.389
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0057
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 135 | FPS: 40 | Optimal FPS: 40
+16:15:17 [PLAYER] Velocity (0, 0)
+16:15:17 [SYSTEM] Player update method concluded | Duration (ms): 0.077
+16:15:17 [SYSTEM] Player late update method concluded | Duration (ms): 0.1472
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2137
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 136 | FPS: 26 | Optimal FPS: 40
+16:15:17 [INPUT] Mouse released [Left]
+16:15:17 [SYSTEM] Player input event check completed | Duration (ms): 0.0506
+16:15:17 [SYSTEM] Enemy spawned
+16:15:17 [PLAYER] Velocity (0, 0)
+16:15:17 [SYSTEM] Player update method concluded | Duration (ms): 0.0634
+16:15:17 [SYSTEM] Player late update method concluded | Duration (ms): 0.1413
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3523
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 137 | FPS: 20 | Optimal FPS: 40
+16:15:17 [PLAYER] Velocity (0, 0)
+16:15:17 [SYSTEM] Player update method concluded | Duration (ms): 0.0917
+16:15:17 [SYSTEM] Player late update method concluded | Duration (ms): 0.1061
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3704
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0068
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 138 | FPS: 27 | Optimal FPS: 40
+16:15:17 [PLAYER] Velocity (0, 0)
+16:15:17 [SYSTEM] Player update method concluded | Duration (ms): 0.0751
+16:15:17 [SYSTEM] Player late update method concluded | Duration (ms): 0.1284
+16:15:17 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3096
+16:15:17 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:17 [SYSTEM] Renderer flipped
+16:15:17 [SYSTEM] Frame: 139 | FPS: 27 | Optimal FPS: 40
+16:15:18 [PLAYER] Velocity (0, 0)
+16:15:18 [SYSTEM] Player update method concluded | Duration (ms): 0.083
+16:15:18 [SYSTEM] Player late update method concluded | Duration (ms): 0.0966
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2367
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 140 | FPS: 27 | Optimal FPS: 40
+16:15:18 [PLAYER] Velocity (0, 0)
+16:15:18 [SYSTEM] Player update method concluded | Duration (ms): 0.1273
+16:15:18 [SYSTEM] Player late update method concluded | Duration (ms): 0.0929
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2167
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 141 | FPS: 27 | Optimal FPS: 40
+16:15:18 [SYSTEM] Player input event check completed | Duration (ms): 0.0003
+16:15:18 [PLAYER] Velocity (0, 0)
+16:15:18 [SYSTEM] Player update method concluded | Duration (ms): 0.0801
+16:15:18 [SYSTEM] Player late update method concluded | Duration (ms): 0.1204
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2797
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 142 | FPS: 26 | Optimal FPS: 40
+16:15:18 [PLAYER] Velocity (0, 0)
+16:15:18 [SYSTEM] Player update method concluded | Duration (ms): 0.0903
+16:15:18 [SYSTEM] Player late update method concluded | Duration (ms): 0.094
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2254
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 143 | FPS: 27 | Optimal FPS: 40
+16:15:18 [PLAYER] Velocity (0, 0)
+16:15:18 [SYSTEM] Player update method concluded | Duration (ms): 0.0816
+16:15:18 [SYSTEM] Player late update method concluded | Duration (ms): 0.1156
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3908
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0204
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 144 | FPS: 27 | Optimal FPS: 40
+16:15:18 [PLAYER] Velocity (0, 0)
+16:15:18 [SYSTEM] Player update method concluded | Duration (ms): 0.0808
+16:15:18 [SYSTEM] Player late update method concluded | Duration (ms): 0.1326
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3398
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 145 | FPS: 27 | Optimal FPS: 40
+16:15:18 [SYSTEM] Game was paused
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.29
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 146 | FPS: 35 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.393
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.026
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 147 | FPS: 38 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2465
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 148 | FPS: 35 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3398
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0102
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 149 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2632
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 150 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.469
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 151 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2205
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 152 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2821
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 153 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3703
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 154 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3568
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 155 | FPS: 38 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2447
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 156 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2745
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0057
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 157 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2703
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 158 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4422
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 159 | FPS: 38 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2356
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 160 | FPS: 38 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3656
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.006
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 161 | FPS: 30 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.404
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 162 | FPS: 32 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3546
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0056
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 163 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2421
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 164 | FPS: 38 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3058
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 165 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3519
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 166 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2654
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 167 | FPS: 38 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2915
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 168 | FPS: 37 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3715
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0212
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 169 | FPS: 32 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2776
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 170 | FPS: 35 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3919
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 171 | FPS: 40 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2836
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 172 | FPS: 38 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2538
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 173 | FPS: 38 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.6487
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0072
+16:15:18 [SYSTEM] Renderer flipped
+16:15:18 [SYSTEM] Frame: 174 | FPS: 27 | Optimal FPS: 40
+16:15:18 [SYSTEM] World tiles finished rendering | Duration (ms): 0.37
+16:15:18 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:18 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 175 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4131
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 176 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2961
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 177 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2515
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 178 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4135
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 179 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.5713
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.009
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 180 | FPS: 23 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2953
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 181 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2855
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 182 | FPS: 37 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4035
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 183 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3187
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 184 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4781
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 185 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2303
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 186 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4063
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0207
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 187 | FPS: 35 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2367
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 188 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3576
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0065
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 189 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.233
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 190 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.242
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0094
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 191 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2828
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 192 | FPS: 35 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2405
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 193 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3843
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 194 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4596
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 195 | FPS: 37 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2466
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 196 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4331
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 197 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4264
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 198 | FPS: 35 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4275
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 199 | FPS: 40 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3176
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 200 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3893
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 201 | FPS: 37 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3685
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 202 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3127
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 203 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2783
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0098
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 204 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3685
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0249
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 205 | FPS: 38 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4158
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 206 | FPS: 35 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4044
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 207 | FPS: 30 | Optimal FPS: 40
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3629
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 208 | FPS: 28 | Optimal FPS: 40
+16:15:19 [SYSTEM] Game was unpaused
+16:15:19 [SYSTEM] Enemy spawned
+16:15:19 [PLAYER] Velocity (0, 0)
+16:15:19 [SYSTEM] Player update method concluded | Duration (ms): 0.0948
+16:15:19 [SYSTEM] Player late update method concluded | Duration (ms): 0.1148
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3746
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:19 [SYSTEM] Renderer flipped
+16:15:19 [SYSTEM] Frame: 209 | FPS: 19 | Optimal FPS: 40
+16:15:19 [PLAYER] Velocity (0, 0)
+16:15:19 [SYSTEM] Player update method concluded | Duration (ms): 0.0835
+16:15:19 [SYSTEM] Player late update method concluded | Duration (ms): 0.1435
+16:15:19 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3444
+16:15:19 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:19 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 210 | FPS: 21 | Optimal FPS: 40
+16:15:20 [SYSTEM] Player input event check completed | Duration (ms): 0.0064
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.1027
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.1291
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3122
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 211 | FPS: 21 | Optimal FPS: 40
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.1046
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.1133
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.398
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0037
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 212 | FPS: 21 | Optimal FPS: 40
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.1076
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.0959
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3206
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0087
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 213 | FPS: 21 | Optimal FPS: 40
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0857
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.1397
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3073
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 214 | FPS: 24 | Optimal FPS: 40
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.1257
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.0947
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3073
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 215 | FPS: 21 | Optimal FPS: 40
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.094
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.1502
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4652
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.006
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 216 | FPS: 22 | Optimal FPS: 40
+16:15:20 [SYSTEM] Enemy spawned
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0737
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.1371
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2741
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.005
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 217 | FPS: 20 | Optimal FPS: 40
+16:15:20 [INPUT] Window resized (960, 720) -> (1920, 1027)
+16:15:20 [SYSTEM] Window resizing callback completed | Duration (ms): 0.2398
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0789
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.1016
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 1.0757
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.034
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 218 | FPS: 6 | Optimal FPS: 40
+16:15:20 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:20 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.1326
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.1522
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.6479
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0079
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 219 | FPS: 16 | Optimal FPS: 40
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0782
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.2484
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3519
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0203
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 220 | FPS: 18 | Optimal FPS: 40
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0933
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.131
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3013
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 221 | FPS: 18 | Optimal FPS: 40
+16:15:20 [SYSTEM] Enemy spawned
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0581
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.0955
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2372
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 222 | FPS: 20 | Optimal FPS: 40
+16:15:20 [SYSTEM] Player input event check completed | Duration (ms): 0.0008
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0763
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.0932
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.301
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 223 | FPS: 21 | Optimal FPS: 40
+16:15:20 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0823
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.1254
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4879
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 224 | FPS: 20 | Optimal FPS: 40
+16:15:20 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0819
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.0978
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2752
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 225 | FPS: 20 | Optimal FPS: 40
+16:15:20 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0797
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.0985
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3017
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 226 | FPS: 21 | Optimal FPS: 40
+16:15:20 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0801
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.0963
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2987
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 227 | FPS: 19 | Optimal FPS: 40
+16:15:20 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0834
+16:15:20 [SYSTEM] Player late update method concluded | Duration (ms): 0.094
+16:15:20 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4599
+16:15:20 [SYSTEM] Player finished rendering | Duration (ms): 0.0037
+16:15:20 [SYSTEM] Renderer flipped
+16:15:20 [SYSTEM] Frame: 228 | FPS: 20 | Optimal FPS: 40
+16:15:20 [SYSTEM] Enemy spawned
+16:15:20 [PLAYER] Velocity (0, 0)
+16:15:20 [SYSTEM] Player update method concluded | Duration (ms): 0.0596
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.0971
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2491
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 229 | FPS: 18 | Optimal FPS: 40
+16:15:21 [SYSTEM] Player input event check completed | Duration (ms): 0.0003
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0876
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.0997
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3244
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0212
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 230 | FPS: 17 | Optimal FPS: 40
+16:15:21 [SYSTEM] Player input event check completed | Duration (ms): 0.0008
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.1023
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.1103
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2979
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 231 | FPS: 20 | Optimal FPS: 40
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0771
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.0906
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2998
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0037
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 232 | FPS: 22 | Optimal FPS: 40
+16:15:21 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.111
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.0974
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2964
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 233 | FPS: 20 | Optimal FPS: 40
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0774
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.1073
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3809
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0037
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 234 | FPS: 21 | Optimal FPS: 40
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.1058
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.0996
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3527
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0302
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 235 | FPS: 21 | Optimal FPS: 40
+16:15:21 [SYSTEM] Enemy spawned
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0638
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.0952
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3233
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0037
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 236 | FPS: 22 | Optimal FPS: 40
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0826
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.1124
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2692
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 237 | FPS: 22 | Optimal FPS: 40
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0763
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.1103
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4063
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0056
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 238 | FPS: 23 | Optimal FPS: 40
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0737
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.1106
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.279
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 239 | FPS: 21 | Optimal FPS: 40
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0853
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.0933
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2594
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 240 | FPS: 20 | Optimal FPS: 40
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0744
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.1046
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3221
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 241 | FPS: 22 | Optimal FPS: 40
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.1752
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.1016
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2546
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 242 | FPS: 23 | Optimal FPS: 40
+16:15:21 [SYSTEM] Player input event check completed | Duration (ms): 0.0003
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0774
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.1174
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2435
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 243 | FPS: 20 | Optimal FPS: 40
+16:15:21 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:21 [SYSTEM] Enemy spawned
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0592
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.1302
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2485
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0203
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 244 | FPS: 18 | Optimal FPS: 40
+16:15:21 [SYSTEM] Player input event check completed | Duration (ms): 0.0003
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0789
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.0947
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2488
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 245 | FPS: 20 | Optimal FPS: 40
+16:15:21 [SYSTEM] Player input event check completed | Duration (ms): 0.0007
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0918
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.094
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2473
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 246 | FPS: 21 | Optimal FPS: 40
+16:15:21 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0767
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.0929
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2348
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0037
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 247 | FPS: 22 | Optimal FPS: 40
+16:15:21 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0748
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.1155
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3829
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 248 | FPS: 20 | Optimal FPS: 40
+16:15:21 [SYSTEM] Player input event check completed | Duration (ms): 0.0008
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0963
+16:15:21 [SYSTEM] Player late update method concluded | Duration (ms): 0.1386
+16:15:21 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3738
+16:15:21 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:21 [SYSTEM] Renderer flipped
+16:15:21 [SYSTEM] Frame: 249 | FPS: 20 | Optimal FPS: 40
+16:15:21 [SYSTEM] Player input event check completed | Duration (ms): 0.0008
+16:15:21 [PLAYER] Velocity (0, 0)
+16:15:21 [SYSTEM] Player update method concluded | Duration (ms): 0.0804
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.0948
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2284
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 250 | FPS: 20 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0007
+16:15:22 [SYSTEM] Enemy spawned
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.0608
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.0929
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2344
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 251 | FPS: 20 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0008
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.1118
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.1148
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.6026
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 252 | FPS: 18 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0008
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.0781
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.148
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.407
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 253 | FPS: 18 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0003
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.0932
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.1136
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3186
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 254 | FPS: 22 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.1326
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.1099
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2847
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 255 | FPS: 21 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.0751
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.0955
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2276
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 256 | FPS: 21 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.0854
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.1178
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2949
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 257 | FPS: 22 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0003
+16:15:22 [SYSTEM] Enemy spawned
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.0623
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.0971
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2933
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 258 | FPS: 20 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.0978
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.0989
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3134
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0076
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 259 | FPS: 22 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.0849
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.0948
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2145
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0075
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 260 | FPS: 20 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0003
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.1355
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.1201
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2695
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0113
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 261 | FPS: 20 | Optimal FPS: 40
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.0899
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.1288
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3738
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.009
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 262 | FPS: 20 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.0831
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.1269
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2669
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 263 | FPS: 20 | Optimal FPS: 40
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.1087
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.0952
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2496
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 264 | FPS: 23 | Optimal FPS: 40
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.1295
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.1182
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2628
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 265 | FPS: 20 | Optimal FPS: 40
+16:15:22 [INPUT] Window resized (1920, 1027) -> (960, 720)
+16:15:22 [SYSTEM] Window resizing callback completed | Duration (ms): 0.2175
+16:15:22 [SYSTEM] Enemy spawned
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.0706
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.0989
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 2.4962
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0389
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 266 | FPS: 7 | Optimal FPS: 40
+16:15:22 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.134
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.0937
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2866
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 267 | FPS: 18 | Optimal FPS: 40
+16:15:22 [PLAYER] Velocity (0, 0)
+16:15:22 [SYSTEM] Player update method concluded | Duration (ms): 0.1805
+16:15:22 [SYSTEM] Player late update method concluded | Duration (ms): 0.1828
+16:15:22 [SYSTEM] World tiles finished rendering | Duration (ms): 0.5467
+16:15:22 [SYSTEM] Player finished rendering | Duration (ms): 0.0212
+16:15:22 [SYSTEM] Renderer flipped
+16:15:22 [SYSTEM] Frame: 268 | FPS: 15 | Optimal FPS: 40
+16:15:23 [PLAYER] Velocity (0, 0)
+16:15:23 [SYSTEM] Player update method concluded | Duration (ms): 0.1065
+16:15:23 [SYSTEM] Player late update method concluded | Duration (ms): 0.1076
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2364
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 269 | FPS: 22 | Optimal FPS: 40
+16:15:23 [SYSTEM] Player input event check completed | Duration (ms): 0.0007
+16:15:23 [PLAYER] Velocity (0, 0)
+16:15:23 [SYSTEM] Player update method concluded | Duration (ms): 0.0771
+16:15:23 [SYSTEM] Player late update method concluded | Duration (ms): 0.0936
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3123
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 270 | FPS: 20 | Optimal FPS: 40
+16:15:23 [SYSTEM] Player input event check completed | Duration (ms): 0.0007
+16:15:23 [SYSTEM] Enemy spawned
+16:15:23 [PLAYER] Velocity (0, 0)
+16:15:23 [SYSTEM] Player update method concluded | Duration (ms): 0.0672
+16:15:23 [SYSTEM] Player late update method concluded | Duration (ms): 0.1585
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2428
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 271 | FPS: 19 | Optimal FPS: 40
+16:15:23 [SYSTEM] Player input event check completed | Duration (ms): 0
+16:15:23 [PLAYER] Velocity (0, 0)
+16:15:23 [SYSTEM] Player update method concluded | Duration (ms): 0.1193
+16:15:23 [SYSTEM] Player late update method concluded | Duration (ms): 0.1284
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4573
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 272 | FPS: 20 | Optimal FPS: 40
+16:15:23 [SYSTEM] Player input event check completed | Duration (ms): 0.0004
+16:15:23 [SYSTEM] Game was paused
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.441
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0094
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 273 | FPS: 24 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4202
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 274 | FPS: 31 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.359
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 275 | FPS: 35 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3871
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0064
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 276 | FPS: 31 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4403
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 277 | FPS: 31 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2765
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 278 | FPS: 32 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3523
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 279 | FPS: 37 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3299
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 280 | FPS: 34 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4376
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 281 | FPS: 34 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.253
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 282 | FPS: 37 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4614
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0098
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 283 | FPS: 35 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.287
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 284 | FPS: 37 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2986
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 285 | FPS: 37 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4116
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 286 | FPS: 35 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4059
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 287 | FPS: 34 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3934
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 288 | FPS: 38 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2307
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 289 | FPS: 37 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3149
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 290 | FPS: 32 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3459
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 291 | FPS: 33 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2854
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 292 | FPS: 34 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.367
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 293 | FPS: 37 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2533
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 294 | FPS: 32 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3602
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 295 | FPS: 33 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2447
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 296 | FPS: 37 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3432
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 297 | FPS: 35 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2394
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 298 | FPS: 34 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2994
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:23 [SYSTEM] Renderer flipped
+16:15:23 [SYSTEM] Frame: 299 | FPS: 33 | Optimal FPS: 40
+16:15:23 [SYSTEM] World tiles finished rendering | Duration (ms): 0.6717
+16:15:23 [SYSTEM] Player finished rendering | Duration (ms): 0.0056
+16:15:23 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 300 | FPS: 38 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4161
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 301 | FPS: 32 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3009
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 302 | FPS: 35 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2522
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 303 | FPS: 37 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3333
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 304 | FPS: 34 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2896
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 305 | FPS: 35 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4931
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0264
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 306 | FPS: 33 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2364
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 307 | FPS: 35 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3214
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 308 | FPS: 33 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4486
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0057
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 309 | FPS: 37 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4277
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 310 | FPS: 32 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3281
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 311 | FPS: 34 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2901
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0064
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 312 | FPS: 33 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2621
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 313 | FPS: 32 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3191
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 314 | FPS: 31 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4063
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 315 | FPS: 28 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4275
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0038
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 316 | FPS: 34 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3262
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 317 | FPS: 35 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3134
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 318 | FPS: 32 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2941
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 319 | FPS: 32 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3466
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 320 | FPS: 30 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3633
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 321 | FPS: 31 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3591
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 322 | FPS: 33 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4071
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 323 | FPS: 35 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2499
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 324 | FPS: 38 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.5841
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0094
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 325 | FPS: 31 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3439
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 326 | FPS: 33 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.5312
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 327 | FPS: 35 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2545
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 328 | FPS: 37 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4066
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 329 | FPS: 37 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.344
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 330 | FPS: 33 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3394
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0072
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 331 | FPS: 34 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4331
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 332 | FPS: 30 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3912
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:24 [SYSTEM] Renderer flipped
+16:15:24 [SYSTEM] Frame: 333 | FPS: 30 | Optimal FPS: 40
+16:15:24 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2635
+16:15:24 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 334 | FPS: 33 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3987
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 335 | FPS: 34 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4213
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 336 | FPS: 37 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2492
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 337 | FPS: 33 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.327
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 338 | FPS: 35 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3579
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 339 | FPS: 34 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3024
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 340 | FPS: 37 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3833
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 341 | FPS: 30 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4773
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 342 | FPS: 32 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3742
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 343 | FPS: 37 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2744
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 344 | FPS: 37 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3217
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 345 | FPS: 18 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3414
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 346 | FPS: 35 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3995
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0196
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 347 | FPS: 33 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4169
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0102
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 348 | FPS: 33 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2813
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0052
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 349 | FPS: 32 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4664
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 350 | FPS: 37 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2851
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 351 | FPS: 37 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3576
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.005
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 352 | FPS: 35 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2317
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 353 | FPS: 37 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2579
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0086
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 354 | FPS: 34 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4029
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 355 | FPS: 34 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2356
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 356 | FPS: 38 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2417
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 357 | FPS: 35 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4173
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 358 | FPS: 34 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2579
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 359 | FPS: 37 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4727
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0072
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 360 | FPS: 27 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2534
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 361 | FPS: 32 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2953
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 362 | FPS: 30 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2344
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0193
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 363 | FPS: 34 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3535
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0057
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 364 | FPS: 35 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3361
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 365 | FPS: 35 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2443
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 366 | FPS: 35 | Optimal FPS: 40
+16:15:25 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3991
+16:15:25 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:25 [SYSTEM] Renderer flipped
+16:15:25 [SYSTEM] Frame: 367 | FPS: 37 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2556
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 368 | FPS: 32 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2579
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 369 | FPS: 30 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3436
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 370 | FPS: 35 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3795
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 371 | FPS: 35 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4361
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0056
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 372 | FPS: 33 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2948
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 373 | FPS: 37 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3387
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 374 | FPS: 35 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3848
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 375 | FPS: 34 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3711
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 376 | FPS: 33 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3633
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 377 | FPS: 34 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4606
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 378 | FPS: 33 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.5018
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 379 | FPS: 37 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2518
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 380 | FPS: 37 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3573
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 381 | FPS: 33 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.5301
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0087
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 382 | FPS: 28 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3485
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 383 | FPS: 30 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2651
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 384 | FPS: 30 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3886
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 385 | FPS: 32 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3889
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 386 | FPS: 31 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3753
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 387 | FPS: 37 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2359
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 388 | FPS: 38 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3613
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 389 | FPS: 33 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3753
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 390 | FPS: 33 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3515
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 391 | FPS: 32 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2515
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 392 | FPS: 34 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3228
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0207
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 393 | FPS: 33 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4622
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 394 | FPS: 34 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2794
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0291
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 395 | FPS: 40 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2522
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 396 | FPS: 34 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4486
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0071
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 397 | FPS: 25 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2349
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 398 | FPS: 32 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2756
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 399 | FPS: 33 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4365
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:26 [SYSTEM] Renderer flipped
+16:15:26 [SYSTEM] Frame: 400 | FPS: 31 | Optimal FPS: 40
+16:15:26 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2878
+16:15:26 [SYSTEM] Player finished rendering | Duration (ms): 0.0091
+16:15:26 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 401 | FPS: 35 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4512
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0076
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 402 | FPS: 33 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.233
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 403 | FPS: 32 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.245
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 404 | FPS: 32 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4088
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 405 | FPS: 31 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3013
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 406 | FPS: 33 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2972
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 407 | FPS: 33 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3436
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 408 | FPS: 34 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2884
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 409 | FPS: 32 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2782
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 410 | FPS: 29 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3874
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 411 | FPS: 33 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.358
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 412 | FPS: 37 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3738
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 413 | FPS: 37 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2522
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 414 | FPS: 34 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2379
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0238
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 415 | FPS: 32 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2903
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 416 | FPS: 32 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3663
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0057
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 417 | FPS: 29 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3134
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 418 | FPS: 31 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3134
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 419 | FPS: 35 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2609
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 420 | FPS: 32 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4278
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 421 | FPS: 32 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4271
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.025
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 422 | FPS: 31 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4281
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.006
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 423 | FPS: 34 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4931
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0095
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 424 | FPS: 35 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3727
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 425 | FPS: 34 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4584
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.008
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 426 | FPS: 30 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3054
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 427 | FPS: 33 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.5081
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 428 | FPS: 35 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3432
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 429 | FPS: 34 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2907
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0099
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 430 | FPS: 34 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3913
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 431 | FPS: 34 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3897
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 432 | FPS: 35 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2579
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:27 [SYSTEM] Renderer flipped
+16:15:27 [SYSTEM] Frame: 433 | FPS: 34 | Optimal FPS: 40
+16:15:27 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3554
+16:15:27 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:27 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 434 | FPS: 34 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3655
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 435 | FPS: 35 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.5264
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 436 | FPS: 38 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.389
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 437 | FPS: 33 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3559
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 438 | FPS: 34 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3186
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0042
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 439 | FPS: 35 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2889
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 440 | FPS: 38 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2968
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 441 | FPS: 38 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3557
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.005
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 442 | FPS: 37 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4924
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 443 | FPS: 33 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4066
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 444 | FPS: 34 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.328
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0109
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 445 | FPS: 33 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3187
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 446 | FPS: 34 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4682
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0079
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 447 | FPS: 29 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3273
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0057
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 448 | FPS: 33 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4308
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 449 | FPS: 35 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.39
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0193
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 450 | FPS: 37 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3187
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 451 | FPS: 33 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.378
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 452 | FPS: 33 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4017
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0219
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 453 | FPS: 38 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4111
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 454 | FPS: 35 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4489
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 455 | FPS: 34 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3084
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0057
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 456 | FPS: 38 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3545
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 457 | FPS: 37 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3629
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 458 | FPS: 31 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.273
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 459 | FPS: 32 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3549
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 460 | FPS: 27 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3443
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0208
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 461 | FPS: 38 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2613
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0053
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 462 | FPS: 40 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3092
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 463 | FPS: 38 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4052
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0106
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 464 | FPS: 34 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2541
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 465 | FPS: 35 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2431
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 466 | FPS: 32 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2469
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 467 | FPS: 31 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4338
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:28 [SYSTEM] Renderer flipped
+16:15:28 [SYSTEM] Frame: 468 | FPS: 35 | Optimal FPS: 40
+16:15:28 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2292
+16:15:28 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:28 [SYSTEM] Renderer flipped
+16:15:29 [SYSTEM] Frame: 469 | FPS: 38 | Optimal FPS: 40
+16:15:29 [SYSTEM] World tiles finished rendering | Duration (ms): 0.4395
+16:15:29 [SYSTEM] Player finished rendering | Duration (ms): 0.0045
+16:15:29 [SYSTEM] Renderer flipped
+16:15:29 [SYSTEM] Frame: 470 | FPS: 33 | Optimal FPS: 40
+16:15:29 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3103
+16:15:29 [SYSTEM] Player finished rendering | Duration (ms): 0.0041
+16:15:29 [SYSTEM] Renderer flipped
+16:15:29 [SYSTEM] Frame: 471 | FPS: 32 | Optimal FPS: 40
+16:15:29 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3481
+16:15:29 [SYSTEM] Player finished rendering | Duration (ms): 0.02
+16:15:29 [SYSTEM] Renderer flipped
+16:15:29 [SYSTEM] Frame: 472 | FPS: 33 | Optimal FPS: 40
+16:15:29 [SYSTEM] World tiles finished rendering | Duration (ms): 0.2903
+16:15:29 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:29 [SYSTEM] Renderer flipped
+16:15:29 [SYSTEM] Frame: 473 | FPS: 35 | Optimal FPS: 40
+16:15:29 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3818
+16:15:29 [SYSTEM] Player finished rendering | Duration (ms): 0.0046
+16:15:29 [SYSTEM] Renderer flipped
+16:15:29 [SYSTEM] Frame: 474 | FPS: 35 | Optimal FPS: 40
+16:15:29 [SYSTEM] World tiles finished rendering | Duration (ms): 0.3704
+16:15:29 [SYSTEM] Player finished rendering | Duration (ms): 0.0049
+16:15:29 [SYSTEM] Renderer flipped
+16:15:29 [SYSTEM] Frame: 475 | FPS: 34 | Optimal FPS: 40
+16:15:29 [INPUT] Log turned off

@@ -12,6 +12,10 @@
 #include <math.h>
 #include <iostream>
 
+Mix_Chunk* JN_GameWorld::buttonClick = NULL;
+int JN_GameWorld::vol = 50;
+bool JN_GameWorld::isSfxMute = false;
+
 // Default constructor
 JN_GameWorld::JN_GameWorld()
 {
@@ -66,14 +70,21 @@ JN_GameWorld::~JN_GameWorld()
 	window = NULL;
 	renderer = NULL;
 
+	Mix_FreeChunk(JN_GameWorld::buttonClick);
+	Mix_FreeChunk(oof);
+	Mix_FreeChunk(coins);
+
 	TTF_Quit();
 	SDL_Quit();
+	Mix_Quit();
 }
 
 
 // Initializes the window, renderer, font and starts to build the world
 bool JN_GameWorld::Init()
 {
+	Mix_OpenAudio(44100, AUDIO_S16, 1, 4096);
+
 	bool success = (SDL_Init(SDL_INIT_EVERYTHING) == 0) && (TTF_Init() == 0);	// Init SDL n TTF
 
 	if (success) {
@@ -107,7 +118,6 @@ void JN_GameWorld::Setup()
 {
 	timerText = new JN_Text();
 	scoreText = new JN_Text();
-	startBtn = new JN_Button();
 	performanceTimer = JN_PerformanceTimer(FPS);
 	gameplayTimer = JN_GameplayTimer();
 	player = new JN_Player();
@@ -146,9 +156,13 @@ void JN_GameWorld::Run()
 	{
 		performanceTimer.Tick();	// Must be at the start of the loop
 
+		logObj->Log();
+
 		logObj->LogPerformance(performanceTimer.GetFrameCount(), performanceTimer.GetFPS(), FPS);
 
 		Input();
+
+		logObj->Log();
 
 		if (gameStarted)
 		{
@@ -157,6 +171,9 @@ void JN_GameWorld::Run()
 				SpawnEnemy();
 
 				Update();
+
+				logObj->Log();
+
 				LateUpdate();
 			}
 			else
@@ -167,13 +184,6 @@ void JN_GameWorld::Run()
 				if (resumeBtn->IsClicked())
 					TogglePauseGame();
 			}
-		}
-		else
-		{
-			// Game hasn't started yet
-			startBtn->Update();
-			gameplayTimer.Reset();
-			gameStarted = startBtn->IsClicked();
 		}
 
 		Render();
@@ -244,9 +254,7 @@ void JN_GameWorld::Input()
 
 			else if ((!gameStarted || gamePaused) && (e.type == SDL_MOUSEBUTTONDOWN))
 			{
-				if (!gameStarted)
-					startBtn->Input(e);
-				else if (gamePaused)
+				if (gamePaused)
 					resumeBtn->Input(e);
 			}
 
@@ -288,11 +296,10 @@ void JN_GameWorld::Render()
 	scoreText->Render(renderer, "SCORE: " + std::to_string(player->GetScore()));
 	healthText->Render(renderer, "DMG TAKEN: " + std::to_string(player->GetDamageTaken()));
 
-	if (!gameStarted)
-		startBtn->Render(renderer);
-
 	if (gamePaused)
+	{
 		resumeBtn->Render(renderer);
+	}
 
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);	// Set background color
 	SDL_RenderPresent(renderer);					// Flip the render
@@ -334,11 +341,15 @@ void JN_GameWorld::LateUpdate()
 		{
 			if (enemies[i]->isCollidingWithPlayer)
 			{
+				if (!JN_GameWorld::isSfxMute)
+					Mix_PlayChannel(-1, oof, 0);
 				logObj->LogMethod("Player took 3 damage");
 				player->TakeDamage(3);
 			}
 			else
 			{
+				if (!JN_GameWorld::isSfxMute)
+					Mix_PlayChannel(-1, coins, 0);
 				logObj->LogMethod("Player gained 5 score by killing an enemy");
 				player->AddScore(5);
 			}
@@ -364,13 +375,18 @@ void JN_GameWorld::CreateRandomWorldMap()
 // Builds the world based on the char array
 void JN_GameWorld::BuildWorld()
 {
+	Mix_Volume(-1, vol);
+
 	player->Init(renderer, logObj, windowData);
 	timerText->Init((int)(WORLD_WIDTH * 0.5f) - 120, 10, 240, 50, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 	scoreText->Init((int)(WORLD_WIDTH * 0.8f) - 120, 10, 240, 50, SDL_Color{ 0, 0, 255 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 	healthText->Init((int)(WORLD_WIDTH * 0.2f) - 120, 10, 240, 50, SDL_Color{ 255, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
-	startBtn->Init("Start Round", (WORLD_WIDTH / 2) - 200, (WORLD_HEIGHT / 2) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 	resumeBtn->Init("Resume Round", (WORLD_WIDTH / 2) - 200, (WORLD_HEIGHT / 2) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+
+	JN_GameWorld::buttonClick = Mix_LoadWAV("Assets/buttonClick.wav");
+	oof = Mix_LoadWAV("Assets/oof.wav");
+	coins = Mix_LoadWAV("Assets/coins.wav");
 
 	JN_GameObject *s;
 	SDL_Rect r;
@@ -435,7 +451,6 @@ void JN_GameWorld::ResizeWorld()
 	timerText->Move(xChange, yChange);
 	scoreText->Move(xChange, yChange);
 	healthText->Move(xChange, yChange);
-	startBtn->Resize(xChange, yChange);
 	resumeBtn->Resize(xChange, yChange);
 
 	for (int i = 0; i < (int)enemies.size(); i++)

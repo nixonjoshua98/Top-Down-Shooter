@@ -10,6 +10,7 @@
 //#include "JN_GameObject.h"
 //#include "JN_WindowData.h"
 //#include "JN_RealTimer.h"
+#include "SDL_mixer.h"
 
 #include <set>
 #include <map>
@@ -103,6 +104,7 @@ private:
 	SDL_Joystick* gameController = NULL;			// Game controller...
 	JN_Vector2 gamepadVector;
 	JN_Vector2 velocity;
+	Mix_Chunk* pewpew = NULL;
 	JN_Vector2 rotationVector;
 
 	float speedControl = 1.0f;
