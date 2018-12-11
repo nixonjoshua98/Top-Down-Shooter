@@ -140,6 +140,8 @@ void JN_GameWorld::Setup()
 // Game loop
 void JN_GameWorld::Run()
 {
+	SDL_SetWindowResizable(window, SDL_TRUE);
+
 	while (running && !timerComplete)
 	{
 		performanceTimer.Tick();	// Must be at the start of the loop

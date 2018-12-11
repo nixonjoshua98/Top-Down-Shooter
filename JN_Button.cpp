@@ -31,7 +31,7 @@ void JN_Button::Init(std::string txt, int x, int y, int w, int h, SDL_Color btnC
 
 void JN_Button::Render(SDL_Renderer* renderer)
 {
-	square.Render(renderer, !isActive);
+	square.Render(renderer, isActive);
 	borderSquare.Render(renderer, false);
 	text->Render(renderer, labelText);
 }

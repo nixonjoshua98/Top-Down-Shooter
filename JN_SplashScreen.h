@@ -4,6 +4,7 @@
 #include "JN_Text.h"
 #include "JN_GameObject.h"
 #include "JN_ReadWriteFunctions.h"
+#include "JN_PerformanceTimer.h"
 
 #include "json.hpp"
 
@@ -36,6 +37,10 @@ private:
 	JN_Text* shootTxt = NULL;
 	JN_Text* speedControlsTxt = NULL;
 	JN_Text* movementControlsTxt = NULL;
+	JN_Text* toggleTxt = NULL;
+	JN_Text* fullscreenTxt = NULL;
+	JN_PerformanceTimer timer;
+	JN_Text* pauseTxt = NULL;
 
 	std::vector<JN_GameObject*> allTiles;
 

@@ -4,6 +4,7 @@
 #include "JN_Logging.h"
 #include "JN_RealTimer.h"
 #include "JN_SplashScreen.h"
+#include "JN_Menu.h"
 
 #include <iostream>
 
@@ -83,13 +84,19 @@ int main(int argc, char *argv[])
 
 	JN_GameWorld gw = JN_GameWorld();
 	JN_SplashScreen ss = JN_SplashScreen();
+	JN_Menu menu = JN_Menu();
 
 	if (gw.Init())
 	{
-		ss.Run(gw.GetRenderer(), gw.GetTiles(), 5);
+		ss.Run(gw.GetRenderer(), gw.GetTiles(), 6);
 
 		if (!ss.GetQuit())
-			gw.Run();
+		{
+			menu.Run(gw.GetRenderer(), gw.GetTiles());
+
+			if (!menu.GetQuit())
+				gw.Run();
+		}
 	}
 
     return 0;

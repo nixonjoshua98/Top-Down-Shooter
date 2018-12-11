@@ -23,7 +23,7 @@
     <ProjectGuid>{8E3A05F8-B27C-4818-98DF-047C87BB68B5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>NotGTABattleRoyale</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -152,6 +152,7 @@
     <ClInclude Include="JN_Button.h" />
     <ClInclude Include="JN_Enemy.h" />
     <ClInclude Include="JN_GameplayTimer.h" />
+    <ClInclude Include="JN_Menu.h" />
     <ClInclude Include="JN_PerformanceTimer.h" />
     <ClInclude Include="JN_GameWorld.h" />
     <ClInclude Include="JN_HealthController.h" />
@@ -181,6 +182,7 @@
     <ClCompile Include="JN_HealthController.cpp" />
     <ClCompile Include="JN_Logging.cpp" />
     <ClCompile Include="JN_Main.cpp" />
+    <ClCompile Include="JN_Menu.cpp" />
     <ClCompile Include="JN_PerformanceTimer.cpp" />
     <ClCompile Include="JN_Player.cpp" />
     <ClCompile Include="JN_PlayerControls.cpp" />
