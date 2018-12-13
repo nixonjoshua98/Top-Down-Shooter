@@ -51,6 +51,9 @@ private:
 
 	JN_Button* backButton = NULL;
 
+	JN_Button* muteSfxBtn = NULL;
+	JN_Button* muteBgmBtn = NULL;
+
 	JN_GameWorld* gw = NULL;
 
 	JN_PerformanceTimer pTimer;

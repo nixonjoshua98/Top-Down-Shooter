@@ -14,7 +14,6 @@
 
 Mix_Chunk* JN_GameWorld::buttonClick = NULL;
 Mix_Music* JN_GameWorld::bgm = NULL;
-int JN_GameWorld::vol = 50;
 bool JN_GameWorld::isSfxMute = false;
 
 // Default constructor

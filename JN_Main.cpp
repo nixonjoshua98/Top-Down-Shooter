@@ -9,17 +9,8 @@
 #include <iostream>
 
 /*
-	Add more logging!
-*/
-
-/*
 	Logging and performance (Row 2):
-				PASS:	Log to console
-									Performance								COMPLETE
-									method times							COMPLETE
-									init details							COMPLETE
-									input									COMPLETE
-									collision								COMPLETE
+				PASS:	Log to console										COMPLETE
 				2:2:	Seperate render/game-loop/input methods in console	COMPLETE
 				2:1:	Game score + health is shown on screen				COMPLETE
 				1st:	Log file											COMPLETE
@@ -58,11 +49,11 @@
 				PASS:	Clear background audio								COMPLETE
 				2:2:	Sound effects										COMPLETE
 				2:1:	Audio volume controlled in-game						COMPLETE
-				1st:	Mute/un-mute SFX/BGM
+				1st:	Mute/un-mute SFX/BGM								COMPLETE
 
 	Extra features (Row 9):
 				PASS:	60 seconds timer									COMPLETE
-				2:2:	All main requirments met
+				2:2:	All main requirments met							COMPLETE
 				2:1:	Keys can be remapped								COMPLETE
 				1st:	Saving or loading of game state						COMPLETE
 */
@@ -82,7 +73,7 @@ int main(int argc, char *argv[])
 
 	if (gw->Init())
 	{
-		ss.Run(gw->GetRenderer(), gw->GetTiles(), 1);
+		ss.Run(gw->GetRenderer(), gw->GetTiles(), 6);
 
 		if (!ss.GetQuit())
 		{
