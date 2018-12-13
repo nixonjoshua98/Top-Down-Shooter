@@ -20,6 +20,12 @@ public:
 
 	void Render(SDL_Renderer *renderer);
 
+	
+	void SetActive(bool b);
+
+
+	void SetClicked(bool b);
+
 
 	void Input(SDL_Event e);
 
@@ -31,6 +37,11 @@ public:
 
 
 	void SetText(std::string str);
+
+	bool GetActive()
+	{
+		return isActive;
+	}
 
 
 	void Reset();

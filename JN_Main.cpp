@@ -13,12 +13,6 @@
 */
 
 /*
-	1:	Toggle fullscreen
-	2:	Toggle logging
-	ESC:	Pause game
-*/
-
-/*
 	Logging and performance (Row 2):
 				PASS:	Log to console
 									Performance								COMPLETE
@@ -56,14 +50,14 @@
 
 	Menu (Row 7):
 				PASS:	Splash screen (contains title and controls)			COMPLETE
-				2:2:	Menu, elements can be accessed using the keyboard
+				2:2:	Menu, elements can be accessed using the keyboard	COMPLETE
 				2:1:	Menu elements highlight in colour when selected		COMPLETE
-				1st:	menu controler with mouse + sub-menus
+				1st:	menu controller with mouse + sub-menus				COMPLETE
 
 	Audio (Row 8):
-				PASS:	Clear background audio
+				PASS:	Clear background audio								COMPLETE
 				2:2:	Sound effects										COMPLETE
-				2:1:	Audio volume controlled in-game
+				2:1:	Audio volume controlled in-game						COMPLETE
 				1st:	Mute/un-mute SFX/BGM
 
 	Extra features (Row 9):
@@ -82,22 +76,25 @@ int main(int argc, char *argv[])
 {
 	srand((int)time(NULL));
 
-	JN_GameWorld gw = JN_GameWorld();
+	JN_GameWorld* gw = new JN_GameWorld();
 	JN_SplashScreen ss = JN_SplashScreen();
 	JN_Menu menu = JN_Menu();
 
-	if (gw.Init())
+	if (gw->Init())
 	{
-		ss.Run(gw.GetRenderer(), gw.GetTiles(), 1);
+		ss.Run(gw->GetRenderer(), gw->GetTiles(), 1);
 
 		if (!ss.GetQuit())
 		{
-			menu.Run(gw.GetRenderer(), gw.GetTiles());
+			menu.Run(gw->GetRenderer(), gw->GetTiles(), gw, gw->GetLog());
 
 			if (!menu.GetQuit())
-				gw.Run();
+				gw->Run();
 		}
 	}
+
+	delete gw;
+	gw = NULL;
 
     return 0;
 }

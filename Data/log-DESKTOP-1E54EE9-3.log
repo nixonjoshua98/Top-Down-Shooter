@@ -1,0 +1,11 @@
+17:14:6 [SYSTEM] Log was cleared
+17:14:7 [SYSTEM] SDL window initialized correctly
+17:14:7 [SYSTEM] SDL renderer initialized correctly
+17:14:7 [SYSTEM] World text file was read OK
+17:14:7 [SYSTEM] Assets/TileSheet.bmp has been read in
+17:14:7 [SYSTEM] Assets/PlayerProjectile.bmp has been read in
+17:14:7 [SYSTEM] Assets/PlayerSpriteSheet.bmp has been read in
+17:14:7 [SYSTEM] Assets/ScorpionSpriteSheet.bmp has been read in
+17:14:7 [SYSTEM] Projectiles created | Duration (ms): 0.0102
+17:14:7 [SYSTEM] Player initilized | Duration (ms): 1.0504
+17:14:7 [SYSTEM] World tiles initialized | Duration (ms): 0.7749

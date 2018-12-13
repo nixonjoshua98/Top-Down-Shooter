@@ -31,6 +31,18 @@ void JN_Button::Init(std::string txt, int x, int y, int w, int h, SDL_Color btnC
 }
 
 
+void JN_Button::SetActive(bool b)
+{
+	isActive = b;
+}
+
+
+void JN_Button::SetClicked(bool b)
+{
+	isClicked = b;
+}
+
+
 void JN_Button::Render(SDL_Renderer* renderer)
 {
 	square.Render(renderer, isActive);
@@ -52,9 +64,10 @@ void JN_Button::Update()
 		Mix_PlayChannel(-1, JN_GameWorld::buttonClick, 0);
 }
 
+
 void JN_Button::Input(SDL_Event e)
 {
-	isClicked = isActive && (e.type == SDL_MOUSEBUTTONDOWN) && (e.button.button == SDL_BUTTON_LEFT);
+	isClicked = isActive && (e.type == SDL_MOUSEBUTTONDOWN) && (e.button.button == SDL_BUTTON_LEFT) && (JN_GameObject::Collide(borderSquare.rect, SDL_Rect{ e.button.x, e.button.y, 1 ,1 }));
 }
 
 
@@ -62,6 +75,7 @@ bool JN_Button::IsClicked()
 {
 	return isClicked;
 }
+
 
 void JN_Button::Resize(int x, int y)
 {
@@ -74,6 +88,7 @@ void JN_Button::Resize(int x, int y)
 	text->rect.x += x;
 	text->rect.y += y;
 }
+
 
 void JN_Button::SetText(std::string str)
 {

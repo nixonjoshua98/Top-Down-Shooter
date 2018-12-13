@@ -13,6 +13,7 @@
 #include <iostream>
 
 Mix_Chunk* JN_GameWorld::buttonClick = NULL;
+Mix_Music* JN_GameWorld::bgm = NULL;
 int JN_GameWorld::vol = 50;
 bool JN_GameWorld::isSfxMute = false;
 
@@ -62,6 +63,7 @@ JN_GameWorld::~JN_GameWorld()
 	delete timerText;
 	delete scoreText;
 	delete healthText;
+	delete sfxDownBtn;
 
 	// Destroy the window, renderer and stop all SDL subsystems
 	SDL_DestroyWindow(window);
@@ -73,6 +75,7 @@ JN_GameWorld::~JN_GameWorld()
 	Mix_FreeChunk(JN_GameWorld::buttonClick);
 	Mix_FreeChunk(oof);
 	Mix_FreeChunk(coins);
+	Mix_FreeMusic(JN_GameWorld::bgm);
 
 	TTF_Quit();
 	SDL_Quit();
@@ -116,13 +119,20 @@ bool JN_GameWorld::Init()
 
 void JN_GameWorld::Setup()
 {
+	resumeBtn = new JN_Button();
 	timerText = new JN_Text();
 	scoreText = new JN_Text();
 	performanceTimer = JN_PerformanceTimer(FPS);
 	gameplayTimer = JN_GameplayTimer();
 	player = new JN_Player();
 	healthText = new JN_Text();
-	resumeBtn = new JN_Button();
+	bgmVolTxt = new JN_Text();
+	sfxVolTxt = new JN_Text();
+	sfxDownBtn = new JN_Button();
+	stfVolUpBtn = new JN_Button();
+	bgmVolUpBtn = new JN_Button();
+	stfVolUpBtn = new JN_Button();
+	bgmVolDownBtn = new JN_Button();
 	windowData = new JN_WindowData(0, 0, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
 
 	SDL_SetWindowMinimumSize(window, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
@@ -142,6 +152,11 @@ void JN_GameWorld::Setup()
 	JN_GameObject::playerProjectile.Init(renderer, "Assets/PlayerProjectile.bmp", true, logObj);
 	JN_GameObject::playerSpriteSheet.Init(renderer, "Assets/PlayerSpriteSheet.bmp", true, logObj);
 	JN_GameObject::scorpionSpriteSheet.Init(renderer, "Assets/ScorpionSpriteSheet.bmp", true, logObj);
+
+	JN_GameWorld::buttonClick = Mix_LoadWAV("Assets/buttonClick.wav");
+	oof = Mix_LoadWAV("Assets/oof.wav");
+	coins = Mix_LoadWAV("Assets/coins.wav");
+	JN_GameWorld::bgm = Mix_LoadMUS("Assets/backgroundMusic.wav");
 
 	BuildWorld();
 }
@@ -178,9 +193,49 @@ void JN_GameWorld::Run()
 			}
 			else
 			{
+				logObj->LogMethod("Pause menu rendered");
+
 				// Game is paused
 				gameplayTimer.SetStartTime();
 				resumeBtn->Update();
+				stfVolUpBtn->Update();
+				sfxDownBtn->Update();
+				bgmVolUpBtn->Update();
+				bgmVolDownBtn->Update();
+
+				if (stfVolUpBtn->IsClicked())
+				{
+					logObj->LogMethod("SFX volume up button clicked");
+					sfxVolume = fminf(100, sfxVolume + 10);
+					Mix_Volume(-1, sfxVolume);
+				}
+
+				if (sfxDownBtn->IsClicked())
+				{
+					logObj->LogMethod("SFX volume down button clicked");
+					sfxVolume = fmaxf(0, sfxVolume - 10);
+					Mix_Volume(-1, sfxVolume);
+				}
+
+				if (bgmVolUpBtn->IsClicked())
+				{
+					logObj->LogMethod("BGM volume up button clicked");
+					bgmVolume = fminf(100, bgmVolume + 10);
+					Mix_VolumeMusic(bgmVolume);
+				}
+
+				if (bgmVolDownBtn->IsClicked())
+				{
+					logObj->LogMethod("BGM volume down button clicked");
+					bgmVolume = fmaxf(0, bgmVolume - 10);
+					Mix_VolumeMusic(bgmVolume);
+				}
+
+				sfxDownBtn->Reset();
+				stfVolUpBtn->Reset();
+				bgmVolUpBtn->Reset();
+				bgmVolDownBtn->Reset();
+
 				if (resumeBtn->IsClicked())
 					TogglePauseGame();
 			}
@@ -255,7 +310,13 @@ void JN_GameWorld::Input()
 			else if ((!gameStarted || gamePaused) && (e.type == SDL_MOUSEBUTTONDOWN))
 			{
 				if (gamePaused)
+				{
+					bgmVolUpBtn->Input(e);
+					sfxDownBtn->Input(e);
+					bgmVolDownBtn->Input(e);
+					stfVolUpBtn->Input(e);
 					resumeBtn->Input(e);
+				}
 			}
 
 			else if (!gamePaused && (gameStarted))
@@ -298,7 +359,13 @@ void JN_GameWorld::Render()
 
 	if (gamePaused)
 	{
+		sfxDownBtn->Render(renderer);
+		stfVolUpBtn->Render(renderer);
+		bgmVolDownBtn->Render(renderer);
+		bgmVolUpBtn->Render(renderer);
+		bgmVolTxt->Render(renderer, "BGM: " + std::to_string(bgmVolume));
 		resumeBtn->Render(renderer);
+		sfxVolTxt->Render(renderer, "SFX: " + std::to_string(sfxVolume));
 	}
 
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);	// Set background color
@@ -375,18 +442,26 @@ void JN_GameWorld::CreateRandomWorldMap()
 // Builds the world based on the char array
 void JN_GameWorld::BuildWorld()
 {
-	Mix_Volume(-1, vol);
-
 	player->Init(renderer, logObj, windowData);
 	timerText->Init((int)(WORLD_WIDTH * 0.5f) - 120, 10, 240, 50, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 	scoreText->Init((int)(WORLD_WIDTH * 0.8f) - 120, 10, 240, 50, SDL_Color{ 0, 0, 255 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 	healthText->Init((int)(WORLD_WIDTH * 0.2f) - 120, 10, 240, 50, SDL_Color{ 255, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
-	resumeBtn->Init("Resume Round", (WORLD_WIDTH / 2) - 200, (WORLD_HEIGHT / 2) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	sfxVolTxt->Init(                (WORLD_WIDTH / 2) - 75 , (WORLD_HEIGHT * 0.25f) + 175, 150,  40, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	resumeBtn->Init("Resume Round", (WORLD_WIDTH / 2) - 200, (WORLD_HEIGHT * 0.25f)      , 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
-	JN_GameWorld::buttonClick = Mix_LoadWAV("Assets/buttonClick.wav");
-	oof = Mix_LoadWAV("Assets/oof.wav");
-	coins = Mix_LoadWAV("Assets/coins.wav");
+	sfxDownBtn->Init( "<", (WORLD_WIDTH / 2) - 160, (WORLD_HEIGHT * 0.25f) + 175, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	stfVolUpBtn->Init(">", (WORLD_WIDTH / 2) + 120, (WORLD_HEIGHT * 0.25f) + 175, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+
+	bgmVolUpBtn->Init(">", (WORLD_WIDTH / 2) + 120, (WORLD_HEIGHT * 0.25f) + 240, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	bgmVolDownBtn->Init("<", (WORLD_WIDTH / 2) - 160, (WORLD_HEIGHT * 0.25f) + 240, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+
+	bgmVolTxt->Init((WORLD_WIDTH / 2) - 75, (WORLD_HEIGHT * 0.25f) + 240, 150, 40, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+
+	Mix_PlayMusic(JN_GameWorld::bgm, -1);
+
+	Mix_Volume(-1, sfxVolume);
+	Mix_VolumeMusic(bgmVolume);
 
 	JN_GameObject *s;
 	SDL_Rect r;
@@ -449,9 +524,15 @@ void JN_GameWorld::ResizeWorld()
 
 	player->Resize(xChange, yChange);
 	timerText->Move(xChange, yChange);
+	sfxVolTxt->Move(xChange, yChange);
+	bgmVolUpBtn->Resize(xChange, yChange);
+	bgmVolDownBtn->Resize(xChange, yChange);
+	bgmVolTxt->Move(xChange, yChange);
 	scoreText->Move(xChange, yChange);
 	healthText->Move(xChange, yChange);
+	stfVolUpBtn->Resize(xChange, yChange);
 	resumeBtn->Resize(xChange, yChange);
+	sfxDownBtn->Resize(xChange, yChange);
 
 	for (int i = 0; i < (int)enemies.size(); i++)
 		enemies[i]->Resize(xChange, yChange);

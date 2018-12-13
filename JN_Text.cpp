@@ -16,9 +16,9 @@ JN_Text::~JN_Text()
 	SDL_DestroyTexture(texture);
 	TTF_CloseFont(font);
 
-	font = NULL;
-	surface = NULL;
-	texture = NULL;
+	//font = NULL;
+	//surface = NULL;
+	//texture = NULL;
 }
 
 

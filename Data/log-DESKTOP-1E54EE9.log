@@ -1,0 +1,17 @@
+16:46:37 [SYSTEM] Log was cleared
+16:46:37 [SYSTEM] SDL window initialized correctly
+16:46:37 [SYSTEM] SDL renderer initialized correctly
+16:46:37 [SYSTEM] World text file was read OK
+16:46:37 [SYSTEM] Assets/TileSheet.bmp has been read in
+16:46:37 [SYSTEM] Assets/PlayerProjectile.bmp has been read in
+16:46:37 [SYSTEM] Assets/PlayerSpriteSheet.bmp has been read in
+16:46:37 [SYSTEM] Assets/ScorpionSpriteSheet.bmp has been read in
+16:46:37 [SYSTEM] Projectiles created | Duration (ms): 0.0128
+16:46:37 [SYSTEM] Player initilized | Duration (ms): 1.1482
+16:46:37 [SYSTEM] World tiles initialized | Duration (ms): 0.7514
+16:46:49 [SYSTEM] Assets/TileSheet.bmp surface has been freed
+16:46:49 [SYSTEM] Assets/TileSheet.bmp texture has been destroyed
+16:46:49 [SYSTEM] Assets/PlayerProjectile.bmp surface has been freed
+16:46:49 [SYSTEM] Assets/PlayerProjectile.bmp texture has been destroyed
+16:46:49 [SYSTEM] Assets/PlayerSpriteSheet.bmp surface has been freed
+16:46:49 [SYSTEM] Assets/PlayerSpriteSheet.bmp texture has been destroyed

@@ -50,9 +50,17 @@ public:
 	static bool isSfxMute;
 
 	static Mix_Chunk* buttonClick;
+
+	static Mix_Music* bgm;
 	
 	Mix_Chunk* oof = NULL;
 	Mix_Chunk* coins = NULL;
+
+	int bgmVolume = 10;
+	int sfxVolume = 40;
+
+	static const int MAX_BGM_VOLUME = 10;
+	static const int MAX_SFX_VOLUME = 40;
 
 	static int vol;
 
@@ -72,6 +80,33 @@ public:
 
 	std::vector<JN_GameObject*> GetTiles();
 
+	int GetBGMVolume()
+	{
+		return bgmVolume;
+	}
+
+	int GetSFXVolume()
+	{
+		return sfxVolume;
+	}
+
+	void SetBGMVolume(int i)
+	{
+		bgmVolume = fminf(100, i);
+		bgmVolume = fmax(0, bgmVolume);
+	}
+
+	void SetSFXVolume(int i)
+	{
+		sfxVolume = fminf(100, i);
+		sfxVolume = fmax(0, sfxVolume);
+	}
+
+	JN_Logging* GetLog()
+	{
+		return logObj;
+	}
+
 private:
 	bool running    = true;		// Boolean flag which keeps the game loop going if the game is active
 	bool fullscreen = false;	// Flag to check if game is full screen or not
@@ -84,6 +119,14 @@ private:
 	JN_Text *timerText = NULL;				// 60 seconds timer text
 	JN_Text *scoreText = NULL;
 	JN_Text *healthText = NULL;
+
+	JN_Button *sfxDownBtn = NULL;
+	JN_Text* sfxVolTxt = NULL;
+	JN_Button* stfVolUpBtn = NULL;
+	JN_Text* bgmVolTxt = NULL;
+	JN_Button* bgmVolUpBtn = NULL;
+	JN_Button* bgmVolDownBtn = NULL;
+
 	JN_Button *resumeBtn = NULL;
 	JN_GameplayTimer gameplayTimer;			// gameplay timer (60secs)
 

@@ -43,7 +43,6 @@ private:
 	JN_Text* pauseTxt = NULL;
 
 	std::vector<JN_GameObject*> allTiles;
-
 };
 
 #endif // !JN_SPLASHSCREEN_H
