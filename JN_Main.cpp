@@ -59,10 +59,6 @@
 */
 
 
-/*
-	TODO: Throw away this garbage and start again
-*/
-
 int main(int argc, char *argv[])
 {
 	srand((int)time(NULL));
@@ -73,10 +69,12 @@ int main(int argc, char *argv[])
 
 	if (gw->Init())
 	{
-		ss.Run(gw->GetRenderer(), gw->GetTiles(), 6);
+		ss.Run(gw->GetRenderer(), gw->GetTiles(), 0);
 
 		if (!ss.GetQuit())
 		{
+			menu.Init();
+
 			menu.Run(gw->GetRenderer(), gw->GetTiles(), gw, gw->GetLog());
 
 			if (!menu.GetQuit())

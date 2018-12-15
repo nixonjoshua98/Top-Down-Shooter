@@ -25,6 +25,7 @@ void JN_AnimationController::Init(float changeDelay, SDL_Texture *texture)
 	this->changeDelay = changeDelay;
 	this->texture = texture;
 	lastFrameChange = (float)SDL_GetTicks();
+	anims = {};
 }
 
 

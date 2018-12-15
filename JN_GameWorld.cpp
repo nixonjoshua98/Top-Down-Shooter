@@ -133,6 +133,7 @@ void JN_GameWorld::Setup()
 	stfVolUpBtn = new JN_Button();
 	bgmVolDownBtn = new JN_Button();
 	windowData = new JN_WindowData(0, 0, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
+	continueBtn = new JN_Button();
 
 	SDL_SetWindowMinimumSize(window, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
 
@@ -166,7 +167,7 @@ void JN_GameWorld::Run()
 {
 	SDL_SetWindowResizable(window, SDL_TRUE);
 
-	while (running && !timerComplete)
+	while (running)
 	{
 		performanceTimer.Tick();	// Must be at the start of the loop
 
@@ -178,7 +179,7 @@ void JN_GameWorld::Run()
 
 		logObj->Log();
 
-		if (gameStarted)
+		if (gameStarted && (!timerComplete))
 		{
 			if (!gamePaused)
 			{
@@ -192,52 +193,62 @@ void JN_GameWorld::Run()
 			}
 			else
 			{
-				logObj->LogMethod("Pause menu rendered");
-
-				// Game is paused
-				gameplayTimer.SetStartTime();
-				resumeBtn->Update();
-				stfVolUpBtn->Update();
-				sfxDownBtn->Update();
-				bgmVolUpBtn->Update();
-				bgmVolDownBtn->Update();
-
-				if (stfVolUpBtn->IsClicked())
+				if (!timerComplete)
 				{
-					logObj->LogMethod("SFX volume up button clicked");
-					sfxVolume = fminf(100, sfxVolume + 10);
-					Mix_Volume(-1, sfxVolume);
+					logObj->LogMethod("Pause menu rendered");
+
+					// Game is paused
+					gameplayTimer.SetStartTime();
+					resumeBtn->Update();
+					stfVolUpBtn->Update();
+					sfxDownBtn->Update();
+					bgmVolUpBtn->Update();
+					bgmVolDownBtn->Update();
+
+					if (stfVolUpBtn->IsClicked())
+					{
+						logObj->LogMethod("SFX volume up button clicked");
+						sfxVolume = fminf(100, sfxVolume + 10);
+						Mix_Volume(-1, sfxVolume);
+					}
+
+					if (sfxDownBtn->IsClicked())
+					{
+						logObj->LogMethod("SFX volume down button clicked");
+						sfxVolume = fmaxf(0, sfxVolume - 10);
+						Mix_Volume(-1, sfxVolume);
+					}
+
+					if (bgmVolUpBtn->IsClicked())
+					{
+						logObj->LogMethod("BGM volume up button clicked");
+						bgmVolume = fminf(100, bgmVolume + 10);
+						Mix_VolumeMusic(bgmVolume);
+					}
+
+					if (bgmVolDownBtn->IsClicked())
+					{
+						logObj->LogMethod("BGM volume down button clicked");
+						bgmVolume = fmaxf(0, bgmVolume - 10);
+						Mix_VolumeMusic(bgmVolume);
+					}
+
+					sfxDownBtn->Reset();
+					stfVolUpBtn->Reset();
+					bgmVolUpBtn->Reset();
+					bgmVolDownBtn->Reset();
+
+					if (resumeBtn->IsClicked())
+						TogglePauseGame();
 				}
-
-				if (sfxDownBtn->IsClicked())
-				{
-					logObj->LogMethod("SFX volume down button clicked");
-					sfxVolume = fmaxf(0, sfxVolume - 10);
-					Mix_Volume(-1, sfxVolume);
-				}
-
-				if (bgmVolUpBtn->IsClicked())
-				{
-					logObj->LogMethod("BGM volume up button clicked");
-					bgmVolume = fminf(100, bgmVolume + 10);
-					Mix_VolumeMusic(bgmVolume);
-				}
-
-				if (bgmVolDownBtn->IsClicked())
-				{
-					logObj->LogMethod("BGM volume down button clicked");
-					bgmVolume = fmaxf(0, bgmVolume - 10);
-					Mix_VolumeMusic(bgmVolume);
-				}
-
-				sfxDownBtn->Reset();
-				stfVolUpBtn->Reset();
-				bgmVolUpBtn->Reset();
-				bgmVolDownBtn->Reset();
-
-				if (resumeBtn->IsClicked())
-					TogglePauseGame();
 			}
+		}
+		else
+		{
+			continueBtn->Update();
+			if (running)
+				running = !continueBtn->IsClicked();
+			continueBtn->Reset();				
 		}
 
 		Render();
@@ -283,6 +294,7 @@ void JN_GameWorld::Input()
 		{
 		case SDL_QUIT:	// Window has been closed
 			running = false;
+			isQuit = true;
 			logObj->LogMethod("Window was closed by the user");
 			break;
 
@@ -303,7 +315,7 @@ void JN_GameWorld::Input()
 			else if (e.type == SDL_KEYDOWN && (e.key.keysym.scancode == LOG_TOGGLE_KEY))
 				logObj->ToggleLogging();
 
-			else if (e.type == SDL_KEYDOWN && (e.key.keysym.scancode == PAUSE_GAME_KEY) && (gameStarted))
+			else if (e.type == SDL_KEYDOWN && (e.key.keysym.scancode == PAUSE_GAME_KEY) && (gameStarted) && (!timerComplete))
 				TogglePauseGame();
 
 			else if ((!gameStarted || gamePaused) && (e.type == SDL_MOUSEBUTTONDOWN))
@@ -318,13 +330,18 @@ void JN_GameWorld::Input()
 				}
 			}
 
-			else if (!gamePaused && (gameStarted))
+			else if (!gamePaused && (gameStarted) && (!timerComplete))
 			{
 				// Pass all other input to the player
 				JN_RealTimer t = JN_RealTimer();
 				player->Input(e);
 				logObj->LogTimeSpan("Player input event check completed", t.Tick());
 				break;
+			}
+
+			else if (timerComplete)
+			{
+				continueBtn->Input(e);
 			}
 		}
 	}
@@ -343,18 +360,22 @@ void JN_GameWorld::Render()
 
 	logObj->LogTimeSpan("World tiles finished rendering", t.Tick());
 
-	for (int i = 0; i < (int)enemies.size(); i++)
-		enemies[i]->Render(renderer);
-
-	t = JN_RealTimer();
-
-	player->Render(renderer);
-
-	logObj->LogTimeSpan("Player finished rendering", t.Tick());
-
-	timerText->Render(renderer, "TIMER: " + std::to_string(60 - (int)gameDuration / 1000));
 	scoreText->Render(renderer, "SCORE: " + std::to_string(player->GetScore()));
 	healthText->Render(renderer, "DMG TAKEN: " + std::to_string(player->GetDamageTaken()));
+
+	if (!timerComplete)
+	{
+		for (int i = 0; i < (int)enemies.size(); i++)
+			enemies[i]->Render(renderer);
+
+		t = JN_RealTimer();
+
+		player->Render(renderer);
+
+		logObj->LogTimeSpan("Player finished rendering", t.Tick());
+
+		timerText->Render(renderer, "TIMER: " + std::to_string(60 - (int)gameDuration / 1000));
+	}
 
 	if (gamePaused)
 	{
@@ -366,6 +387,9 @@ void JN_GameWorld::Render()
 		resumeBtn->Render(renderer);
 		sfxVolTxt->Render(renderer, "SFX: " + std::to_string(sfxVolume));
 	}
+
+	if (timerComplete)
+		continueBtn->Render(renderer);
 
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);	// Set background color
 	SDL_RenderPresent(renderer);					// Flip the render
@@ -379,18 +403,22 @@ void JN_GameWorld::Update()
 {
 	SDL_GameControllerUpdate();
 
-	if (gameDuration >= 60000)
-		running = false;
-
 	gameDuration = gameplayTimer.Tick();
 
 	for (int i = 0; i < (int)enemies.size(); i++)
 		enemies[i]->Update(player->rect);
 
-
 	JN_RealTimer t = JN_RealTimer();
 	player->Update();
 	logObj->LogTimeSpan("Player update method concluded", t.Tick());
+
+	timerComplete = timerComplete || gameDuration >= 60000;
+
+	if (timerComplete)
+	{
+		scoreText->rect  = SDL_Rect{ (windowData->windowWidth / 2) - 120 , windowData->windowHeight / 2, 240, 50};
+		healthText->rect = SDL_Rect{ (windowData->windowWidth / 2) - 120 , (windowData->windowHeight / 2) - 75, 240, 50 };
+	}
 }
 
 
@@ -456,6 +484,8 @@ void JN_GameWorld::BuildWorld()
 	bgmVolDownBtn->Init("<", (WORLD_WIDTH / 2) - 160, (WORLD_HEIGHT * 0.25f) + 240, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
 	bgmVolTxt->Init((WORLD_WIDTH / 2) - 75, (WORLD_HEIGHT * 0.25f) + 240, 150, 40, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+
+	continueBtn->Init("Quit", (JN_GameWorld::WORLD_WIDTH / 2) - 200, (JN_GameWorld::WORLD_HEIGHT * 0.75f) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
 	Mix_PlayMusic(JN_GameWorld::bgm, -1);
 
@@ -528,6 +558,7 @@ void JN_GameWorld::ResizeWorld()
 	bgmVolDownBtn->Resize(xChange, yChange);
 	bgmVolTxt->Move(xChange, yChange);
 	scoreText->Move(xChange, yChange);
+	continueBtn->Resize(xChange, yChange);
 	healthText->Move(xChange, yChange);
 	stfVolUpBtn->Resize(xChange, yChange);
 	resumeBtn->Resize(xChange, yChange);

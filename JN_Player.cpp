@@ -25,6 +25,9 @@ JN_Player::~JN_Player()
 	logObj = NULL;
 	windowData = NULL;
 	gameController = NULL;
+
+	score = 0;
+	health.SetHealth(0);
 }
 
 
@@ -400,6 +403,7 @@ void JN_Player::AddScore(int s)
 {
 	score += s;
 }
+
 
 int JN_Player::GetDamageTaken()
 {

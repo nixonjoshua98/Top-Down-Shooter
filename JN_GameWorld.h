@@ -51,6 +51,8 @@ public:
 
 	static Mix_Chunk* buttonClick;
 
+	bool isQuit = false;
+
 	static Mix_Music* bgm;
 	
 	Mix_Chunk* oof = NULL;
@@ -114,6 +116,10 @@ private:
 	bool timerComplete = false;	// ...
 	bool gameStarted = true;
 
+	JN_Button* continueBtn = NULL;
+
+
+
 	JN_PerformanceTimer performanceTimer;	// Timer class which stores FPS
 	JN_Player *player = NULL;				// Player object, the user will control this objects
 	JN_Text *timerText = NULL;				// 60 seconds timer text
@@ -147,6 +153,9 @@ private:
 
 	///<summary>Setup the application<summary>
 	void Setup();
+
+
+	//void PostGameMenu();
 
 
 	///<summary>Calls .Update() on all needed objects</summary>

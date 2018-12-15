@@ -8,6 +8,7 @@ class JN_GameplayTimer : public JN_RealTimer
 public:
 	void SetStartTime()
 	{
+		duration = 0;
 		Reset();
 	}
 

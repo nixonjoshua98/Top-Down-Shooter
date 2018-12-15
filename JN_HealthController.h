@@ -13,6 +13,10 @@ public:
 	void TakeDamage(int dmg);
 	int GetHealth();
 	int GetDamageTaken();
+	void SetHealth(int i)
+	{
+		health = i;
+	}
 
 private:
 	int health         = 0;

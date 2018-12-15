@@ -87,7 +87,7 @@ public:
 private:
 	const int MOVEMENT_SPEED = 3;	// The amount the player moves each movement cycle
 	const int MOVEMENT_DELAY = 25;	// The delay between movements
-	const int SHOOT_DELAY = 200;	// The delay between being able to fire a projectile
+	const int SHOOT_DELAY = 350;	// The delay between being able to fire a projectile
 	const int PLAYER_WIDTH = 20;	// ...
 	const int PLAYER_HEIGHT = 20;	// ...
 

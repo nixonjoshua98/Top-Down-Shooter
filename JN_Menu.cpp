@@ -28,25 +28,6 @@ void JN_Menu::Init()
 	backButton = new JN_Button();
 	muteBgmBtn = new JN_Button();
 	muteSfxBtn = new JN_Button();
-
-	startBtn->Init("Start Round", (JN_GameWorld::WORLD_WIDTH / 2) - 200, (JN_GameWorld::WORLD_HEIGHT * 0.25f) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-	settingsBtn->Init("Settings", (JN_GameWorld::WORLD_WIDTH / 2) - 200, (JN_GameWorld::WORLD_HEIGHT * 0.50f) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-	quitBtn->Init("Quit Game", (JN_GameWorld::WORLD_WIDTH / 2) - 200, (JN_GameWorld::WORLD_HEIGHT * 0.75f) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-
-	volTitle->Init((JN_GameWorld::WORLD_WIDTH / 2) - 190, (JN_GameWorld::WORLD_HEIGHT * 0.15f), 380, 100, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-
-	sfxVolTxt->Init((JN_GameWorld::WORLD_WIDTH / 2) - 75        , (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 50, 150, 40, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-	sfxDownBtn->Init("<", (JN_GameWorld::WORLD_WIDTH / 2) - 160 , (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 50, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-	stfVolUpBtn->Init(">", (JN_GameWorld::WORLD_WIDTH / 2) + 120, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 50, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-
-	bgmVolTxt->Init((JN_GameWorld::WORLD_WIDTH / 2) - 75,           (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 115, 150, 40, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-	bgmVolUpBtn->Init(">",   (JN_GameWorld::WORLD_WIDTH / 2) + 120, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 115, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-	bgmVolDownBtn->Init("<", (JN_GameWorld::WORLD_WIDTH / 2) - 160, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 115, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-
-	backButton->Init("Back to Menu", (JN_GameWorld::WORLD_WIDTH / 2) - 200, (JN_GameWorld::WORLD_HEIGHT * 0.75f) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-
-	muteSfxBtn->Init("Disable SFX", (JN_GameWorld::WORLD_WIDTH / 2) - 220, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 180, 150, 80, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
-	muteBgmBtn->Init("Disable BGM", (JN_GameWorld::WORLD_WIDTH / 2) + 80, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 180, 150, 80, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 }
 
 
@@ -71,11 +52,33 @@ void JN_Menu::Reset()
 
 void JN_Menu::Run(SDL_Renderer* renderer, std::vector<JN_GameObject*> tiles, JN_GameWorld* gw, JN_Logging* logObj)
 {
+	Reset();
+
+	isQuit = false;
+	isFinished = false;
+
 	allTiles = tiles;
 	pTimer = JN_PerformanceTimer(JN_GameWorld::FPS);
 	r = renderer;
 
-	Init();
+	startBtn->Init("Start Round", (JN_GameWorld::WORLD_WIDTH / 2) - 200, (JN_GameWorld::WORLD_HEIGHT * 0.25f) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	settingsBtn->Init("Settings", (JN_GameWorld::WORLD_WIDTH / 2) - 200, (JN_GameWorld::WORLD_HEIGHT * 0.50f) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	quitBtn->Init("Quit Game", (JN_GameWorld::WORLD_WIDTH / 2) - 200, (JN_GameWorld::WORLD_HEIGHT * 0.75f) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+
+	volTitle->Init((JN_GameWorld::WORLD_WIDTH / 2) - 190, (JN_GameWorld::WORLD_HEIGHT * 0.15f), 380, 100, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+
+	sfxVolTxt->Init((JN_GameWorld::WORLD_WIDTH / 2) - 75, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 50, 150, 40, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	sfxDownBtn->Init("<", (JN_GameWorld::WORLD_WIDTH / 2) - 160, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 50, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	stfVolUpBtn->Init(">", (JN_GameWorld::WORLD_WIDTH / 2) + 120, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 50, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+
+	bgmVolTxt->Init((JN_GameWorld::WORLD_WIDTH / 2) - 75, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 115, 150, 40, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	bgmVolUpBtn->Init(">", (JN_GameWorld::WORLD_WIDTH / 2) + 120, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 115, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	bgmVolDownBtn->Init("<", (JN_GameWorld::WORLD_WIDTH / 2) - 160, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 115, 40, 40, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+
+	backButton->Init("Back to Menu", (JN_GameWorld::WORLD_WIDTH / 2) - 200, (JN_GameWorld::WORLD_HEIGHT * 0.75f) - 75, 400, 150, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+
+	muteSfxBtn->Init("Disable SFX", (JN_GameWorld::WORLD_WIDTH / 2) - 220, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 180, 150, 80, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
+	muteBgmBtn->Init("Disable BGM", (JN_GameWorld::WORLD_WIDTH / 2) + 80, (JN_GameWorld::WORLD_HEIGHT * 0.25f) + 180, 150, 80, SDL_Color{ 255, 255, 255 }, SDL_Color{ 0, 0, 0 }, "Assets/SourceSerifPro-Regular.ttf", 16);
 
 	this->gw = gw;
 	this->logObj = logObj;
