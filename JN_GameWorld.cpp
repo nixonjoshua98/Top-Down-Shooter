@@ -165,6 +165,10 @@ void JN_GameWorld::Setup()
 // Game loop
 void JN_GameWorld::Run()
 {
+	gameDuration = 0;
+	gameplayTimer.SetStartTime();
+
+
 	SDL_SetWindowResizable(window, SDL_TRUE);
 
 	while (running)

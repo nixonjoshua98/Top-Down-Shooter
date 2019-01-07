@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
 
 	if (gw->Init())
 	{
-		ss.Run(gw->GetRenderer(), gw->GetTiles(), 0);
+		ss.Run(gw->GetRenderer(), gw->GetTiles(), 5);
 
 		if (!ss.GetQuit())
 		{
